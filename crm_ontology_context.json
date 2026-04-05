@@ -1305,6 +1305,34 @@
     "familyHasNote": {
       "@id": "crm:familyHasNote",
       "@type": "@id"
-    }
-  }
+    },
+    "roleAssignmentInGroup": "crm:roleAssignmentInGroup",
+    "groupForRoleAssignment": "crm:groupForRoleAssignment",
+    "attendanceForEvent": "crm:attendanceForEvent",
+    "eventForAttendance": "crm:eventForAttendance",
+    "personForAttendance": "crm:personForAttendance",
+    "hasAttendance": "crm:hasAttendance",
+    "locationForEvent": "crm:locationForEvent",
+    "volunteerOfEvent": "crm:volunteerOfEvent",
+    "kioskAssignmentForEvent": "crm:kioskAssignmentForEvent",
+    "hasFundingFund": "crm:hasFundingFund",
+    "eventAssignmentForPerson": "crm:eventAssignmentForPerson",
+    "pledgeForPerson": "crm:pledgeForPerson",
+    "primaryContactOfFamily": "crm:primaryContactOfFamily",
+    "secondaryContactOfFamily": "crm:secondaryContactOfFamily"
+  },
+  "roleAssignmentInGroup": "crm:roleAssignmentInGroup",
+  "groupForRoleAssignment": "crm:groupForRoleAssignment",
+  "attendanceForEvent": "crm:attendanceForEvent",
+  "eventForAttendance": "crm:eventForAttendance",
+  "personForAttendance": "crm:personForAttendance",
+  "hasAttendance": "crm:hasAttendance",
+  "locationForEvent": "crm:locationForEvent",
+  "volunteerOfEvent": "crm:volunteerOfEvent",
+  "kioskAssignmentForEvent": "crm:kioskAssignmentForEvent",
+  "hasFundingFund": "crm:hasFundingFund",
+  "eventAssignmentForPerson": "crm:eventAssignmentForPerson",
+  "pledgeForPerson": "crm:pledgeForPerson",
+  "primaryContactOfFamily": "crm:primaryContactOfFamily",
+  "secondaryContactOfFamily": "crm:secondaryContactOfFamily"
 }

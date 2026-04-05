@@ -1,0 +1,2444 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm:   <http://churchcrm.org/ontology/> .
+@prefix crmres: <http://churchcrm.org/resource/> .
+
+<http://churchcrm.org/ontology>
+    a owl:Ontology ;
+    rdfs:label "ChurchCRM Ontology"@en ;
+    rdfs:comment "RDF ontology for ChurchCRM data model, derived from 43 database tables."@en ;
+    owl:versionInfo "1.0.0" .
+
+###  Class: crm:CalendarEvent
+crm:CalendarEvent
+    a owl:Class ;
+    rdfs:label "CalendarEvent"@en ;
+    rdfs:comment "Corresponds to database table `CalendarEvent`."@en .
+
+###  Class: crm:Calendar
+crm:Calendar
+    a owl:Class ;
+    rdfs:label "Calendar"@en ;
+    rdfs:comment "Corresponds to database table `Calendar`."@en .
+
+###  Class: crm:Config
+crm:Config
+    a owl:Class ;
+    rdfs:label "Config"@en ;
+    rdfs:comment "Corresponds to database table `Config`."@en .
+
+###  Class: crm:Deposit
+crm:Deposit
+    a owl:Class ;
+    rdfs:label "Deposit"@en ;
+    rdfs:comment "Corresponds to database table `Deposit`."@en .
+
+###  Class: crm:DonatedItem
+crm:DonatedItem
+    a owl:Class ;
+    rdfs:label "DonatedItem"@en ;
+    rdfs:comment "Corresponds to database table `DonatedItem`."@en .
+
+###  Class: crm:DonationFund
+crm:DonationFund
+    a owl:Class ;
+    rdfs:label "DonationFund"@en ;
+    rdfs:comment "Corresponds to database table `DonationFund`."@en .
+
+###  Class: crm:EventAttend
+crm:EventAttend
+    a owl:Class ;
+    rdfs:label "EventAttend"@en ;
+    rdfs:comment "Corresponds to database table `EventAttend`."@en .
+
+###  Class: crm:EventAudience
+crm:EventAudience
+    a owl:Class ;
+    rdfs:label "EventAudience"@en ;
+    rdfs:comment "Corresponds to database table `EventAudience`."@en .
+
+###  Class: crm:EventType
+crm:EventType
+    a owl:Class ;
+    rdfs:label "EventType"@en ;
+    rdfs:comment "Corresponds to database table `EventType`."@en .
+
+###  Class: crm:EventCountName
+crm:EventCountName
+    a owl:Class ;
+    rdfs:label "EventCountName"@en ;
+    rdfs:comment "Corresponds to database table `EventCountName`."@en .
+
+###  Class: crm:EventCounts
+crm:EventCounts
+    a owl:Class ;
+    rdfs:label "EventCounts"@en ;
+    rdfs:comment "Corresponds to database table `EventCounts`."@en .
+
+###  Class: crm:Event
+crm:Event
+    a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "Corresponds to database table `Event`."@en .
+
+###  Class: crm:FamilyCustom
+crm:FamilyCustom
+    a owl:Class ;
+    rdfs:label "FamilyCustom"@en ;
+    rdfs:comment "Corresponds to database table `FamilyCustom`."@en .
+
+###  Class: crm:FamilyCustomMaster
+crm:FamilyCustomMaster
+    a owl:Class ;
+    rdfs:label "FamilyCustomMaster"@en ;
+    rdfs:comment "Corresponds to database table `FamilyCustomMaster`."@en .
+
+###  Class: crm:Family
+crm:Family
+    a owl:Class ;
+    rdfs:label "Family"@en ;
+    rdfs:comment "Corresponds to database table `Family`."@en .
+
+###  Class: crm:FundRaiser
+crm:FundRaiser
+    a owl:Class ;
+    rdfs:label "FundRaiser"@en ;
+    rdfs:comment "Corresponds to database table `FundRaiser`."@en .
+
+###  Class: crm:Group
+crm:Group
+    a owl:Class ;
+    rdfs:label "Group"@en ;
+    rdfs:comment "Corresponds to database table `Group`."@en .
+
+###  Class: crm:GroupPropMaster
+crm:GroupPropMaster
+    a owl:Class ;
+    rdfs:label "GroupPropMaster"@en ;
+    rdfs:comment "Corresponds to database table `GroupPropMaster`."@en .
+
+###  Class: crm:KioskAssignment
+crm:KioskAssignment
+    a owl:Class ;
+    rdfs:label "KioskAssignment"@en ;
+    rdfs:comment "Corresponds to database table `KioskAssignment`."@en .
+
+###  Class: crm:KioskDevice
+crm:KioskDevice
+    a owl:Class ;
+    rdfs:label "KioskDevice"@en ;
+    rdfs:comment "Corresponds to database table `KioskDevice`."@en .
+
+###  Class: crm:ListOption
+crm:ListOption
+    a owl:Class ;
+    rdfs:label "ListOption"@en ;
+    rdfs:comment "Corresponds to database table `ListOption`."@en .
+
+###  Class: crm:Location
+crm:Location
+    a owl:Class ;
+    rdfs:label "Location"@en ;
+    rdfs:comment "Corresponds to database table `Location`."@en .
+
+###  Class: crm:MenuLink
+crm:MenuLink
+    a owl:Class ;
+    rdfs:label "MenuLink"@en ;
+    rdfs:comment "Corresponds to database table `MenuLink`."@en .
+
+###  Class: crm:Note
+crm:Note
+    a owl:Class ;
+    rdfs:label "Note"@en ;
+    rdfs:comment "Corresponds to database table `Note`."@en .
+
+###  Class: crm:PersonGroupRole
+crm:PersonGroupRole
+    a owl:Class ;
+    rdfs:label "PersonGroupRole"@en ;
+    rdfs:comment "Corresponds to database table `PersonGroupRole`."@en .
+
+###  Class: crm:PersonVolunteerOpportunity
+crm:PersonVolunteerOpportunity
+    a owl:Class ;
+    rdfs:label "PersonVolunteerOpportunity"@en ;
+    rdfs:comment "Corresponds to database table `PersonVolunteerOpportunity`."@en .
+
+###  Class: crm:PersonCustom
+crm:PersonCustom
+    a owl:Class ;
+    rdfs:label "PersonCustom"@en ;
+    rdfs:comment "Corresponds to database table `PersonCustom`."@en .
+
+###  Class: crm:PersonCustomMaster
+crm:PersonCustomMaster
+    a owl:Class ;
+    rdfs:label "PersonCustomMaster"@en ;
+    rdfs:comment "Corresponds to database table `PersonCustomMaster`."@en .
+
+###  Class: crm:Person
+crm:Person
+    a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "Corresponds to database table `Person`."@en .
+
+###  Class: crm:Pledge
+crm:Pledge
+    a owl:Class ;
+    rdfs:label "Pledge"@en ;
+    rdfs:comment "Corresponds to database table `Pledge`."@en .
+
+###  Class: crm:Property
+crm:Property
+    a owl:Class ;
+    rdfs:label "Property"@en ;
+    rdfs:comment "Corresponds to database table `Property`."@en .
+
+###  Class: crm:PropertyType
+crm:PropertyType
+    a owl:Class ;
+    rdfs:label "PropertyType"@en ;
+    rdfs:comment "Corresponds to database table `PropertyType`."@en .
+
+###  Class: crm:PredefinedReports
+crm:PredefinedReports
+    a owl:Class ;
+    rdfs:label "PredefinedReports"@en ;
+    rdfs:comment "Corresponds to database table `PredefinedReports`."@en .
+
+###  Class: crm:QueryParameterOptions
+crm:QueryParameterOptions
+    a owl:Class ;
+    rdfs:label "QueryParameterOptions"@en ;
+    rdfs:comment "Corresponds to database table `QueryParameterOptions`."@en .
+
+###  Class: crm:QueryParameters
+crm:QueryParameters
+    a owl:Class ;
+    rdfs:label "QueryParameters"@en ;
+    rdfs:comment "Corresponds to database table `QueryParameters`."@en .
+
+###  Class: crm:RecordProperty
+crm:RecordProperty
+    a owl:Class ;
+    rdfs:label "RecordProperty"@en ;
+    rdfs:comment "Corresponds to database table `RecordProperty`."@en .
+
+###  Class: crm:Token
+crm:Token
+    a owl:Class ;
+    rdfs:label "Token"@en ;
+    rdfs:comment "Corresponds to database table `Token`."@en .
+
+###  Class: crm:UserSetting
+crm:UserSetting
+    a owl:Class ;
+    rdfs:label "UserSetting"@en ;
+    rdfs:comment "Corresponds to database table `UserSetting`."@en .
+
+###  Class: crm:User
+crm:User
+    a owl:Class ;
+    rdfs:label "User"@en ;
+    rdfs:comment "Corresponds to database table `User`."@en .
+
+###  Class: crm:UserConfig
+crm:UserConfig
+    a owl:Class ;
+    rdfs:label "UserConfig"@en ;
+    rdfs:comment "Corresponds to database table `UserConfig`."@en .
+
+###  Class: crm:Version
+crm:Version
+    a owl:Class ;
+    rdfs:label "Version"@en ;
+    rdfs:comment "Corresponds to database table `Version`."@en .
+
+###  Class: crm:VolunteerOpportunity
+crm:VolunteerOpportunity
+    a owl:Class ;
+    rdfs:label "VolunteerOpportunity"@en ;
+    rdfs:comment "Corresponds to database table `VolunteerOpportunity`."@en .
+
+###  Class: crm:WhyCame
+crm:WhyCame
+    a owl:Class ;
+    rdfs:label "WhyCame"@en ;
+    rdfs:comment "Corresponds to database table `WhyCame`."@en .
+
+# ── Datatype Properties ──
+###  DatatypeProperty: accesstoken?
+crm:accesstoken?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Calendar ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: backgroundcolor?
+crm:backgroundcolor?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Calendar ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: foregroundcolor?
+crm:foregroundcolor?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Calendar ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Calendar ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: name
+crm:name
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Calendar ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:CalendarEvent ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: cfgId
+crm:cfgId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Config ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: cfgName
+crm:cfgName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Config ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: cfgValue?
+crm:cfgValue?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Config ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: closed
+crm:closed
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: comment?
+crm:comment?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: date?
+crm:date?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: enteredby?
+crm:enteredby?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: type
+crm:type
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: buyerId
+crm:buyerId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: description?
+crm:description?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: donorId
+crm:donorId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: enteredby
+crm:enteredby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: entereddate
+crm:entereddate
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: estprice?
+crm:estprice?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: frId
+crm:frId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: item
+crm:item
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: materialvalue?
+crm:materialvalue?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: minimum?
+crm:minimum?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: multibuy
+crm:multibuy
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: picture?
+crm:picture?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: sellprice?
+crm:sellprice?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: title
+crm:title
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonatedItem ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: active
+crm:active
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonationFund ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: description?
+crm:description?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonationFund ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonationFund ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: name?
+crm:name?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonationFund ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: order
+crm:order
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:DonationFund ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: desc?
+crm:desc?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: end
+crm:end
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: inactive
+crm:inactive
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: locationId
+crm:locationId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: primaryContactPersonId
+crm:primaryContactPersonId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: secondaryContactPersonId
+crm:secondaryContactPersonId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: start
+crm:start
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: text?
+crm:text?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: title
+crm:title
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: type
+crm:type
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: url?
+crm:url?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: attendId
+crm:attendId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: checkinDate?
+crm:checkinDate?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: checkinId?
+crm:checkinId?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: checkoutDate?
+crm:checkoutDate?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: checkoutId?
+crm:checkoutId?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: personId
+crm:personId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAttend ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: groupId
+crm:groupId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventAudience ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: countid
+crm:countid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCountName ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: countname
+crm:countname
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCountName ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: eventtypeid
+crm:eventtypeid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCountName ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: countcount?
+crm:countcount?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCounts ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: countid
+crm:countid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCounts ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: countname?
+crm:countname?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCounts ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: notes?
+crm:notes?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventCounts ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: typeActive
+crm:typeActive
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: typeDefrecurdom
+crm:typeDefrecurdom
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: typeDefrecurdow
+crm:typeDefrecurdow
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: typeDefrecurdoy
+crm:typeDefrecurdoy
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: typeDefrecurtype
+crm:typeDefrecurtype
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: typeDefstarttime
+crm:typeDefstarttime
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: typeGrpid?
+crm:typeGrpid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: typeId
+crm:typeId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: typeName
+crm:typeName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:EventType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: address1?
+crm:address1?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: address2?
+crm:address2?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: city?
+crm:city?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: country?
+crm:country?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: datedeactivated?
+crm:datedeactivated?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: dateentered
+crm:dateentered
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: datelastedited?
+crm:datelastedited?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: editedby?
+crm:editedby?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: email?
+crm:email?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: enteredby
+crm:enteredby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: envelope
+crm:envelope
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: homephone?
+crm:homephone?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: latitude?
+crm:latitude?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: longitude?
+crm:longitude?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: name?
+crm:name?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: scancheck?
+crm:scancheck?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: scancredit?
+crm:scancredit?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: sendnewsletter
+crm:sendnewsletter
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: state?
+crm:state?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: weddingdate?
+crm:weddingdate?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: zip?
+crm:zip?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustom ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customField
+crm:customField
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customFieldsec
+crm:customFieldsec
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customName
+crm:customName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustomMaster ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: customOrder
+crm:customOrder
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customSpecial?
+crm:customSpecial?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: typeId
+crm:typeId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FamilyCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: date?
+crm:date?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: description?
+crm:description?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: enteredby
+crm:enteredby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: entereddate
+crm:entereddate
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: title
+crm:title
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: active
+crm:active
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: defaultrole
+crm:defaultrole
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: description?
+crm:description?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: hasspecialprops?
+crm:hasspecialprops?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: includeEmailExport
+crm:includeEmailExport
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: name
+crm:name
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: rolelistid
+crm:rolelistid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: type
+crm:type
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: propDescription?
+crm:propDescription?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: propField
+crm:propField
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: propId
+crm:propId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: propName?
+crm:propName?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: propPersondisplay
+crm:propPersondisplay
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: propSpecial?
+crm:propSpecial?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: typeId
+crm:typeId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:GroupPropMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: assignmenttype?
+crm:assignmenttype?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskAssignment ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: eventid?
+crm:eventid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskAssignment ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskAssignment ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: kdevid?
+crm:kdevid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskAssignment ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: accepted?
+crm:accepted?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: devicetype?
+crm:devicetype?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: guidhash?
+crm:guidhash?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: lastheartbeat?
+crm:lastheartbeat?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: name?
+crm:name?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: pendingcommands?
+crm:pendingcommands?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:KioskDevice ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: lstOptionid
+crm:lstOptionid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:ListOption ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: lstOptionname
+crm:lstOptionname
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:ListOption ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: lstOptionsequence
+crm:lstOptionsequence
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:ListOption ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: locationAddress
+crm:locationAddress
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationCity
+crm:locationCity
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationCountry
+crm:locationCountry
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationEmail
+crm:locationEmail
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationId
+crm:locationId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: locationName
+crm:locationName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationPhone
+crm:locationPhone
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationState
+crm:locationState
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationTimzezone
+crm:locationTimzezone
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: locationTypeid
+crm:locationTypeid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: locationZip
+crm:locationZip
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Location ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: linkid
+crm:linkid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:MenuLink ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: linkname?
+crm:linkname?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:MenuLink ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: linkorder?
+crm:linkorder?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:MenuLink ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: linkuri?
+crm:linkuri?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:MenuLink ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: dateentered
+crm:dateentered
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: datelastedited?
+crm:datelastedited?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: editedby
+crm:editedby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: enteredby
+crm:enteredby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: famId
+crm:famId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: perId
+crm:perId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: private
+crm:private
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: text?
+crm:text?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: type?
+crm:type?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: address1?
+crm:address1?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: address2?
+crm:address2?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: birthday
+crm:birthday
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: birthmonth
+crm:birthmonth
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: birthyear?
+crm:birthyear?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: cellphone?
+crm:cellphone?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: city?
+crm:city?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: clsId
+crm:clsId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: country?
+crm:country?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: dateentered
+crm:dateentered
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: datelastedited?
+crm:datelastedited?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: editedby?
+crm:editedby?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: email?
+crm:email?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: enteredby
+crm:enteredby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: envelope?
+crm:envelope?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: facebook?
+crm:facebook?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: famId
+crm:famId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: firstname?
+crm:firstname?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: flags
+crm:flags
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: fmrId
+crm:fmrId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: frienddate?
+crm:frienddate?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: gender
+crm:gender
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: homephone?
+crm:homephone?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: lastname?
+crm:lastname?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: linkedin?
+crm:linkedin?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: membershipdate?
+crm:membershipdate?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: middlename?
+crm:middlename?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: state?
+crm:state?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: suffix?
+crm:suffix?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: title?
+crm:title?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: twitter?
+crm:twitter?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: workemail?
+crm:workemail?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: workphone?
+crm:workphone?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: zip?
+crm:zip?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustom ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customField
+crm:customField
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customFieldsec
+crm:customFieldsec
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customName
+crm:customName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustomMaster ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: customOrder
+crm:customOrder
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: customSpecial?
+crm:customSpecial?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: typeId
+crm:typeId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonCustomMaster ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: p2g2rGrpId
+crm:p2g2rGrpId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonGroupRole ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: p2g2rRleId
+crm:p2g2rRleId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonGroupRole ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: p2voId
+crm:p2voId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonVolunteerOpportunity ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: p2voPerId?
+crm:p2voPerId?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonVolunteerOpportunity ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: p2voVolId?
+crm:p2voVolId?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PersonVolunteerOpportunity ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: amount?
+crm:amount?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: autCleared
+crm:autCleared
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: autId
+crm:autId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: autResultid
+crm:autResultid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: checkno?
+crm:checkno?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: comment?
+crm:comment?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: date?
+crm:date?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: datelastedited
+crm:datelastedited
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: depid?
+crm:depid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: editedby
+crm:editedby
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: famid?
+crm:famid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: fundid?
+crm:fundid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: fyid?
+crm:fyid?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: groupkey
+crm:groupkey
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: method?
+crm:method?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: nondeductible
+crm:nondeductible
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:decimal .
+
+###  DatatypeProperty: pledgeorpayment
+crm:pledgeorpayment
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: plgid
+crm:plgid
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: problem?
+crm:problem?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: scanstring?
+crm:scanstring?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: schedule?
+crm:schedule?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: qryCount
+crm:qryCount
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PredefinedReports ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: qryDescription
+crm:qryDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PredefinedReports ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: qryId
+crm:qryId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PredefinedReports ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: qryName
+crm:qryName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PredefinedReports ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: qrySql
+crm:qrySql
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PredefinedReports ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: proClass
+crm:proClass
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: proDescription
+crm:proDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: proId
+crm:proId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: proName
+crm:proName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: proPrompt?
+crm:proPrompt?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: proPrtId
+crm:proPrtId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: prtClass
+crm:prtClass
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PropertyType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: prtDescription
+crm:prtDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PropertyType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: prtId
+crm:prtId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PropertyType ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: prtName
+crm:prtName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:PropertyType ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: display
+crm:display
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameterOptions ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameterOptions ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: qrpId
+crm:qrpId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameterOptions ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: value
+crm:value
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameterOptions ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: alias?
+crm:alias?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: alphamaxlength?
+crm:alphamaxlength?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: alphaminlength?
+crm:alphaminlength?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: default?
+crm:default?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: description?
+crm:description?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: inputboxsize
+crm:inputboxsize
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: name?
+crm:name?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: numericmax?
+crm:numericmax?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: numericmin?
+crm:numericmin?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: optionsql?
+crm:optionsql?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: qryId
+crm:qryId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: required
+crm:required
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: type
+crm:type
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: validation
+crm:validation
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:QueryParameters ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: recordId
+crm:recordId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:RecordProperty ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: value
+crm:value
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:RecordProperty ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: referenceId?
+crm:referenceId?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Token ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: remaininguses?
+crm:remaininguses?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Token ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: token
+crm:token
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Token ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: type
+crm:type
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Token ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: validUntilDate?
+crm:validUntilDate?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Token ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: addrecords
+crm:addrecords
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: admin
+crm:admin
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: apikey?
+crm:apikey?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: calend?
+crm:calend?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool1?
+crm:calnoschool1?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool2?
+crm:calnoschool2?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool3?
+crm:calnoschool3?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool4?
+crm:calnoschool4?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool5?
+crm:calnoschool5?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool6?
+crm:calnoschool6?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool7?
+crm:calnoschool7?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calnoschool8?
+crm:calnoschool8?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: calstart?
+crm:calstart?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:date .
+
+###  DatatypeProperty: currentdeposit
+crm:currentdeposit
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: defaultfy
+crm:defaultfy
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: deleterecords
+crm:deleterecords
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: editrecords
+crm:editrecords
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: editself
+crm:editself
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: failedlogins
+crm:failedlogins
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: finance
+crm:finance
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: lastlogin
+crm:lastlogin
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: logincount
+crm:logincount
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: managegroups
+crm:managegroups
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: menuoptions
+crm:menuoptions
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: needpasswordchange
+crm:needpasswordchange
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: notes
+crm:notes
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:boolean .
+
+###  DatatypeProperty: password
+crm:password
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: perId
+crm:perId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: searchfamily?
+crm:searchfamily?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: style?
+crm:style?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: twofactorauthlastkeytimestamp?
+crm:twofactorauthlastkeytimestamp?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: twofactorauthrecoverycodes?
+crm:twofactorauthrecoverycodes?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: twofactorauthsecret?
+crm:twofactorauthsecret?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: username
+crm:username
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: cat
+crm:cat
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: name
+crm:name
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: permission
+crm:permission
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: tooltip
+crm:tooltip
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: type
+crm:type
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: value?
+crm:value?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserConfig ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: settingName
+crm:settingName
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserSetting ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: settingValue?
+crm:settingValue?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:UserSetting ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: verId
+crm:verId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Version ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: verUpdateEnd?
+crm:verUpdateEnd?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Version ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: verUpdateStart?
+crm:verUpdateStart?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Version ;
+    rdfs:range xsd:dateTime .
+
+###  DatatypeProperty: verVersion
+crm:verVersion
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:Version ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: active
+crm:active
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:VolunteerOpportunity ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: description?
+crm:description?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:VolunteerOpportunity ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:VolunteerOpportunity ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: name?
+crm:name?
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:VolunteerOpportunity ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: order
+crm:order
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:VolunteerOpportunity ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: come
+crm:come
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: hearofus
+crm:hearofus
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: id
+crm:id
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: join
+crm:join
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range xsd:string .
+
+###  DatatypeProperty: perId
+crm:perId
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range xsd:integer .
+
+###  DatatypeProperty: suggest
+crm:suggest
+    a owl:DatatypeProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range xsd:string .
+
+# ── Object Properties ──
+###  ObjectProperty: eventOnCalendar
+crm:eventOnCalendar
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Calendar ;
+    rdfs:range crm:Event .
+
+###  ObjectProperty: depositOfFamily
+crm:depositOfFamily
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range crm:Family .
+
+###  ObjectProperty: hasDepositSlip
+crm:hasDepositSlip
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Deposit ;
+    rdfs:range crm:Pledge .
+
+###  ObjectProperty: atLocation
+crm:atLocation
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range crm:Location .
+
+###  ObjectProperty: calendarOfEvent
+crm:calendarOfEvent
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range crm:Calendar .
+
+###  ObjectProperty: hasAudienceGroup
+crm:hasAudienceGroup
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range crm:Group .
+
+###  ObjectProperty: hasEventAttendee
+crm:hasEventAttendee
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: primaryContact
+crm:primaryContact
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: secondaryContact
+crm:secondaryContact
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Event ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: familyHasNote
+crm:familyHasNote
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range crm:Note .
+
+###  ObjectProperty: hasFamilyMember
+crm:hasFamilyMember
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: hasFamilyPledge
+crm:hasFamilyPledge
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Family ;
+    rdfs:range crm:Pledge .
+
+###  ObjectProperty: hasDonatedItem
+crm:hasDonatedItem
+    a owl:ObjectProperty ;
+    rdfs:domain crm:FundRaiser ;
+    rdfs:range crm:DonatedItem .
+
+###  ObjectProperty: eventInAudience
+crm:eventInAudience
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range crm:Event .
+
+###  ObjectProperty: hasGroupMember
+crm:hasGroupMember
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Group ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: assignedToEvent
+crm:assignedToEvent
+    a owl:ObjectProperty ;
+    rdfs:domain crm:KioskAssignment ;
+    rdfs:range crm:Event .
+
+###  ObjectProperty: hasKioskDevice
+crm:hasKioskDevice
+    a owl:ObjectProperty ;
+    rdfs:domain crm:KioskAssignment ;
+    rdfs:range crm:KioskDevice .
+
+###  ObjectProperty: noteAboutFamily
+crm:noteAboutFamily
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range crm:Family .
+
+###  ObjectProperty: noteAboutPerson
+crm:noteAboutPerson
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Note ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: attendsEvent
+crm:attendsEvent
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:Event .
+
+###  ObjectProperty: belongsToFamily
+crm:belongsToFamily
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:Family .
+
+###  ObjectProperty: buyerOfItem
+crm:buyerOfItem
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:DonatedItem .
+
+###  ObjectProperty: donorOfItem
+crm:donorOfItem
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:DonatedItem .
+
+###  ObjectProperty: hasNote
+crm:hasNote
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:Note .
+
+###  ObjectProperty: hasPledge
+crm:hasPledge
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:Pledge .
+
+###  ObjectProperty: hasVolunteerOp
+crm:hasVolunteerOp
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:VolunteerOpportunity .
+
+###  ObjectProperty: memberOfGroup
+crm:memberOfGroup
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Person ;
+    rdfs:range crm:Group .
+
+###  ObjectProperty: fundedByFund
+crm:fundedByFund
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range crm:DonationFund .
+
+###  ObjectProperty: hasFY
+crm:hasFY
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Pledge ;
+    rdfs:range crm:Family .
+
+###  ObjectProperty: propertyForRecord
+crm:propertyForRecord
+    a owl:ObjectProperty ;
+    rdfs:domain crm:Property ;
+    rdfs:range crm:RecordProperty .
+
+###  ObjectProperty: hasRecordProperty
+crm:hasRecordProperty
+    a owl:ObjectProperty ;
+    rdfs:domain crm:RecordProperty ;
+    rdfs:range crm:Property .
+
+###  ObjectProperty: linkedToPerson
+crm:linkedToPerson
+    a owl:ObjectProperty ;
+    rdfs:domain crm:User ;
+    rdfs:range crm:Person .
+
+###  ObjectProperty: whyCameForPerson
+crm:whyCameForPerson
+    a owl:ObjectProperty ;
+    rdfs:domain crm:WhyCame ;
+    rdfs:range crm:Person .

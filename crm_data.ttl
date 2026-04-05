@@ -1,0 +1,1334 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm:   <http://churchcrm.org/ontology/> .
+@prefix crmres: <http://churchcrm.org/resource/> .
+
+<http://churchcrm.org/resource/Calendar_001>
+    rdf:type crm:Calendar ;
+    crm:name "Main Church Calendar"@en ;
+    crm:backgroundcolor? "#4A90E2"@en ;
+    crm:foregroundcolor? "#FFFFFF"@en ;
+    crm:accesstoken? "church_main_token"@en ;
+    crm:id "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Calendar_002>
+    rdf:type crm:Calendar ;
+    crm:name "Sunday School Calendar"@en ;
+    crm:backgroundcolor? "#50C878"@en ;
+    crm:foregroundcolor? "#FFFFFF"@en ;
+    crm:accesstoken? "sunday_school_token"@en ;
+    crm:id "2"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Config_001>
+    rdf:type crm:Config ;
+    crm:cfgName "systype"@en ;
+    crm:cfgValue? "Church"^^xsd:integer ;
+    crm:cfgId "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Config_002>
+    rdf:type crm:Config ;
+    crm:cfgName "site_address"@en ;
+    crm:cfgValue? "123 Faith Avenue, Springfield"@en ;
+    crm:cfgId "2"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Config_003>
+    rdf:type crm:Config ;
+    crm:cfgName "church_name"@en ;
+    crm:cfgValue? "Grace Community Church"@en ;
+    crm:cfgId "3"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Config_004>
+    rdf:type crm:Config ;
+    crm:cfgName "church_phone"@en ;
+    crm:cfgValue? "+1-555-0100"@en ;
+    crm:cfgId "4"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Config_005>
+    rdf:type crm:Config ;
+    crm:cfgName "church_email"@en ;
+    crm:cfgValue? "info@gracecommunity.org"@en ;
+    crm:cfgId "5"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Config_006>
+    rdf:type crm:Config ;
+    crm:cfgName "aiga_bulk_mail"@en ;
+    crm:cfgValue? "150"@en ;
+    crm:cfgId "6"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Family_001>
+    rdf:type crm:Family ;
+    crm:name? "Thompson Family"@en ;
+    crm:address1? "45 Maple Street"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62701"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0101"@en ;
+    crm:email? "thompson@email.com"@en ;
+    crm:weddingDate? "2015-06-20"^^xsd:date ;
+    crm:dateEntered "2020-03-15T10:00:00"^^xsd:dateTime ;
+    crm:sendNewsLetter "TRUE"@en ;
+    crm:envelope "101"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Family_002>
+    rdf:type crm:Family ;
+    crm:name? "Williams Family"@en ;
+    crm:address1? "78 Oak Avenue"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62702"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0102"@en ;
+    crm:email? "williams@email.com"@en ;
+    crm:weddingDate? "2012-09-14"^^xsd:date ;
+    crm:dateEntered "2019-07-22T14:00:00"^^xsd:dateTime ;
+    crm:sendNewsLetter "TRUE"@en ;
+    crm:envelope "102"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Family_003>
+    rdf:type crm:Family ;
+    crm:name? "Chen Family"@en ;
+    crm:address1? "12 Pine Road"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62703"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0103"@en ;
+    crm:email? "chen@email.com"@en ;
+    crm:dateEntered "2021-01-10T09:00:00"^^xsd:dateTime ;
+    crm:sendNewsLetter "FALSE"@en ;
+    crm:envelope "103"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Person_001>
+    rdf:type crm:Person ;
+    crm:title? "Mr."@en ;
+    crm:firstName? "James"@en ;
+    crm:middleName? "Robert"@en ;
+    crm:lastName? "Thompson"@en ;
+    crm:suffix? "Jr."@en ;
+    crm:address1? "45 Maple Street"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62701"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0101"@en ;
+    crm:cellPhone? "+1-555-1001"@en ;
+    crm:email? "james.thompson@email.com"@en ;
+    crm:birthMonth "3"^^xsd:integer ;
+    crm:birthDay "15"^^xsd:integer ;
+    crm:birthYear? "1985"^^xsd:integer ;
+    crm:gender "1"^^xsd:integer ;
+    crm:membershipDate? "2020-03-20"^^xsd:date ;
+    crm:dateEntered "2020-03-15T10:00:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:belongsToFamily <http://churchcrm.org/resource/Family_001> ;
+    .
+
+<http://churchcrm.org/resource/Person_002>
+    rdf:type crm:Person ;
+    crm:title? "Mrs."@en ;
+    crm:firstName? "Sarah"@en ;
+    crm:middleName? "Elizabeth"@en ;
+    crm:lastName? "Thompson"@en ;
+    crm:address1? "45 Maple Street"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62701"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0101"@en ;
+    crm:cellPhone? "+1-555-1002"@en ;
+    crm:email? "sarah.thompson@email.com"@en ;
+    crm:birthMonth "7"^^xsd:integer ;
+    crm:birthDay "22"^^xsd:integer ;
+    crm:birthYear? "1987"^^xsd:integer ;
+    crm:gender "2"^^xsd:integer ;
+    crm:membershipDate? "2020-03-20"^^xsd:date ;
+    crm:dateEntered "2020-03-15T10:05:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:belongsToFamily <http://churchcrm.org/resource/Family_001> ;
+    .
+
+<http://churchcrm.org/resource/Person_003>
+    rdf:type crm:Person ;
+    crm:title? "Mr."@en ;
+    crm:firstName? "Michael"@en ;
+    crm:middleName? "David"@en ;
+    crm:lastName? "Williams"@en ;
+    crm:address1? "78 Oak Avenue"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62702"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0102"@en ;
+    crm:cellPhone? "+1-555-1003"@en ;
+    crm:email? "michael.williams@email.com"@en ;
+    crm:birthMonth "11"^^xsd:integer ;
+    crm:birthDay "5"^^xsd:integer ;
+    crm:birthYear? "1990"^^xsd:integer ;
+    crm:gender "1"^^xsd:integer ;
+    crm:membershipDate? "2019-07-25"^^xsd:date ;
+    crm:dateEntered "2019-07-22T14:00:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:belongsToFamily <http://churchcrm.org/resource/Family_002> ;
+    .
+
+<http://churchcrm.org/resource/Person_004>
+    rdf:type crm:Person ;
+    crm:title? "Mrs."@en ;
+    crm:firstName? "Emily"@en ;
+    crm:middleName? "Anne"@en ;
+    crm:lastName? "Williams"@en ;
+    crm:address1? "78 Oak Avenue"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62702"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0102"@en ;
+    crm:cellPhone? "+1-555-1004"@en ;
+    crm:email? "emily.williams@email.com"@en ;
+    crm:birthMonth "2"^^xsd:integer ;
+    crm:birthDay "14"^^xsd:integer ;
+    crm:birthYear? "1992"^^xsd:integer ;
+    crm:gender "2"^^xsd:integer ;
+    crm:membershipDate? "2019-07-25"^^xsd:date ;
+    crm:dateEntered "2019-07-22T14:10:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:belongsToFamily <http://churchcrm.org/resource/Family_002> ;
+    .
+
+<http://churchcrm.org/resource/Person_005>
+    rdf:type crm:Person ;
+    crm:title? "Mr."@en ;
+    crm:firstName? "Wei"@en ;
+    crm:lastName? "Chen"@en ;
+    crm:address1? "12 Pine Road"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62703"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0103"@en ;
+    crm:cellPhone? "+1-555-1005"@en ;
+    crm:email? "wei.chen@email.com"@en ;
+    crm:birthMonth "8"^^xsd:integer ;
+    crm:birthDay "30"^^xsd:integer ;
+    crm:birthYear? "1978"^^xsd:integer ;
+    crm:gender "1"^^xsd:integer ;
+    crm:membershipDate? "2021-01-15"^^xsd:date ;
+    crm:dateEntered "2021-01-10T09:00:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:belongsToFamily <http://churchcrm.org/resource/Family_003> ;
+    .
+
+<http://churchcrm.org/resource/Person_006>
+    rdf:type crm:Person ;
+    crm:title? "Mrs."@en ;
+    crm:firstName? "Lin"@en ;
+    crm:lastName? "Chen"@en ;
+    crm:address1? "12 Pine Road"@en ;
+    crm:city? "Springfield"@en ;
+    crm:state? "IL"@en ;
+    crm:zip? "62703"@en ;
+    crm:country? "USA"@en ;
+    crm:homePhone? "+1-555-0103"@en ;
+    crm:cellPhone? "+1-555-1006"@en ;
+    crm:email? "lin.chen@email.com"@en ;
+    crm:birthMonth "5"^^xsd:integer ;
+    crm:birthDay "12"^^xsd:integer ;
+    crm:birthYear? "1980"^^xsd:integer ;
+    crm:gender "2"^^xsd:integer ;
+    crm:membershipDate? "2021-01-15"^^xsd:date ;
+    crm:dateEntered "2021-01-10T09:05:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:belongsToFamily <http://churchcrm.org/resource/Family_003> ;
+    .
+
+<http://churchcrm.org/resource/Group_001>
+    rdf:type crm:Group ;
+    crm:name "Choir"@en ;
+    crm:type "1"^^xsd:integer ;
+    crm:description? "Sing in the Sunday worship service"@en ;
+    crm:active "True"^^xsd:boolean ;
+    crm:includeEmailExport "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/Group_002>
+    rdf:type crm:Group ;
+    crm:name "Youth Fellowship"@en ;
+    crm:type "1"^^xsd:integer ;
+    crm:description? "Weekly youth group for ages 13-18"@en ;
+    crm:active "True"^^xsd:boolean ;
+    crm:includeEmailExport "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/Group_003>
+    rdf:type crm:Group ;
+    crm:name "Welcome Committee"@en ;
+    crm:type "1"^^xsd:integer ;
+    crm:description? "Greet newcomers and visitors"@en ;
+    crm:active "True"^^xsd:boolean ;
+    crm:includeEmailExport "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/Group_004>
+    rdf:type crm:Group ;
+    crm:name "Finance Committee"@en ;
+    crm:type "1"^^xsd:integer ;
+    crm:description? "Oversee church finances and budgeting"@en ;
+    crm:active "True"^^xsd:boolean ;
+    crm:includeEmailExport "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/Group_005>
+    rdf:type crm:Group ;
+    crm:name "Sunday School Teachers"@en ;
+    crm:type "1"^^xsd:integer ;
+    crm:description? "Lead Sunday school classes"@en ;
+    crm:active "True"^^xsd:boolean ;
+    crm:includeEmailExport "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_001>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "1"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_001> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_001> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_002>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "1"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_001> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_004> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_003>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "2"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_002> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_001> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_004>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "1"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_002> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_003> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_005>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "1"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_003> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_002> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_006>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "2"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_003> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_004> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_007>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "2"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_004> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_003> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_008>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "1"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_005> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_005> ;
+    .
+
+<http://churchcrm.org/resource/PersonGroupRole_009>
+    rdf:type crm:PersonGroupRole ;
+    crm:roleId "2"^^xsd:integer ;
+    crm:memberOfGroup <http://churchcrm.org/resource/Person_006> ;
+    crm:hasGroupMember <http://churchcrm.org/resource/Group_005> ;
+    .
+
+<http://churchcrm.org/resource/EventType_001>
+    rdf:type crm:EventType ;
+    crm:typeName "Sunday Worship"@en ;
+    crm:defstarttime "10:00:00"@en ;
+    crm:defrecurtype "none"@en ;
+    crm:defrecurDOW "0"@en ;
+    crm:defrecurDOM "0"@en ;
+    crm:active "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/EventType_002>
+    rdf:type crm:EventType ;
+    crm:typeName "Bible Study"@en ;
+    crm:defstarttime "19:00:00"@en ;
+    crm:defrecurtype "none"@en ;
+    crm:defrecurDOW "0"@en ;
+    crm:defrecurDOM "0"@en ;
+    crm:active "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/EventType_003>
+    rdf:type crm:EventType ;
+    crm:typeName "Youth Meeting"@en ;
+    crm:defstarttime "18:30:00"@en ;
+    crm:defrecurtype "none"@en ;
+    crm:defrecurDOW "0"@en ;
+    crm:defrecurDOM "0"@en ;
+    crm:active "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/EventType_004>
+    rdf:type crm:EventType ;
+    crm:typeName "Choir Practice"@en ;
+    crm:defstarttime "18:00:00"@en ;
+    crm:defrecurtype "none"@en ;
+    crm:defrecurDOW "0"@en ;
+    crm:defrecurDOM "0"@en ;
+    crm:active "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/EventType_005>
+    rdf:type crm:EventType ;
+    crm:typeName "VBS"@en ;
+    crm:defstarttime "09:00:00"@en ;
+    crm:defrecurtype "none"@en ;
+    crm:defrecurDOW "0"@en ;
+    crm:defrecurDOM "0"@en ;
+    crm:active "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Location_001>
+    rdf:type crm:Location ;
+    crm:typeID "1"^^xsd:integer ;
+    crm:name "Main Sanctuary"@en ;
+    crm:address "123 Faith Avenue"@en ;
+    crm:city "Springfield"@en ;
+    crm:state "IL"@en ;
+    crm:zip "62701"@en ;
+    crm:country "USA"@en ;
+    crm:phone "+1-555-0100"@en ;
+    crm:email "sanctuary@grace.org"@en ;
+    crm:timezone "America/Chicago"@en ;
+    .
+
+<http://churchcrm.org/resource/Location_002>
+    rdf:type crm:Location ;
+    crm:typeID "2"^^xsd:integer ;
+    crm:name "Fellowship Hall"@en ;
+    crm:address "123 Faith Avenue"@en ;
+    crm:city "Springfield"@en ;
+    crm:state "IL"@en ;
+    crm:zip "62701"@en ;
+    crm:country "USA"@en ;
+    crm:phone "+1-555-0100"@en ;
+    crm:email "hall@grace.org"@en ;
+    crm:timezone "America/Chicago"@en ;
+    .
+
+<http://churchcrm.org/resource/Location_003>
+    rdf:type crm:Location ;
+    crm:typeID "3"^^xsd:integer ;
+    crm:name "Youth Room"@en ;
+    crm:address "123 Faith Avenue"@en ;
+    crm:city "Springfield"@en ;
+    crm:state "IL"@en ;
+    crm:zip "62701"@en ;
+    crm:country "USA"@en ;
+    crm:phone "+1-555-0100"@en ;
+    crm:email "youth@grace.org"@en ;
+    crm:timezone "America/Chicago"@en ;
+    .
+
+<http://churchcrm.org/resource/Location_004>
+    rdf:type crm:Location ;
+    crm:typeID "4"^^xsd:integer ;
+    crm:name "Sunday School Wing"@en ;
+    crm:address "123 Faith Avenue"@en ;
+    crm:city "Springfield"@en ;
+    crm:state "IL"@en ;
+    crm:zip "62701"@en ;
+    crm:country "USA"@en ;
+    crm:phone "+1-555-0100"@en ;
+    crm:email "school@grace.org"@en ;
+    crm:timezone "America/Chicago"@en ;
+    .
+
+<http://churchcrm.org/resource/Event_001>
+    rdf:type crm:Event ;
+    crm:title "Easter Sunday Service"@en ;
+    crm:start "2026-04-05T10:00:00"^^xsd:dateTime ;
+    crm:end "2026-04-05T12:00:00"^^xsd:dateTime ;
+    crm:type "1"^^xsd:integer ;
+    crm:inactive "0"^^xsd:integer ;
+    crm:locationId "1"^^xsd:integer ;
+    crm:primaryContactPersonId "1"^^xsd:integer ;
+    crm:secondaryContactPersonId "2"^^xsd:integer ;
+    crm:atLocation <http://churchcrm.org/resource/Location_001> ;
+    crm:primaryContact <http://churchcrm.org/resource/Person_001> ;
+    crm:secondaryContact <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/Event_002>
+    rdf:type crm:Event ;
+    crm:title "Wednesday Bible Study"@en ;
+    crm:start "2026-04-08T19:00:00"^^xsd:dateTime ;
+    crm:end "2026-04-08T20:30:00"^^xsd:dateTime ;
+    crm:type "2"^^xsd:integer ;
+    crm:inactive "0"^^xsd:integer ;
+    crm:locationId "2"^^xsd:integer ;
+    crm:primaryContactPersonId "1"^^xsd:integer ;
+    crm:secondaryContactPersonId "2"^^xsd:integer ;
+    crm:atLocation <http://churchcrm.org/resource/Location_002> ;
+    crm:primaryContact <http://churchcrm.org/resource/Person_001> ;
+    crm:secondaryContact <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/Event_003>
+    rdf:type crm:Event ;
+    crm:title "Youth Summer Camp Info"@en ;
+    crm:start "2026-04-10T18:30:00"^^xsd:dateTime ;
+    crm:end "2026-04-10T20:00:00"^^xsd:dateTime ;
+    crm:type "3"^^xsd:integer ;
+    crm:inactive "0"^^xsd:integer ;
+    crm:locationId "3"^^xsd:integer ;
+    crm:primaryContactPersonId "3"^^xsd:integer ;
+    crm:secondaryContactPersonId "4"^^xsd:integer ;
+    crm:atLocation <http://churchcrm.org/resource/Location_003> ;
+    crm:primaryContact <http://churchcrm.org/resource/Person_003> ;
+    crm:secondaryContact <http://churchcrm.org/resource/Person_004> ;
+    .
+
+<http://churchcrm.org/resource/Event_004>
+    rdf:type crm:Event ;
+    crm:title "Choir Easter Rehearsal"@en ;
+    crm:start "2026-04-04T18:00:00"^^xsd:dateTime ;
+    crm:end "2026-04-04T20:00:00"^^xsd:dateTime ;
+    crm:type "4"^^xsd:integer ;
+    crm:inactive "0"^^xsd:integer ;
+    crm:locationId "4"^^xsd:integer ;
+    crm:primaryContactPersonId "1"^^xsd:integer ;
+    crm:secondaryContactPersonId "2"^^xsd:integer ;
+    crm:atLocation <http://churchcrm.org/resource/Location_004> ;
+    crm:primaryContact <http://churchcrm.org/resource/Person_001> ;
+    crm:secondaryContact <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/Event_005>
+    rdf:type crm:Event ;
+    crm:title "Palm Sunday Procession"@en ;
+    crm:start "2026-03-29T10:00:00"^^xsd:dateTime ;
+    crm:end "2026-03-29T11:30:00"^^xsd:dateTime ;
+    crm:type "1"^^xsd:integer ;
+    crm:inactive "0"^^xsd:integer ;
+    crm:locationId "1"^^xsd:integer ;
+    crm:primaryContactPersonId "1"^^xsd:integer ;
+    crm:secondaryContactPersonId "2"^^xsd:integer ;
+    crm:atLocation <http://churchcrm.org/resource/Location_001> ;
+    crm:primaryContact <http://churchcrm.org/resource/Person_001> ;
+    crm:secondaryContact <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_001>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-05T09:55:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_001> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_002>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-05T09:50:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_003>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-05T10:01:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_003> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_004>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-05T09:58:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_004> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_005>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-05T09:45:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_005> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_006>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-05T09:47:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_006> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_007>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-04T17:55:00"^^xsd:dateTime ;
+    crm:checkoutDate? "2026-04-04T20:05:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_004> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_001> ;
+    .
+
+<http://churchcrm.org/resource/EventAttend_008>
+    rdf:type crm:EventAttend ;
+    crm:checkinDate? "2026-04-04T17:50:00"^^xsd:dateTime ;
+    crm:checkoutDate? "2026-04-04T20:00:00"^^xsd:dateTime ;
+    crm:attendsEvent <http://churchcrm.org/resource/Event_004> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/EventCounts_011>
+    rdf:type crm:EventCounts ;
+    crm:countName? "Adult Attendance"@en ;
+    crm:countCount? "120"^^xsd:integer ;
+    crm:notes? "Full sanctuary"@en ;
+    .
+
+<http://churchcrm.org/resource/EventCounts_021>
+    rdf:type crm:EventCounts ;
+    crm:countName? "Children"@en ;
+    crm:countCount? "35"^^xsd:integer ;
+    crm:notes? "Sunday school concurrent"@en ;
+    .
+
+<http://churchcrm.org/resource/EventCounts_035>
+    rdf:type crm:EventCounts ;
+    crm:countName? "Total Attendance"@en ;
+    crm:countCount? "85"^^xsd:integer ;
+    crm:notes? "Including procession participants"@en ;
+    .
+
+<http://churchcrm.org/resource/EventAudience_001>
+    rdf:type crm:EventAudience ;
+    crm:hasAudienceGroup <http://churchcrm.org/resource/Event_001> ;
+    crm:eventInAudience <http://churchcrm.org/resource/Group_002> ;
+    .
+
+<http://churchcrm.org/resource/EventAudience_002>
+    rdf:type crm:EventAudience ;
+    crm:hasAudienceGroup <http://churchcrm.org/resource/Event_001> ;
+    crm:eventInAudience <http://churchcrm.org/resource/Group_003> ;
+    .
+
+<http://churchcrm.org/resource/EventAudience_003>
+    rdf:type crm:EventAudience ;
+    crm:hasAudienceGroup <http://churchcrm.org/resource/Event_003> ;
+    crm:eventInAudience <http://churchcrm.org/resource/Group_002> ;
+    .
+
+<http://churchcrm.org/resource/CalendarEvent_001>
+    rdf:type crm:CalendarEvent ;
+    crm:id "1"^^xsd:integer ;
+    crm:calendarOfEvent <http://churchcrm.org/resource/Calendar_001> ;
+    crm:eventOnCalendar <http://churchcrm.org/resource/Event_001> ;
+    .
+
+<http://churchcrm.org/resource/CalendarEvent_002>
+    rdf:type crm:CalendarEvent ;
+    crm:id "2"^^xsd:integer ;
+    crm:calendarOfEvent <http://churchcrm.org/resource/Calendar_001> ;
+    crm:eventOnCalendar <http://churchcrm.org/resource/Event_005> ;
+    .
+
+<http://churchcrm.org/resource/CalendarEvent_003>
+    rdf:type crm:CalendarEvent ;
+    crm:id "3"^^xsd:integer ;
+    crm:calendarOfEvent <http://churchcrm.org/resource/Calendar_002> ;
+    crm:eventOnCalendar <http://churchcrm.org/resource/Event_003> ;
+    .
+
+<http://churchcrm.org/resource/DonationFund_001>
+    rdf:type crm:DonationFund ;
+    crm:active "T"@en ;
+    crm:name? "General Fund"@en ;
+    crm:description? "Unrestricted gifts for general operations"@en ;
+    crm:order "1"^^xsd:integer ;
+    crm:id "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/DonationFund_002>
+    rdf:type crm:DonationFund ;
+    crm:active "T"@en ;
+    crm:name? "Building Fund"@en ;
+    crm:description? "For church building expansion and maintenance"@en ;
+    crm:order "2"^^xsd:integer ;
+    crm:id "2"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/DonationFund_003>
+    rdf:type crm:DonationFund ;
+    crm:active "T"@en ;
+    crm:name? "Missions Fund"@en ;
+    crm:description? "Supports local and global mission work"@en ;
+    crm:order "3"^^xsd:integer ;
+    crm:id "3"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/DonationFund_004>
+    rdf:type crm:DonationFund ;
+    crm:active "T"@en ;
+    crm:name? "Youth Fund"@en ;
+    crm:description? "Youth activities and camp scholarships"@en ;
+    crm:order "4"^^xsd:integer ;
+    crm:id "4"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Deposit_001>
+    rdf:type crm:Deposit ;
+    crm:date? "2026-03-28"^^xsd:date ;
+    crm:comment? "Sunday collection - Easter prep"@en ;
+    crm:enteredby? "1"^^xsd:integer ;
+    crm:closed "False"^^xsd:boolean ;
+    crm:type "C"@en ;
+    crm:id "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Deposit_002>
+    rdf:type crm:Deposit ;
+    crm:date? "2026-03-21"^^xsd:date ;
+    crm:comment? "Sunday collection"@en ;
+    crm:enteredby? "1"^^xsd:integer ;
+    crm:closed "True"^^xsd:boolean ;
+    crm:type "C"@en ;
+    crm:id "2"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Pledge_001>
+    rdf:type crm:Pledge ;
+    crm:date? "2026-01-01"^^xsd:date ;
+    crm:amount? "500.0"^^xsd:decimal ;
+    crm:schedule? "M"@en ;
+    crm:method? "CHECK"@en ;
+    crm:comment? "Monthly general tithes"@en ;
+    crm:fundId? "1"^^xsd:integer ;
+    crm:depId? "1"^^xsd:integer ;
+    crm:checkNo? "1001"^^xsd:integer ;
+    crm:problem? "False"^^xsd:boolean ;
+    crm:groupKey "G-2026-001"@en ;
+    crm:pledgeOrPayment "Pledge"@en ;
+    crm:dateLastEdited "2026-01-01"^^xsd:date ;
+    crm:editedBy "1"^^xsd:integer ;
+    crm:cleared "False"^^xsd:boolean ;
+    crm:nonDeductible "0"^^xsd:decimal ;
+    crm:hasFY <http://churchcrm.org/resource/Family_001> ;
+    crm:fundedByFund <http://churchcrm.org/resource/DonationFund_001> ;
+    .
+
+<http://churchcrm.org/resource/Pledge_002>
+    rdf:type crm:Pledge ;
+    crm:date? "2026-01-01"^^xsd:date ;
+    crm:amount? "250.0"^^xsd:decimal ;
+    crm:schedule? "W"@en ;
+    crm:method? "CASH"@en ;
+    crm:comment? "Weekly building fund"@en ;
+    crm:fundId? "2"^^xsd:integer ;
+    crm:depId? "2"^^xsd:integer ;
+    crm:problem? "False"^^xsd:boolean ;
+    crm:groupKey "G-2026-002"@en ;
+    crm:pledgeOrPayment "Pledge"@en ;
+    crm:dateLastEdited "2026-01-01"^^xsd:date ;
+    crm:editedBy "1"^^xsd:integer ;
+    crm:cleared "False"^^xsd:boolean ;
+    crm:nonDeductible "0"^^xsd:decimal ;
+    crm:hasFY <http://churchcrm.org/resource/Family_002> ;
+    crm:fundedByFund <http://churchcrm.org/resource/DonationFund_002> ;
+    .
+
+<http://churchcrm.org/resource/Pledge_003>
+    rdf:type crm:Pledge ;
+    crm:date? "2026-02-01"^^xsd:date ;
+    crm:amount? "600.0"^^xsd:decimal ;
+    crm:schedule? "M"@en ;
+    crm:method? "CHECK"@en ;
+    crm:comment? "Monthly missions pledge"@en ;
+    crm:fundId? "1"^^xsd:integer ;
+    crm:depId? "1"^^xsd:integer ;
+    crm:checkNo? "1002"^^xsd:integer ;
+    crm:problem? "False"^^xsd:boolean ;
+    crm:groupKey "G-2026-003"@en ;
+    crm:pledgeOrPayment "Pledge"@en ;
+    crm:dateLastEdited "2026-02-01"^^xsd:date ;
+    crm:editedBy "1"^^xsd:integer ;
+    crm:cleared "False"^^xsd:boolean ;
+    crm:nonDeductible "0"^^xsd:decimal ;
+    crm:hasFY <http://churchcrm.org/resource/Family_001> ;
+    crm:fundedByFund <http://churchcrm.org/resource/DonationFund_001> ;
+    .
+
+<http://churchcrm.org/resource/Pledge_004>
+    rdf:type crm:Pledge ;
+    crm:date? "2026-02-15"^^xsd:date ;
+    crm:amount? "100.0"^^xsd:decimal ;
+    crm:schedule? "M"@en ;
+    crm:method? "ONLINE"@en ;
+    crm:comment? "Monthly youth fund"@en ;
+    crm:fundId? "3"^^xsd:integer ;
+    crm:problem? "False"^^xsd:boolean ;
+    crm:groupKey "G-2026-004"@en ;
+    crm:pledgeOrPayment "Pledge"@en ;
+    crm:dateLastEdited "2026-02-15"^^xsd:date ;
+    crm:editedBy "1"^^xsd:integer ;
+    crm:cleared "False"^^xsd:boolean ;
+    crm:nonDeductible "0"^^xsd:decimal ;
+    crm:hasFY <http://churchcrm.org/resource/Family_003> ;
+    crm:fundedByFund <http://churchcrm.org/resource/DonationFund_003> ;
+    .
+
+<http://churchcrm.org/resource/FundRaiser_001>
+    rdf:type crm:FundRaiser ;
+    crm:date? "2026-04-19"^^xsd:date ;
+    crm:title "Spring Bazaar & Auction"@en ;
+    crm:description? "Annual spring fundraising event"@en ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:enteredDate "2026-03-01"^^xsd:date ;
+    crm:id "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/DonatedItem_001>
+    rdf:type crm:DonatedItem ;
+    crm:item "Vintage Hymn Book Collection"@en ;
+    crm:frId "1"^^xsd:integer ;
+    crm:title "Rare 1920s Hymnals Set"@en ;
+    crm:description? "A complete set of 50 vintage hymnals from 1923"@en ;
+    crm:sellprice? "150.0"^^xsd:decimal ;
+    crm:estprice? "200.0"^^xsd:decimal ;
+    crm:minimum? "100.0"^^xsd:decimal ;
+    crm:materialvalue? "50.0"^^xsd:decimal ;
+    crm:multibuy "0"^^xsd:integer ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:enteredDate "2026-03-15"^^xsd:date ;
+    crm:id "1"^^xsd:integer ;
+    crm:donorOfItem <http://churchcrm.org/resource/Person_001> ;
+    crm:buyerOfItem <http://churchcrm.org/resource/Person_002> ;
+    crm:hasDonatedItem <http://churchcrm.org/resource/FundRaiser_001> ;
+    .
+
+<http://churchcrm.org/resource/DonatedItem_002>
+    rdf:type crm:DonatedItem ;
+    crm:item "Handmade Quilt"@en ;
+    crm:frId "1"^^xsd:integer ;
+    crm:title "Queen-Size Church Community Quilt"@en ;
+    crm:description? "Hand-stitched quilt made by the Women's Fellowship group"@en ;
+    crm:sellprice? "80.0"^^xsd:decimal ;
+    crm:estprice? "120.0"^^xsd:decimal ;
+    crm:minimum? "60.0"^^xsd:decimal ;
+    crm:materialvalue? "30.0"^^xsd:decimal ;
+    crm:multibuy "1"^^xsd:integer ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:enteredDate "2026-03-16"^^xsd:date ;
+    crm:id "2"^^xsd:integer ;
+    crm:donorOfItem <http://churchcrm.org/resource/Person_003> ;
+    crm:buyerOfItem <http://churchcrm.org/resource/Person_004> ;
+    crm:hasDonatedItem <http://churchcrm.org/resource/FundRaiser_001> ;
+    .
+
+<http://churchcrm.org/resource/DonatedItem_003>
+    rdf:type crm:DonatedItem ;
+    crm:item "Antique Silver Candlesticks"@en ;
+    crm:frId "1"^^xsd:integer ;
+    crm:title "Pair of Victorian Silver Candlesticks"@en ;
+    crm:description? "Inherited Victorian-era silver-plated candlesticks"@en ;
+    crm:sellprice? "200.0"^^xsd:decimal ;
+    crm:estprice? "350.0"^^xsd:decimal ;
+    crm:minimum? "180.0"^^xsd:decimal ;
+    crm:materialvalue? "100.0"^^xsd:decimal ;
+    crm:multibuy "0"^^xsd:integer ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:enteredDate "2026-03-17"^^xsd:date ;
+    crm:id "3"^^xsd:integer ;
+    crm:donorOfItem <http://churchcrm.org/resource/Person_005> ;
+    crm:buyerOfItem <http://churchcrm.org/resource/Person_006> ;
+    crm:hasDonatedItem <http://churchcrm.org/resource/FundRaiser_001> ;
+    .
+
+<http://churchcrm.org/resource/Note_001>
+    rdf:type crm:Note ;
+    crm:private "0"^^xsd:integer ;
+    crm:text? "James has been serving as a deacon for 2 years. Excellent contributor to the finance committee."@en ;
+    crm:dateEntered "2025-06-10T10:00:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:type? "general"@en ;
+    crm:aboutPerson <http://churchcrm.org/resource/Person_001> ;
+    .
+
+<http://churchcrm.org/resource/Note_002>
+    rdf:type crm:Note ;
+    crm:private "0"^^xsd:integer ;
+    crm:text? "Michael expressed interest in joining the choir. Will follow up in April."@en ;
+    crm:dateEntered "2026-01-15T14:30:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:type? "pastoral"@en ;
+    crm:aboutPerson <http://churchcrm.org/resource/Person_003> ;
+    .
+
+<http://churchcrm.org/resource/Note_003>
+    rdf:type crm:Note ;
+    crm:private "0"^^xsd:integer ;
+    crm:text? "Thompson family missed the last two Sundays. Send pastoral visit."@en ;
+    crm:dateEntered "2026-03-20T09:00:00"^^xsd:dateTime ;
+    crm:enteredBy "1"^^xsd:integer ;
+    crm:type? "pastoral"@en ;
+    crm:aboutFamily <http://churchcrm.org/resource/Family_001> ;
+    .
+
+<http://churchcrm.org/resource/User_001>
+    rdf:type crm:User ;
+    crm:userName "jthompson"@en ;
+    crm:needPasswordChange "True"^^xsd:boolean ;
+    crm:addRecords "True"^^xsd:boolean ;
+    crm:editRecords "True"^^xsd:boolean ;
+    crm:deleteRecords "True"^^xsd:boolean ;
+    crm:menuOptions "True"^^xsd:boolean ;
+    crm:manageGroups "True"^^xsd:boolean ;
+    crm:finance "True"^^xsd:boolean ;
+    crm:notes "True"^^xsd:boolean ;
+    crm:admin "True"^^xsd:boolean ;
+    crm:editSelf "1"^^xsd:boolean ;
+    crm:defaultFY "1"^^xsd:integer ;
+    crm:currentDeposit "2026-01-01T08:00:00"^^xsd:integer ;
+    crm:loginCount "45"^^xsd:integer ;
+    crm:failedLogins "0"^^xsd:integer ;
+    crm:lastLogin "20"^^xsd:dateTime ;
+    crm:calStart? "2026-01-01"^^xsd:date ;
+    crm:calEnd? "2026-12-31"^^xsd:date ;
+    crm:linkedToPerson <http://churchcrm.org/resource/Person_001> ;
+    .
+
+<http://churchcrm.org/resource/User_002>
+    rdf:type crm:User ;
+    crm:userName "swilliams"@en ;
+    crm:needPasswordChange "False"^^xsd:boolean ;
+    crm:addRecords "True"^^xsd:boolean ;
+    crm:editRecords "True"^^xsd:boolean ;
+    crm:deleteRecords "False"^^xsd:boolean ;
+    crm:menuOptions "True"^^xsd:boolean ;
+    crm:manageGroups "True"^^xsd:boolean ;
+    crm:finance "False"^^xsd:boolean ;
+    crm:notes "True"^^xsd:boolean ;
+    crm:admin "False"^^xsd:boolean ;
+    crm:editSelf "1"^^xsd:boolean ;
+    crm:defaultFY "1"^^xsd:integer ;
+    crm:currentDeposit "2026-02-01T08:00:00"^^xsd:integer ;
+    crm:loginCount "20"^^xsd:integer ;
+    crm:failedLogins "0"^^xsd:integer ;
+    crm:lastLogin "10"^^xsd:dateTime ;
+    crm:calStart? "2026-01-01"^^xsd:date ;
+    crm:calEnd? "2026-12-31"^^xsd:date ;
+    crm:linkedToPerson <http://churchcrm.org/resource/Person_002> ;
+    .
+
+<http://churchcrm.org/resource/VolunteerOpportunity_001>
+    rdf:type crm:VolunteerOpportunity ;
+    crm:order "1"^^xsd:integer ;
+    crm:active "A"@en ;
+    crm:name? "Sunday Setup Team"@en ;
+    crm:description? "Set up chairs and tables before Sunday service"@en ;
+    .
+
+<http://churchcrm.org/resource/VolunteerOpportunity_002>
+    rdf:type crm:VolunteerOpportunity ;
+    crm:order "2"^^xsd:integer ;
+    crm:active "A"@en ;
+    crm:name? "Welcome Desk Greeter"@en ;
+    crm:description? "Greet visitors at the welcome desk each Sunday"@en ;
+    .
+
+<http://churchcrm.org/resource/VolunteerOpportunity_003>
+    rdf:type crm:VolunteerOpportunity ;
+    crm:order "3"^^xsd:integer ;
+    crm:active "A"@en ;
+    crm:name? "Coffee Hour Host"@en ;
+    crm:description? "Coordinate and host the coffee hour after service"@en ;
+    .
+
+<http://churchcrm.org/resource/VolunteerOpportunity_004>
+    rdf:type crm:VolunteerOpportunity ;
+    crm:order "4"^^xsd:integer ;
+    crm:active "A"@en ;
+    crm:name? "Sound Booth Operator"@en ;
+    crm:description? "Run the sound system during worship services"@en ;
+    .
+
+<http://churchcrm.org/resource/PersonVolunteerOpportunity_001>
+    rdf:type crm:PersonVolunteerOpportunity ;
+    crm:hasVolunteerOp <http://churchcrm.org/resource/Person_003> ;
+    crm:volunteerOf <http://churchcrm.org/resource/VolunteerOpportunity_001> ;
+    .
+
+<http://churchcrm.org/resource/PersonVolunteerOpportunity_002>
+    rdf:type crm:PersonVolunteerOpportunity ;
+    crm:hasVolunteerOp <http://churchcrm.org/resource/Person_001> ;
+    crm:volunteerOf <http://churchcrm.org/resource/VolunteerOpportunity_002> ;
+    .
+
+<http://churchcrm.org/resource/PersonVolunteerOpportunity_003>
+    rdf:type crm:PersonVolunteerOpportunity ;
+    crm:hasVolunteerOp <http://churchcrm.org/resource/Person_004> ;
+    crm:volunteerOf <http://churchcrm.org/resource/VolunteerOpportunity_003> ;
+    .
+
+<http://churchcrm.org/resource/PersonVolunteerOpportunity_004>
+    rdf:type crm:PersonVolunteerOpportunity ;
+    crm:hasVolunteerOp <http://churchcrm.org/resource/Person_002> ;
+    crm:volunteerOf <http://churchcrm.org/resource/VolunteerOpportunity_004> ;
+    .
+
+<http://churchcrm.org/resource/PropertyType_001>
+    rdf:type crm:PropertyType ;
+    crm:class "p"@en ;
+    crm:name "Interest"@en ;
+    crm:description? "General interest or concern flag"@en ;
+    .
+
+<http://churchcrm.org/resource/PropertyType_002>
+    rdf:type crm:PropertyType ;
+    crm:class "p"@en ;
+    crm:name "DoNotCall"@en ;
+    crm:description? "Do not call flag"@en ;
+    .
+
+<http://churchcrm.org/resource/PropertyType_003>
+    rdf:type crm:PropertyType ;
+    crm:class "p"@en ;
+    crm:name "VIP"@en ;
+    crm:description? "Very important person flag"@en ;
+    .
+
+<http://churchcrm.org/resource/Property_001>
+    rdf:type crm:Property ;
+    crm:class "p"@en ;
+    crm:name "VIP Member"@en ;
+    crm:description? "Thompson family designated as long-term VIP supporters"@en ;
+    crm:hasRecordProperty <http://churchcrm.org/resource/PropertyType_001> ;
+    .
+
+<http://churchcrm.org/resource/Property_002>
+    rdf:type crm:Property ;
+    crm:class "p"@en ;
+    crm:name "Do Not Call"@en ;
+    crm:description? "Williams family requested no unsolicited calls"@en ;
+    crm:hasRecordProperty <http://churchcrm.org/resource/PropertyType_002> ;
+    .
+
+<http://churchcrm.org/resource/RecordProperty_001>
+    rdf:type crm:RecordProperty ;
+    crm:value? "VIP Member - long-time supporter"@en ;
+    crm:propertyForRecord <http://churchcrm.org/resource/Property_001> ;
+    .
+
+<http://churchcrm.org/resource/RecordProperty_002>
+    rdf:type crm:RecordProperty ;
+    crm:value? "Do not call - family request"@en ;
+    crm:propertyForRecord <http://churchcrm.org/resource/Property_001> ;
+    .
+
+<http://churchcrm.org/resource/WhyCame_001>
+    rdf:type crm:WhyCame ;
+    crm:join? "Was searching for a faith community"@en ;
+    crm:come? "Was invited by a friend"@en ;
+    crm:suggest? "More scripture-based teaching"@en ;
+    crm:hearOfUs? "Friend invitation"@en ;
+    crm:whyCameForPerson <http://churchcrm.org/resource/Person_001> ;
+    .
+
+<http://churchcrm.org/resource/WhyCame_002>
+    rdf:type crm:WhyCame ;
+    crm:join? "Wanted my children to grow in faith"@en ;
+    crm:come? "Saw the youth program online"@en ;
+    crm:suggest? "Need more family activities"@en ;
+    crm:hearOfUs? "Website search"@en ;
+    crm:whyCameForPerson <http://churchcrm.org/resource/Person_003> ;
+    .
+
+<http://churchcrm.org/resource/MenuLink_001>
+    rdf:type crm:MenuLink ;
+    crm:name? "Financial Reports"@en ;
+    crm:uri? "/ReportEngine.php"@en ;
+    crm:order? "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/MenuLink_002>
+    rdf:type crm:MenuLink ;
+    crm:name? "People Management"@en ;
+    crm:uri? "/PersonList.php"@en ;
+    crm:order? "2"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/MenuLink_003>
+    rdf:type crm:MenuLink ;
+    crm:name? "Event Calendar"@en ;
+    crm:uri? "/EventList.php"@en ;
+    crm:order? "3"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Version_001>
+    rdf:type crm:Version ;
+    crm:version "5.0.0"@en ;
+    crm:updateStart? "2025-11-01T00:00:00"^^xsd:dateTime ;
+    .
+
+<http://churchcrm.org/resource/Token_001>
+    rdf:type crm:Token ;
+    crm:token "abc123token"@en ;
+    crm:type "password-reset"@en ;
+    crm:validUntilDate? "2026-04-12"^^xsd:date ;
+    crm:referenceId? "1"^^xsd:integer ;
+    crm:remainingUses? "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/Token_002>
+    rdf:type crm:Token ;
+    crm:token "xyz789token"@en ;
+    crm:type "magic-link"@en ;
+    crm:validUntilDate? "2026-04-10"^^xsd:date ;
+    crm:referenceId? "3"^^xsd:integer ;
+    crm:remainingUses? "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/UserSetting_001>
+    rdf:type crm:UserSetting ;
+    crm:settingName "userTimeZone"@en ;
+    crm:settingValue? "America/Chicago"@en ;
+    .
+
+<http://churchcrm.org/resource/UserSetting_002>
+    rdf:type crm:UserSetting ;
+    crm:settingName "userLanguage"@en ;
+    crm:settingValue? "en-US"@en ;
+    .
+
+<http://churchcrm.org/resource/UserSetting_003>
+    rdf:type crm:UserSetting ;
+    crm:settingName "userTimeZone"@en ;
+    crm:settingValue? "America/Chicago"@en ;
+    .
+
+<http://churchcrm.org/resource/UserSetting_004>
+    rdf:type crm:UserSetting ;
+    crm:settingName "userLanguage"@en ;
+    crm:settingValue? "en-US"@en ;
+    .
+
+<http://churchcrm.org/resource/KioskDevice_001>
+    rdf:type crm:KioskDevice ;
+    crm:guidHash? "hashabc123"@en ;
+    crm:name? "Welcome Kiosk 1"@en ;
+    crm:deviceType? "tablet"@en ;
+    crm:lastHeartbeat? "2026-04-04T09:00:00"^^xsd:dateTime ;
+    crm:accepted? "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/KioskDevice_002>
+    rdf:type crm:KioskDevice ;
+    crm:guidHash? "hashxyz789"@en ;
+    crm:name? "Check-in Kiosk 2"@en ;
+    crm:deviceType? "kiosk"@en ;
+    crm:lastHeartbeat? "2026-04-05T08:30:00"^^xsd:dateTime ;
+    crm:accepted? "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/KioskAssignment_001>
+    rdf:type crm:KioskAssignment ;
+    crm:assignmentType? "1"^^xsd:integer ;
+    crm:hasKioskDevice <http://churchcrm.org/resource/KioskDevice_001> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Event_001> ;
+    .
+
+<http://churchcrm.org/resource/KioskAssignment_002>
+    rdf:type crm:KioskAssignment ;
+    crm:assignmentType? "2"^^xsd:integer ;
+    crm:hasKioskDevice <http://churchcrm.org/resource/KioskDevice_002> ;
+    crm:assignedToEvent <http://churchcrm.org/resource/Event_005> ;
+    .
+
+<http://churchcrm.org/resource/PredefinedReports_001>
+    rdf:type crm:PredefinedReports ;
+    crm:sql? "SELECT * FROM Person"@en ;
+    crm:name "Active Members Report"@en ;
+    crm:description? "Lists all currently active church members"@en ;
+    crm:count? "True"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/PredefinedReports_002>
+    rdf:type crm:PredefinedReports ;
+    crm:sql? "SELECT * FROM Family"@en ;
+    crm:name "Family Directory Report"@en ;
+    crm:description? "Generates the church family directory"@en ;
+    crm:count? "False"^^xsd:boolean ;
+    .
+
+<http://churchcrm.org/resource/ListOption_011>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "1"^^xsd:integer ;
+    crm:optionName "Mr."@en ;
+    .
+
+<http://churchcrm.org/resource/ListOption_012>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "2"^^xsd:integer ;
+    crm:optionName "Mrs."@en ;
+    .
+
+<http://churchcrm.org/resource/ListOption_013>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "3"^^xsd:integer ;
+    crm:optionName "Ms."@en ;
+    .
+
+<http://churchcrm.org/resource/ListOption_014>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "4"^^xsd:integer ;
+    crm:optionName "Dr."@en ;
+    .
+
+<http://churchcrm.org/resource/ListOption_021>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "1"^^xsd:integer ;
+    crm:optionName "Member"@en ;
+    .
+
+<http://churchcrm.org/resource/ListOption_022>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "2"^^xsd:integer ;
+    crm:optionName "Regular Attender"@en ;
+    .
+
+<http://churchcrm.org/resource/ListOption_023>
+    rdf:type crm:ListOption ;
+    crm:optionSequence "3"^^xsd:integer ;
+    crm:optionName "Visitor"@en ;
+    .
+
+<http://churchcrm.org/resource/QueryParameters_001>
+    rdf:type crm:QueryParameters ;
+    crm:type "1"^^xsd:integer ;
+    crm:name? "Person Name"@en ;
+    crm:description? "Filter by person name"@en ;
+    crm:alias? "per_Name"@en ;
+    crm:default? "John"@en ;
+    crm:required "0"^^xsd:integer ;
+    crm:inputBoxSize "0"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/QueryParameters_002>
+    rdf:type crm:QueryParameters ;
+    crm:type "2"^^xsd:integer ;
+    crm:name? "Family Name"@en ;
+    crm:description? "Filter by family name"@en ;
+    crm:alias? "fam_Name"@en ;
+    crm:default? "Smith"@en ;
+    crm:required "0"^^xsd:integer ;
+    crm:inputBoxSize "0"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/QueryParameterOptions_001>
+    rdf:type crm:QueryParameterOptions ;
+    crm:display "Exact Match"@en ;
+    crm:value "exact"@en ;
+    .
+
+<http://churchcrm.org/resource/QueryParameterOptions_002>
+    rdf:type crm:QueryParameterOptions ;
+    crm:display "Starts With"@en ;
+    crm:value "starts"@en ;
+    .
+
+<http://churchcrm.org/resource/QueryParameterOptions_003>
+    rdf:type crm:QueryParameterOptions ;
+    crm:display "Contains"@en ;
+    crm:value "contains"@en ;
+    .
+
+<http://churchcrm.org/resource/FamilyCustomMaster_001>
+    rdf:type crm:FamilyCustomMaster ;
+    crm:order "1"^^xsd:integer ;
+    crm:name "Hobbies & Interests"@en ;
+    crm:fieldSec "1"^^xsd:integer ;
+    crm:typeId "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/FamilyCustomMaster_002>
+    rdf:type crm:FamilyCustomMaster ;
+    crm:order "2"^^xsd:integer ;
+    crm:name "Anniversary Type"@en ;
+    crm:fieldSec "1"^^xsd:integer ;
+    crm:typeId "2"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/PersonCustomMaster_001>
+    rdf:type crm:PersonCustomMaster ;
+    crm:order "1"^^xsd:integer ;
+    crm:name "Facebook Profile URL"@en ;
+    crm:fieldSec "1"^^xsd:integer ;
+    crm:typeId "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/PersonCustomMaster_002>
+    rdf:type crm:PersonCustomMaster ;
+    crm:order "2"^^xsd:integer ;
+    crm:name "LinkedIn Profile URL"@en ;
+    crm:fieldSec "1"^^xsd:integer ;
+    crm:typeId "1"^^xsd:integer ;
+    .
+
+<http://churchcrm.org/resource/GroupPropMaster_001>
+    rdf:type crm:GroupPropMaster ;
+    crm:propField "BaptismDate"@en ;
+    crm:propName? "Date of Baptism"@en ;
+    crm:typeId "1"^^xsd:integer ;
+    crm:personDisplay "p"@en ;
+    .
+
+<http://churchcrm.org/resource/GroupPropMaster_002>
+    rdf:type crm:GroupPropMaster ;
+    crm:propField "SchoolGrade"@en ;
+    crm:propName? "Current School Grade"@en ;
+    crm:typeId "1"^^xsd:integer ;
+    crm:personDisplay "p"@en ;
+    .
+
+<http://churchcrm.org/resource/UserConfig_001>
+    rdf:type crm:UserConfig ;
+    crm:name "defaultStyle"@en ;
+    crm:value? "default"@en ;
+    crm:type "string"@en ;
+    crm:tooltip? "style"@en ;
+    crm:permission "s"@en ;
+    crm:cat "b"@en ;
+    .
+
+<http://churchcrm.org/resource/UserConfig_002>
+    rdf:type crm:UserConfig ;
+    crm:name "showTooltips"@en ;
+    crm:value? "true"@en ;
+    crm:type "bool"@en ;
+    crm:tooltip? "tips"@en ;
+    crm:permission "s"@en ;
+    crm:cat "b"@en ;
+    .
+

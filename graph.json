@@ -1,0 +1,431 @@
+{
+  "nodes": [
+    {
+      "id": "Calendar",
+      "group": 3,
+      "connections": 1
+    },
+    {
+      "id": "CalendarEvent",
+      "group": 3,
+      "connections": 2
+    },
+    {
+      "id": "Config",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "Deposit",
+      "group": 2,
+      "connections": 1
+    },
+    {
+      "id": "DonatedItem",
+      "group": 2,
+      "connections": 3
+    },
+    {
+      "id": "DonationFund",
+      "group": 2,
+      "connections": 1
+    },
+    {
+      "id": "Event",
+      "group": 3,
+      "connections": 11
+    },
+    {
+      "id": "EventAttend",
+      "group": 3,
+      "connections": 2
+    },
+    {
+      "id": "EventAudience",
+      "group": 3,
+      "connections": 2
+    },
+    {
+      "id": "EventCountName",
+      "group": 3,
+      "connections": 0
+    },
+    {
+      "id": "EventCounts",
+      "group": 3,
+      "connections": 1
+    },
+    {
+      "id": "EventType",
+      "group": 3,
+      "connections": 1
+    },
+    {
+      "id": "Family",
+      "group": 1,
+      "connections": 6
+    },
+    {
+      "id": "FamilyCustom",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "FamilyCustomMaster",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "FundRaiser",
+      "group": 2,
+      "connections": 1
+    },
+    {
+      "id": "Group",
+      "group": 4,
+      "connections": 6
+    },
+    {
+      "id": "GroupPropMaster",
+      "group": 4,
+      "connections": 0
+    },
+    {
+      "id": "KioskAssignment",
+      "group": 3,
+      "connections": 2
+    },
+    {
+      "id": "KioskDevice",
+      "group": 3,
+      "connections": 1
+    },
+    {
+      "id": "ListOption",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "Location",
+      "group": 3,
+      "connections": 1
+    },
+    {
+      "id": "MenuLink",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "Note",
+      "group": 1,
+      "connections": 4
+    },
+    {
+      "id": "Person",
+      "group": 1,
+      "connections": 17
+    },
+    {
+      "id": "PersonCustom",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "PersonCustomMaster",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "PersonGroupRole",
+      "group": 1,
+      "connections": 2
+    },
+    {
+      "id": "PersonVolunteerOpportunity",
+      "group": 1,
+      "connections": 2
+    },
+    {
+      "id": "Pledge",
+      "group": 2,
+      "connections": 4
+    },
+    {
+      "id": "PredefinedReports",
+      "group": 0,
+      "connections": 1
+    },
+    {
+      "id": "Property",
+      "group": 5,
+      "connections": 2
+    },
+    {
+      "id": "PropertyType",
+      "group": 5,
+      "connections": 1
+    },
+    {
+      "id": "QueryParameterOptions",
+      "group": 0,
+      "connections": 1
+    },
+    {
+      "id": "QueryParameters",
+      "group": 0,
+      "connections": 2
+    },
+    {
+      "id": "RecordProperty",
+      "group": 5,
+      "connections": 1
+    },
+    {
+      "id": "Token",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "User",
+      "group": 1,
+      "connections": 1
+    },
+    {
+      "id": "UserConfig",
+      "group": 1,
+      "connections": 0
+    },
+    {
+      "id": "UserSetting",
+      "group": 1,
+      "connections": 0
+    },
+    {
+      "id": "Version",
+      "group": 0,
+      "connections": 0
+    },
+    {
+      "id": "VolunteerOpportunity",
+      "group": 4,
+      "connections": 3
+    },
+    {
+      "id": "WhyCame",
+      "group": 1,
+      "connections": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "Person",
+      "target": "Family",
+      "relation": "belongsToFamily"
+    },
+    {
+      "source": "Family",
+      "target": "Person",
+      "relation": "hasFamilyMember"
+    },
+    {
+      "source": "Person",
+      "target": "Group",
+      "relation": "memberOfGroup"
+    },
+    {
+      "source": "Group",
+      "target": "Person",
+      "relation": "hasGroupMember"
+    },
+    {
+      "source": "PersonGroupRole",
+      "target": "Person",
+      "relation": "memberOfGroup"
+    },
+    {
+      "source": "PersonGroupRole",
+      "target": "Group",
+      "relation": "hasGroupMember"
+    },
+    {
+      "source": "Person",
+      "target": "Event",
+      "relation": "attendsEvent"
+    },
+    {
+      "source": "Event",
+      "target": "Person",
+      "relation": "hasEventAttendee"
+    },
+    {
+      "source": "EventAttend",
+      "target": "Person",
+      "relation": "assignedToEvent"
+    },
+    {
+      "source": "EventAttend",
+      "target": "Event",
+      "relation": "attendsEvent"
+    },
+    {
+      "source": "Event",
+      "target": "Location",
+      "relation": "atLocation"
+    },
+    {
+      "source": "Event",
+      "target": "EventType",
+      "relation": "hasType"
+    },
+    {
+      "source": "Event",
+      "target": "Group",
+      "relation": "hasAudienceGroup"
+    },
+    {
+      "source": "Group",
+      "target": "Event",
+      "relation": "eventInAudience"
+    },
+    {
+      "source": "EventAudience",
+      "target": "Event",
+      "relation": "hasAudienceGroup"
+    },
+    {
+      "source": "EventAudience",
+      "target": "Group",
+      "relation": "eventInAudience"
+    },
+    {
+      "source": "CalendarEvent",
+      "target": "Calendar",
+      "relation": "calendarOfEvent"
+    },
+    {
+      "source": "CalendarEvent",
+      "target": "Event",
+      "relation": "eventOnCalendar"
+    },
+    {
+      "source": "Family",
+      "target": "Pledge",
+      "relation": "hasFamilyPledge"
+    },
+    {
+      "source": "Pledge",
+      "target": "Family",
+      "relation": "hasFY"
+    },
+    {
+      "source": "Pledge",
+      "target": "DonationFund",
+      "relation": "fundedByFund"
+    },
+    {
+      "source": "Deposit",
+      "target": "Pledge",
+      "relation": "hasDepositSlip"
+    },
+    {
+      "source": "FundRaiser",
+      "target": "DonatedItem",
+      "relation": "hasDonatedItem"
+    },
+    {
+      "source": "Person",
+      "target": "DonatedItem",
+      "relation": "donorOfItem"
+    },
+    {
+      "source": "Person",
+      "target": "DonatedItem",
+      "relation": "buyerOfItem"
+    },
+    {
+      "source": "Person",
+      "target": "Note",
+      "relation": "hasNote"
+    },
+    {
+      "source": "Note",
+      "target": "Person",
+      "relation": "noteAboutPerson"
+    },
+    {
+      "source": "Family",
+      "target": "Note",
+      "relation": "familyHasNote"
+    },
+    {
+      "source": "Note",
+      "target": "Family",
+      "relation": "noteAboutFamily"
+    },
+    {
+      "source": "User",
+      "target": "Person",
+      "relation": "linkedToPerson"
+    },
+    {
+      "source": "Person",
+      "target": "VolunteerOpportunity",
+      "relation": "hasVolunteerOp"
+    },
+    {
+      "source": "VolunteerOpportunity",
+      "target": "Person",
+      "relation": "volunteerOf"
+    },
+    {
+      "source": "PersonVolunteerOpportunity",
+      "target": "Person",
+      "relation": "hasVolunteerOp"
+    },
+    {
+      "source": "PersonVolunteerOpportunity",
+      "target": "VolunteerOpportunity",
+      "relation": "volunteerOf"
+    },
+    {
+      "source": "Event",
+      "target": "EventCounts",
+      "relation": "hasEventCounts"
+    },
+    {
+      "source": "WhyCame",
+      "target": "Person",
+      "relation": "whyCameForPerson"
+    },
+    {
+      "source": "Property",
+      "target": "PropertyType",
+      "relation": "hasRecordProperty"
+    },
+    {
+      "source": "RecordProperty",
+      "target": "Property",
+      "relation": "propertyForRecord"
+    },
+    {
+      "source": "KioskAssignment",
+      "target": "KioskDevice",
+      "relation": "hasKioskDevice"
+    },
+    {
+      "source": "KioskAssignment",
+      "target": "Event",
+      "relation": "assignedToEvent"
+    },
+    {
+      "source": "PredefinedReports",
+      "target": "QueryParameters",
+      "relation": "hasQueryParameter"
+    },
+    {
+      "source": "QueryParameters",
+      "target": "QueryParameterOptions",
+      "relation": "hasOption"
+    }
+  ]
+}

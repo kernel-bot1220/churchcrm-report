@@ -1,0 +1,1310 @@
+{
+  "@context": {
+    "crm": "http://churchcrm.org/ontology/",
+    "crmres": "http://churchcrm.org/resource/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "type": {
+      "@id": "crm:type",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "crm:id",
+      "@type": "xsd:integer"
+    },
+    "CalendarEvent": {
+      "@id": "crm:CalendarEvent",
+      "@type": "@Class"
+    },
+    "Calendar": {
+      "@id": "crm:Calendar",
+      "@type": "@Class"
+    },
+    "Config": {
+      "@id": "crm:Config",
+      "@type": "@Class"
+    },
+    "Deposit": {
+      "@id": "crm:Deposit",
+      "@type": "@Class"
+    },
+    "DonatedItem": {
+      "@id": "crm:DonatedItem",
+      "@type": "@Class"
+    },
+    "DonationFund": {
+      "@id": "crm:DonationFund",
+      "@type": "@Class"
+    },
+    "EventAttend": {
+      "@id": "crm:EventAttend",
+      "@type": "@Class"
+    },
+    "EventAudience": {
+      "@id": "crm:EventAudience",
+      "@type": "@Class"
+    },
+    "EventType": {
+      "@id": "crm:EventType",
+      "@type": "@Class"
+    },
+    "EventCountName": {
+      "@id": "crm:EventCountName",
+      "@type": "@Class"
+    },
+    "EventCounts": {
+      "@id": "crm:EventCounts",
+      "@type": "@Class"
+    },
+    "Event": {
+      "@id": "crm:Event",
+      "@type": "@Class"
+    },
+    "FamilyCustom": {
+      "@id": "crm:FamilyCustom",
+      "@type": "@Class"
+    },
+    "FamilyCustomMaster": {
+      "@id": "crm:FamilyCustomMaster",
+      "@type": "@Class"
+    },
+    "Family": {
+      "@id": "crm:Family",
+      "@type": "@Class"
+    },
+    "FundRaiser": {
+      "@id": "crm:FundRaiser",
+      "@type": "@Class"
+    },
+    "Group": {
+      "@id": "crm:Group",
+      "@type": "@Class"
+    },
+    "GroupPropMaster": {
+      "@id": "crm:GroupPropMaster",
+      "@type": "@Class"
+    },
+    "KioskAssignment": {
+      "@id": "crm:KioskAssignment",
+      "@type": "@Class"
+    },
+    "KioskDevice": {
+      "@id": "crm:KioskDevice",
+      "@type": "@Class"
+    },
+    "ListOption": {
+      "@id": "crm:ListOption",
+      "@type": "@Class"
+    },
+    "Location": {
+      "@id": "crm:Location",
+      "@type": "@Class"
+    },
+    "MenuLink": {
+      "@id": "crm:MenuLink",
+      "@type": "@Class"
+    },
+    "Note": {
+      "@id": "crm:Note",
+      "@type": "@Class"
+    },
+    "PersonGroupRole": {
+      "@id": "crm:PersonGroupRole",
+      "@type": "@Class"
+    },
+    "PersonVolunteerOpportunity": {
+      "@id": "crm:PersonVolunteerOpportunity",
+      "@type": "@Class"
+    },
+    "PersonCustom": {
+      "@id": "crm:PersonCustom",
+      "@type": "@Class"
+    },
+    "PersonCustomMaster": {
+      "@id": "crm:PersonCustomMaster",
+      "@type": "@Class"
+    },
+    "Person": {
+      "@id": "crm:Person",
+      "@type": "@Class"
+    },
+    "Pledge": {
+      "@id": "crm:Pledge",
+      "@type": "@Class"
+    },
+    "Property": {
+      "@id": "crm:Property",
+      "@type": "@Class"
+    },
+    "PropertyType": {
+      "@id": "crm:PropertyType",
+      "@type": "@Class"
+    },
+    "PredefinedReports": {
+      "@id": "crm:PredefinedReports",
+      "@type": "@Class"
+    },
+    "QueryParameterOptions": {
+      "@id": "crm:QueryParameterOptions",
+      "@type": "@Class"
+    },
+    "QueryParameters": {
+      "@id": "crm:QueryParameters",
+      "@type": "@Class"
+    },
+    "RecordProperty": {
+      "@id": "crm:RecordProperty",
+      "@type": "@Class"
+    },
+    "Token": {
+      "@id": "crm:Token",
+      "@type": "@Class"
+    },
+    "UserSetting": {
+      "@id": "crm:UserSetting",
+      "@type": "@Class"
+    },
+    "User": {
+      "@id": "crm:User",
+      "@type": "@Class"
+    },
+    "UserConfig": {
+      "@id": "crm:UserConfig",
+      "@type": "@Class"
+    },
+    "Version": {
+      "@id": "crm:Version",
+      "@type": "@Class"
+    },
+    "VolunteerOpportunity": {
+      "@id": "crm:VolunteerOpportunity",
+      "@type": "@Class"
+    },
+    "WhyCame": {
+      "@id": "crm:WhyCame",
+      "@type": "@Class"
+    },
+    "name": {
+      "@id": "crm:name",
+      "@type": "xsd:string"
+    },
+    "accesstoken?": {
+      "@id": "crm:accesstoken?",
+      "@type": "xsd:string"
+    },
+    "backgroundcolor?": {
+      "@id": "crm:backgroundcolor?",
+      "@type": "xsd:string"
+    },
+    "foregroundcolor?": {
+      "@id": "crm:foregroundcolor?",
+      "@type": "xsd:string"
+    },
+    "cfgId": {
+      "@id": "crm:cfgId",
+      "@type": "xsd:integer"
+    },
+    "cfgName": {
+      "@id": "crm:cfgName",
+      "@type": "xsd:string"
+    },
+    "cfgValue?": {
+      "@id": "crm:cfgValue?",
+      "@type": "xsd:string"
+    },
+    "date?": {
+      "@id": "crm:date?",
+      "@type": "xsd:date"
+    },
+    "comment?": {
+      "@id": "crm:comment?",
+      "@type": "xsd:string"
+    },
+    "enteredby?": {
+      "@id": "crm:enteredby?",
+      "@type": "xsd:integer"
+    },
+    "closed": {
+      "@id": "crm:closed",
+      "@type": "xsd:boolean"
+    },
+    "item": {
+      "@id": "crm:item",
+      "@type": "xsd:string"
+    },
+    "frId": {
+      "@id": "crm:frId",
+      "@type": "xsd:integer"
+    },
+    "donorId": {
+      "@id": "crm:donorId",
+      "@type": "xsd:integer"
+    },
+    "buyerId": {
+      "@id": "crm:buyerId",
+      "@type": "xsd:integer"
+    },
+    "multibuy": {
+      "@id": "crm:multibuy",
+      "@type": "xsd:integer"
+    },
+    "title": {
+      "@id": "crm:title",
+      "@type": "xsd:string"
+    },
+    "description?": {
+      "@id": "crm:description?",
+      "@type": "xsd:string"
+    },
+    "sellprice?": {
+      "@id": "crm:sellprice?",
+      "@type": "xsd:decimal"
+    },
+    "estprice?": {
+      "@id": "crm:estprice?",
+      "@type": "xsd:decimal"
+    },
+    "minimum?": {
+      "@id": "crm:minimum?",
+      "@type": "xsd:decimal"
+    },
+    "materialvalue?": {
+      "@id": "crm:materialvalue?",
+      "@type": "xsd:decimal"
+    },
+    "enteredby": {
+      "@id": "crm:enteredby",
+      "@type": "xsd:integer"
+    },
+    "entereddate": {
+      "@id": "crm:entereddate",
+      "@type": "xsd:date"
+    },
+    "picture?": {
+      "@id": "crm:picture?",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "crm:active",
+      "@type": "xsd:string"
+    },
+    "name?": {
+      "@id": "crm:name?",
+      "@type": "xsd:string"
+    },
+    "order": {
+      "@id": "crm:order",
+      "@type": "xsd:integer"
+    },
+    "attendId": {
+      "@id": "crm:attendId",
+      "@type": "xsd:integer"
+    },
+    "personId": {
+      "@id": "crm:personId",
+      "@type": "xsd:integer"
+    },
+    "checkinDate?": {
+      "@id": "crm:checkinDate?",
+      "@type": "xsd:dateTime"
+    },
+    "checkinId?": {
+      "@id": "crm:checkinId?",
+      "@type": "xsd:integer"
+    },
+    "checkoutDate?": {
+      "@id": "crm:checkoutDate?",
+      "@type": "xsd:dateTime"
+    },
+    "checkoutId?": {
+      "@id": "crm:checkoutId?",
+      "@type": "xsd:integer"
+    },
+    "groupId": {
+      "@id": "crm:groupId",
+      "@type": "xsd:integer"
+    },
+    "typeId": {
+      "@id": "crm:typeId",
+      "@type": "xsd:integer"
+    },
+    "typeName": {
+      "@id": "crm:typeName",
+      "@type": "xsd:string"
+    },
+    "typeDefstarttime": {
+      "@id": "crm:typeDefstarttime",
+      "@type": "xsd:dateTime"
+    },
+    "typeDefrecurtype": {
+      "@id": "crm:typeDefrecurtype",
+      "@type": "xsd:string"
+    },
+    "typeDefrecurdow": {
+      "@id": "crm:typeDefrecurdow",
+      "@type": "xsd:string"
+    },
+    "typeDefrecurdom": {
+      "@id": "crm:typeDefrecurdom",
+      "@type": "xsd:string"
+    },
+    "typeDefrecurdoy": {
+      "@id": "crm:typeDefrecurdoy",
+      "@type": "xsd:date"
+    },
+    "typeActive": {
+      "@id": "crm:typeActive",
+      "@type": "xsd:integer"
+    },
+    "typeGrpid?": {
+      "@id": "crm:typeGrpid?",
+      "@type": "xsd:integer"
+    },
+    "countid": {
+      "@id": "crm:countid",
+      "@type": "xsd:integer"
+    },
+    "eventtypeid": {
+      "@id": "crm:eventtypeid",
+      "@type": "xsd:integer"
+    },
+    "countname": {
+      "@id": "crm:countname",
+      "@type": "xsd:string"
+    },
+    "countname?": {
+      "@id": "crm:countname?",
+      "@type": "xsd:string"
+    },
+    "countcount?": {
+      "@id": "crm:countcount?",
+      "@type": "xsd:integer"
+    },
+    "notes?": {
+      "@id": "crm:notes?",
+      "@type": "xsd:string"
+    },
+    "desc?": {
+      "@id": "crm:desc?",
+      "@type": "xsd:string"
+    },
+    "text?": {
+      "@id": "crm:text?",
+      "@type": "xsd:string"
+    },
+    "start": {
+      "@id": "crm:start",
+      "@type": "xsd:dateTime"
+    },
+    "end": {
+      "@id": "crm:end",
+      "@type": "xsd:dateTime"
+    },
+    "inactive": {
+      "@id": "crm:inactive",
+      "@type": "xsd:integer"
+    },
+    "locationId": {
+      "@id": "crm:locationId",
+      "@type": "xsd:integer"
+    },
+    "primaryContactPersonId": {
+      "@id": "crm:primaryContactPersonId",
+      "@type": "xsd:integer"
+    },
+    "secondaryContactPersonId": {
+      "@id": "crm:secondaryContactPersonId",
+      "@type": "xsd:integer"
+    },
+    "url?": {
+      "@id": "crm:url?",
+      "@type": "xsd:string"
+    },
+    "customField": {
+      "@id": "crm:customField",
+      "@type": "xsd:integer"
+    },
+    "customOrder": {
+      "@id": "crm:customOrder",
+      "@type": "xsd:integer"
+    },
+    "customName": {
+      "@id": "crm:customName",
+      "@type": "xsd:string"
+    },
+    "customSpecial?": {
+      "@id": "crm:customSpecial?",
+      "@type": "xsd:integer"
+    },
+    "customFieldsec": {
+      "@id": "crm:customFieldsec",
+      "@type": "xsd:integer"
+    },
+    "address1?": {
+      "@id": "crm:address1?",
+      "@type": "xsd:string"
+    },
+    "address2?": {
+      "@id": "crm:address2?",
+      "@type": "xsd:string"
+    },
+    "city?": {
+      "@id": "crm:city?",
+      "@type": "xsd:string"
+    },
+    "state?": {
+      "@id": "crm:state?",
+      "@type": "xsd:string"
+    },
+    "zip?": {
+      "@id": "crm:zip?",
+      "@type": "xsd:string"
+    },
+    "country?": {
+      "@id": "crm:country?",
+      "@type": "xsd:string"
+    },
+    "homephone?": {
+      "@id": "crm:homephone?",
+      "@type": "xsd:string"
+    },
+    "email?": {
+      "@id": "crm:email?",
+      "@type": "xsd:string"
+    },
+    "weddingdate?": {
+      "@id": "crm:weddingdate?",
+      "@type": "xsd:date"
+    },
+    "dateentered": {
+      "@id": "crm:dateentered",
+      "@type": "xsd:dateTime"
+    },
+    "datelastedited?": {
+      "@id": "crm:datelastedited?",
+      "@type": "xsd:dateTime"
+    },
+    "editedby?": {
+      "@id": "crm:editedby?",
+      "@type": "xsd:integer"
+    },
+    "scancheck?": {
+      "@id": "crm:scancheck?",
+      "@type": "xsd:string"
+    },
+    "scancredit?": {
+      "@id": "crm:scancredit?",
+      "@type": "xsd:string"
+    },
+    "sendnewsletter": {
+      "@id": "crm:sendnewsletter",
+      "@type": "xsd:string"
+    },
+    "datedeactivated?": {
+      "@id": "crm:datedeactivated?",
+      "@type": "xsd:date"
+    },
+    "latitude?": {
+      "@id": "crm:latitude?",
+      "@type": "xsd:decimal"
+    },
+    "longitude?": {
+      "@id": "crm:longitude?",
+      "@type": "xsd:decimal"
+    },
+    "envelope": {
+      "@id": "crm:envelope",
+      "@type": "xsd:integer"
+    },
+    "rolelistid": {
+      "@id": "crm:rolelistid",
+      "@type": "xsd:integer"
+    },
+    "defaultrole": {
+      "@id": "crm:defaultrole",
+      "@type": "xsd:integer"
+    },
+    "hasspecialprops?": {
+      "@id": "crm:hasspecialprops?",
+      "@type": "xsd:boolean"
+    },
+    "includeEmailExport": {
+      "@id": "crm:includeEmailExport",
+      "@type": "xsd:boolean"
+    },
+    "propId": {
+      "@id": "crm:propId",
+      "@type": "xsd:integer"
+    },
+    "propField": {
+      "@id": "crm:propField",
+      "@type": "xsd:string"
+    },
+    "propName?": {
+      "@id": "crm:propName?",
+      "@type": "xsd:string"
+    },
+    "propDescription?": {
+      "@id": "crm:propDescription?",
+      "@type": "xsd:string"
+    },
+    "propSpecial?": {
+      "@id": "crm:propSpecial?",
+      "@type": "xsd:integer"
+    },
+    "propPersondisplay": {
+      "@id": "crm:propPersondisplay",
+      "@type": "xsd:string"
+    },
+    "kdevid?": {
+      "@id": "crm:kdevid?",
+      "@type": "xsd:integer"
+    },
+    "assignmenttype?": {
+      "@id": "crm:assignmenttype?",
+      "@type": "xsd:integer"
+    },
+    "eventid?": {
+      "@id": "crm:eventid?",
+      "@type": "xsd:integer"
+    },
+    "guidhash?": {
+      "@id": "crm:guidhash?",
+      "@type": "xsd:string"
+    },
+    "devicetype?": {
+      "@id": "crm:devicetype?",
+      "@type": "xsd:string"
+    },
+    "lastheartbeat?": {
+      "@id": "crm:lastheartbeat?",
+      "@type": "xsd:string"
+    },
+    "accepted?": {
+      "@id": "crm:accepted?",
+      "@type": "xsd:boolean"
+    },
+    "pendingcommands?": {
+      "@id": "crm:pendingcommands?",
+      "@type": "xsd:string"
+    },
+    "lstOptionid": {
+      "@id": "crm:lstOptionid",
+      "@type": "xsd:integer"
+    },
+    "lstOptionsequence": {
+      "@id": "crm:lstOptionsequence",
+      "@type": "xsd:integer"
+    },
+    "lstOptionname": {
+      "@id": "crm:lstOptionname",
+      "@type": "xsd:string"
+    },
+    "locationTypeid": {
+      "@id": "crm:locationTypeid",
+      "@type": "xsd:integer"
+    },
+    "locationName": {
+      "@id": "crm:locationName",
+      "@type": "xsd:string"
+    },
+    "locationAddress": {
+      "@id": "crm:locationAddress",
+      "@type": "xsd:string"
+    },
+    "locationCity": {
+      "@id": "crm:locationCity",
+      "@type": "xsd:string"
+    },
+    "locationState": {
+      "@id": "crm:locationState",
+      "@type": "xsd:string"
+    },
+    "locationZip": {
+      "@id": "crm:locationZip",
+      "@type": "xsd:string"
+    },
+    "locationCountry": {
+      "@id": "crm:locationCountry",
+      "@type": "xsd:string"
+    },
+    "locationPhone": {
+      "@id": "crm:locationPhone",
+      "@type": "xsd:string"
+    },
+    "locationEmail": {
+      "@id": "crm:locationEmail",
+      "@type": "xsd:string"
+    },
+    "locationTimzezone": {
+      "@id": "crm:locationTimzezone",
+      "@type": "xsd:string"
+    },
+    "linkid": {
+      "@id": "crm:linkid",
+      "@type": "xsd:integer"
+    },
+    "linkname?": {
+      "@id": "crm:linkname?",
+      "@type": "xsd:string"
+    },
+    "linkuri?": {
+      "@id": "crm:linkuri?",
+      "@type": "xsd:string"
+    },
+    "linkorder?": {
+      "@id": "crm:linkorder?",
+      "@type": "xsd:integer"
+    },
+    "perId": {
+      "@id": "crm:perId",
+      "@type": "xsd:integer"
+    },
+    "famId": {
+      "@id": "crm:famId",
+      "@type": "xsd:integer"
+    },
+    "private": {
+      "@id": "crm:private",
+      "@type": "xsd:integer"
+    },
+    "editedby": {
+      "@id": "crm:editedby",
+      "@type": "xsd:integer"
+    },
+    "type?": {
+      "@id": "crm:type?",
+      "@type": "xsd:string"
+    },
+    "p2g2rGrpId": {
+      "@id": "crm:p2g2rGrpId",
+      "@type": "xsd:integer"
+    },
+    "p2g2rRleId": {
+      "@id": "crm:p2g2rRleId",
+      "@type": "xsd:integer"
+    },
+    "p2voId": {
+      "@id": "crm:p2voId",
+      "@type": "xsd:integer"
+    },
+    "p2voPerId?": {
+      "@id": "crm:p2voPerId?",
+      "@type": "xsd:integer"
+    },
+    "p2voVolId?": {
+      "@id": "crm:p2voVolId?",
+      "@type": "xsd:integer"
+    },
+    "title?": {
+      "@id": "crm:title?",
+      "@type": "xsd:string"
+    },
+    "firstname?": {
+      "@id": "crm:firstname?",
+      "@type": "xsd:string"
+    },
+    "middlename?": {
+      "@id": "crm:middlename?",
+      "@type": "xsd:string"
+    },
+    "lastname?": {
+      "@id": "crm:lastname?",
+      "@type": "xsd:string"
+    },
+    "suffix?": {
+      "@id": "crm:suffix?",
+      "@type": "xsd:string"
+    },
+    "workphone?": {
+      "@id": "crm:workphone?",
+      "@type": "xsd:string"
+    },
+    "cellphone?": {
+      "@id": "crm:cellphone?",
+      "@type": "xsd:string"
+    },
+    "workemail?": {
+      "@id": "crm:workemail?",
+      "@type": "xsd:string"
+    },
+    "birthmonth": {
+      "@id": "crm:birthmonth",
+      "@type": "xsd:integer"
+    },
+    "birthday": {
+      "@id": "crm:birthday",
+      "@type": "xsd:integer"
+    },
+    "birthyear?": {
+      "@id": "crm:birthyear?",
+      "@type": "xsd:integer"
+    },
+    "membershipdate?": {
+      "@id": "crm:membershipdate?",
+      "@type": "xsd:date"
+    },
+    "gender": {
+      "@id": "crm:gender",
+      "@type": "xsd:integer"
+    },
+    "fmrId": {
+      "@id": "crm:fmrId",
+      "@type": "xsd:integer"
+    },
+    "clsId": {
+      "@id": "crm:clsId",
+      "@type": "xsd:integer"
+    },
+    "envelope?": {
+      "@id": "crm:envelope?",
+      "@type": "xsd:integer"
+    },
+    "frienddate?": {
+      "@id": "crm:frienddate?",
+      "@type": "xsd:date"
+    },
+    "flags": {
+      "@id": "crm:flags",
+      "@type": "xsd:integer"
+    },
+    "facebook?": {
+      "@id": "crm:facebook?",
+      "@type": "xsd:string"
+    },
+    "twitter?": {
+      "@id": "crm:twitter?",
+      "@type": "xsd:string"
+    },
+    "linkedin?": {
+      "@id": "crm:linkedin?",
+      "@type": "xsd:string"
+    },
+    "plgid": {
+      "@id": "crm:plgid",
+      "@type": "xsd:integer"
+    },
+    "famid?": {
+      "@id": "crm:famid?",
+      "@type": "xsd:integer"
+    },
+    "fyid?": {
+      "@id": "crm:fyid?",
+      "@type": "xsd:integer"
+    },
+    "amount?": {
+      "@id": "crm:amount?",
+      "@type": "xsd:decimal"
+    },
+    "schedule?": {
+      "@id": "crm:schedule?",
+      "@type": "xsd:string"
+    },
+    "method?": {
+      "@id": "crm:method?",
+      "@type": "xsd:string"
+    },
+    "datelastedited": {
+      "@id": "crm:datelastedited",
+      "@type": "xsd:date"
+    },
+    "pledgeorpayment": {
+      "@id": "crm:pledgeorpayment",
+      "@type": "xsd:string"
+    },
+    "fundid?": {
+      "@id": "crm:fundid?",
+      "@type": "xsd:integer"
+    },
+    "depid?": {
+      "@id": "crm:depid?",
+      "@type": "xsd:integer"
+    },
+    "checkno?": {
+      "@id": "crm:checkno?",
+      "@type": "xsd:integer"
+    },
+    "problem?": {
+      "@id": "crm:problem?",
+      "@type": "xsd:boolean"
+    },
+    "scanstring?": {
+      "@id": "crm:scanstring?",
+      "@type": "xsd:string"
+    },
+    "autId": {
+      "@id": "crm:autId",
+      "@type": "xsd:integer"
+    },
+    "autCleared": {
+      "@id": "crm:autCleared",
+      "@type": "xsd:boolean"
+    },
+    "autResultid": {
+      "@id": "crm:autResultid",
+      "@type": "xsd:integer"
+    },
+    "nondeductible": {
+      "@id": "crm:nondeductible",
+      "@type": "xsd:decimal"
+    },
+    "groupkey": {
+      "@id": "crm:groupkey",
+      "@type": "xsd:string"
+    },
+    "proId": {
+      "@id": "crm:proId",
+      "@type": "xsd:integer"
+    },
+    "proClass": {
+      "@id": "crm:proClass",
+      "@type": "xsd:string"
+    },
+    "proPrtId": {
+      "@id": "crm:proPrtId",
+      "@type": "xsd:integer"
+    },
+    "proName": {
+      "@id": "crm:proName",
+      "@type": "xsd:string"
+    },
+    "proDescription": {
+      "@id": "crm:proDescription",
+      "@type": "xsd:string"
+    },
+    "proPrompt?": {
+      "@id": "crm:proPrompt?",
+      "@type": "xsd:string"
+    },
+    "prtId": {
+      "@id": "crm:prtId",
+      "@type": "xsd:integer"
+    },
+    "prtClass": {
+      "@id": "crm:prtClass",
+      "@type": "xsd:string"
+    },
+    "prtName": {
+      "@id": "crm:prtName",
+      "@type": "xsd:string"
+    },
+    "prtDescription": {
+      "@id": "crm:prtDescription",
+      "@type": "xsd:string"
+    },
+    "qryId": {
+      "@id": "crm:qryId",
+      "@type": "xsd:integer"
+    },
+    "qrySql": {
+      "@id": "crm:qrySql",
+      "@type": "xsd:string"
+    },
+    "qryName": {
+      "@id": "crm:qryName",
+      "@type": "xsd:string"
+    },
+    "qryDescription": {
+      "@id": "crm:qryDescription",
+      "@type": "xsd:string"
+    },
+    "qryCount": {
+      "@id": "crm:qryCount",
+      "@type": "xsd:boolean"
+    },
+    "qrpId": {
+      "@id": "crm:qrpId",
+      "@type": "xsd:integer"
+    },
+    "display": {
+      "@id": "crm:display",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "crm:value",
+      "@type": "xsd:string"
+    },
+    "optionsql?": {
+      "@id": "crm:optionsql?",
+      "@type": "xsd:string"
+    },
+    "alias?": {
+      "@id": "crm:alias?",
+      "@type": "xsd:string"
+    },
+    "default?": {
+      "@id": "crm:default?",
+      "@type": "xsd:string"
+    },
+    "required": {
+      "@id": "crm:required",
+      "@type": "xsd:integer"
+    },
+    "inputboxsize": {
+      "@id": "crm:inputboxsize",
+      "@type": "xsd:integer"
+    },
+    "validation": {
+      "@id": "crm:validation",
+      "@type": "xsd:string"
+    },
+    "numericmax?": {
+      "@id": "crm:numericmax?",
+      "@type": "xsd:integer"
+    },
+    "numericmin?": {
+      "@id": "crm:numericmin?",
+      "@type": "xsd:integer"
+    },
+    "alphaminlength?": {
+      "@id": "crm:alphaminlength?",
+      "@type": "xsd:integer"
+    },
+    "alphamaxlength?": {
+      "@id": "crm:alphamaxlength?",
+      "@type": "xsd:integer"
+    },
+    "recordId": {
+      "@id": "crm:recordId",
+      "@type": "xsd:integer"
+    },
+    "token": {
+      "@id": "crm:token",
+      "@type": "xsd:integer"
+    },
+    "validUntilDate?": {
+      "@id": "crm:validUntilDate?",
+      "@type": "xsd:date"
+    },
+    "referenceId?": {
+      "@id": "crm:referenceId?",
+      "@type": "xsd:integer"
+    },
+    "remaininguses?": {
+      "@id": "crm:remaininguses?",
+      "@type": "xsd:integer"
+    },
+    "settingName": {
+      "@id": "crm:settingName",
+      "@type": "xsd:integer"
+    },
+    "settingValue?": {
+      "@id": "crm:settingValue?",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "crm:password",
+      "@type": "xsd:string"
+    },
+    "needpasswordchange": {
+      "@id": "crm:needpasswordchange",
+      "@type": "xsd:boolean"
+    },
+    "lastlogin": {
+      "@id": "crm:lastlogin",
+      "@type": "xsd:dateTime"
+    },
+    "logincount": {
+      "@id": "crm:logincount",
+      "@type": "xsd:integer"
+    },
+    "failedlogins": {
+      "@id": "crm:failedlogins",
+      "@type": "xsd:integer"
+    },
+    "addrecords": {
+      "@id": "crm:addrecords",
+      "@type": "xsd:boolean"
+    },
+    "editrecords": {
+      "@id": "crm:editrecords",
+      "@type": "xsd:boolean"
+    },
+    "deleterecords": {
+      "@id": "crm:deleterecords",
+      "@type": "xsd:boolean"
+    },
+    "menuoptions": {
+      "@id": "crm:menuoptions",
+      "@type": "xsd:boolean"
+    },
+    "managegroups": {
+      "@id": "crm:managegroups",
+      "@type": "xsd:boolean"
+    },
+    "finance": {
+      "@id": "crm:finance",
+      "@type": "xsd:boolean"
+    },
+    "notes": {
+      "@id": "crm:notes",
+      "@type": "xsd:boolean"
+    },
+    "admin": {
+      "@id": "crm:admin",
+      "@type": "xsd:boolean"
+    },
+    "defaultfy": {
+      "@id": "crm:defaultfy",
+      "@type": "xsd:integer"
+    },
+    "currentdeposit": {
+      "@id": "crm:currentdeposit",
+      "@type": "xsd:integer"
+    },
+    "username": {
+      "@id": "crm:username",
+      "@type": "xsd:string"
+    },
+    "style?": {
+      "@id": "crm:style?",
+      "@type": "xsd:string"
+    },
+    "apikey?": {
+      "@id": "crm:apikey?",
+      "@type": "xsd:string"
+    },
+    "twofactorauthsecret?": {
+      "@id": "crm:twofactorauthsecret?",
+      "@type": "xsd:string"
+    },
+    "twofactorauthlastkeytimestamp?": {
+      "@id": "crm:twofactorauthlastkeytimestamp?",
+      "@type": "xsd:integer"
+    },
+    "twofactorauthrecoverycodes?": {
+      "@id": "crm:twofactorauthrecoverycodes?",
+      "@type": "xsd:string"
+    },
+    "editself": {
+      "@id": "crm:editself",
+      "@type": "xsd:boolean"
+    },
+    "calstart?": {
+      "@id": "crm:calstart?",
+      "@type": "xsd:date"
+    },
+    "calend?": {
+      "@id": "crm:calend?",
+      "@type": "xsd:date"
+    },
+    "calnoschool1?": {
+      "@id": "crm:calnoschool1?",
+      "@type": "xsd:date"
+    },
+    "calnoschool2?": {
+      "@id": "crm:calnoschool2?",
+      "@type": "xsd:date"
+    },
+    "calnoschool3?": {
+      "@id": "crm:calnoschool3?",
+      "@type": "xsd:date"
+    },
+    "calnoschool4?": {
+      "@id": "crm:calnoschool4?",
+      "@type": "xsd:date"
+    },
+    "calnoschool5?": {
+      "@id": "crm:calnoschool5?",
+      "@type": "xsd:date"
+    },
+    "calnoschool6?": {
+      "@id": "crm:calnoschool6?",
+      "@type": "xsd:date"
+    },
+    "calnoschool7?": {
+      "@id": "crm:calnoschool7?",
+      "@type": "xsd:date"
+    },
+    "calnoschool8?": {
+      "@id": "crm:calnoschool8?",
+      "@type": "xsd:date"
+    },
+    "searchfamily?": {
+      "@id": "crm:searchfamily?",
+      "@type": "xsd:integer"
+    },
+    "value?": {
+      "@id": "crm:value?",
+      "@type": "xsd:string"
+    },
+    "tooltip": {
+      "@id": "crm:tooltip",
+      "@type": "xsd:string"
+    },
+    "permission": {
+      "@id": "crm:permission",
+      "@type": "xsd:string"
+    },
+    "cat": {
+      "@id": "crm:cat",
+      "@type": "xsd:string"
+    },
+    "verId": {
+      "@id": "crm:verId",
+      "@type": "xsd:integer"
+    },
+    "verVersion": {
+      "@id": "crm:verVersion",
+      "@type": "xsd:string"
+    },
+    "verUpdateStart?": {
+      "@id": "crm:verUpdateStart?",
+      "@type": "xsd:dateTime"
+    },
+    "verUpdateEnd?": {
+      "@id": "crm:verUpdateEnd?",
+      "@type": "xsd:dateTime"
+    },
+    "join": {
+      "@id": "crm:join",
+      "@type": "xsd:string"
+    },
+    "come": {
+      "@id": "crm:come",
+      "@type": "xsd:string"
+    },
+    "suggest": {
+      "@id": "crm:suggest",
+      "@type": "xsd:string"
+    },
+    "hearofus": {
+      "@id": "crm:hearofus",
+      "@type": "xsd:string"
+    },
+    "memberOfGroup": {
+      "@id": "crm:memberOfGroup",
+      "@type": "@id"
+    },
+    "hasGroupMember": {
+      "@id": "crm:hasGroupMember",
+      "@type": "@id"
+    },
+    "attendsEvent": {
+      "@id": "crm:attendsEvent",
+      "@type": "@id"
+    },
+    "hasEventAttendee": {
+      "@id": "crm:hasEventAttendee",
+      "@type": "@id"
+    },
+    "hasAudienceGroup": {
+      "@id": "crm:hasAudienceGroup",
+      "@type": "@id"
+    },
+    "eventInAudience": {
+      "@id": "crm:eventInAudience",
+      "@type": "@id"
+    },
+    "eventOnCalendar": {
+      "@id": "crm:eventOnCalendar",
+      "@type": "@id"
+    },
+    "calendarOfEvent": {
+      "@id": "crm:calendarOfEvent",
+      "@type": "@id"
+    },
+    "belongsToFamily": {
+      "@id": "crm:belongsToFamily",
+      "@type": "@id"
+    },
+    "hasFamilyMember": {
+      "@id": "crm:hasFamilyMember",
+      "@type": "@id"
+    },
+    "linkedToPerson": {
+      "@id": "crm:linkedToPerson",
+      "@type": "@id"
+    },
+    "hasPledge": {
+      "@id": "crm:hasPledge",
+      "@type": "@id"
+    },
+    "hasFamilyPledge": {
+      "@id": "crm:hasFamilyPledge",
+      "@type": "@id"
+    },
+    "fundedByFund": {
+      "@id": "crm:fundedByFund",
+      "@type": "@id"
+    },
+    "depositOfFamily": {
+      "@id": "crm:depositOfFamily",
+      "@type": "@id"
+    },
+    "hasDonatedItem": {
+      "@id": "crm:hasDonatedItem",
+      "@type": "@id"
+    },
+    "donorOfItem": {
+      "@id": "crm:donorOfItem",
+      "@type": "@id"
+    },
+    "buyerOfItem": {
+      "@id": "crm:buyerOfItem",
+      "@type": "@id"
+    },
+    "noteAboutPerson": {
+      "@id": "crm:noteAboutPerson",
+      "@type": "@id"
+    },
+    "noteAboutFamily": {
+      "@id": "crm:noteAboutFamily",
+      "@type": "@id"
+    },
+    "hasVolunteerOp": {
+      "@id": "crm:hasVolunteerOp",
+      "@type": "@id"
+    },
+    "whyCameForPerson": {
+      "@id": "crm:whyCameForPerson",
+      "@type": "@id"
+    },
+    "hasKioskDevice": {
+      "@id": "crm:hasKioskDevice",
+      "@type": "@id"
+    },
+    "assignedToEvent": {
+      "@id": "crm:assignedToEvent",
+      "@type": "@id"
+    },
+    "primaryContact": {
+      "@id": "crm:primaryContact",
+      "@type": "@id"
+    },
+    "secondaryContact": {
+      "@id": "crm:secondaryContact",
+      "@type": "@id"
+    },
+    "atLocation": {
+      "@id": "crm:atLocation",
+      "@type": "@id"
+    },
+    "hasRecordProperty": {
+      "@id": "crm:hasRecordProperty",
+      "@type": "@id"
+    },
+    "propertyForRecord": {
+      "@id": "crm:propertyForRecord",
+      "@type": "@id"
+    },
+    "hasDepositSlip": {
+      "@id": "crm:hasDepositSlip",
+      "@type": "@id"
+    },
+    "hasFY": {
+      "@id": "crm:hasFY",
+      "@type": "@id"
+    },
+    "hasNote": {
+      "@id": "crm:hasNote",
+      "@type": "@id"
+    },
+    "familyHasNote": {
+      "@id": "crm:familyHasNote",
+      "@type": "@id"
+    }
+  }
+}

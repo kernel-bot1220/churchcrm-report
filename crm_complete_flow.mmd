@@ -1,0 +1,130 @@
+# ChurchCRM Complete Data Flow Diagrams
+## Business Process Flows
+
+---
+
+## 1. Person Lifecycle
+
+```mermaid
+flowchart TD
+    subgraph Registration["Person Registration"]
+        P1["New Person<br/>Entered in person_per"]
+        P2["Assign Classification<br/>per_cls_ID -> list_lst"]
+        P3["Assign Family<br/>per_fam_ID -> family_fam"]
+    end
+    
+    subgraph GroupInvolvement["Group Involvement"]
+        P4["Join Groups<br/>person2group2role_p2g2r"]
+        P5["Assign Group Role"]
+        P6["Group Properties<br/>groupprop_master"]
+    end
+    
+    subgraph Volunteer["Volunteer Service"]
+        V1["Assign Volunteer Opportunity<br/>person2volunteeropp_p2vo"]
+        V2["Track Volunteer Hours"]
+    end
+    
+    subgraph Activities["Activities & Events"]
+        A1["Event Registration<br/>event_attend"]
+        A2["Check-in/Check-out"]
+        A3["Event Counts<br/>eventcounts_evtcnt"]
+    end
+    
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
+    P4 --> V1 --> V2
+    P4 --> A1 --> A2 --> A3
+```
+
+---
+
+## 2. Financial Full Chain
+
+```mermaid
+flowchart TD
+    subgraph Pledge["Pledge Commitment"]
+        F1["Define Donation Fund<br/>donationfund_fun"]
+        F2["Create Pledge<br/>pledge_plg<br/>plg_PledgeOrPayment=Pledge"]
+        F3["Set Schedule<br/>plg_schedule"]
+    end
+    
+    subgraph Collection["Collection"]
+        C1["Record Payment<br/>pledge_plg<br/>plg_PledgeOrPayment=Payment"]
+        C2["Scan Check<br/>fam_scanCheck"]
+        C3["Assign Fund<br/>plg_fundID"]
+    end
+    
+    subgraph Deposit["Deposit Process"]
+        D1["Create Deposit<br/>deposit_dep"]
+        D2["Link Payments<br/>plg_depID"]
+        D3["Close Deposit<br/>dep_Closed"]
+    end
+    
+    subgraph Reconciliation["Reconciliation"]
+        R1["Bank Reconciliation"]
+        R2["Tax Report<br/>plg_NonDeductible"]
+        R3["Fund Summary"]
+    end
+    
+    F1 --> F2 --> F3 --> C1 --> C2 --> C3 --> D1 --> D2 --> D3 --> R1 --> R2 --> R3
+```
+
+---
+
+## 3. Visitor Conversion
+
+```mermaid
+flowchart TD
+    subgraph Visit["Church Visit"]
+        V1["First Visit<br/>per_FriendDate"]
+        V2["Record Why Came<br/>whycame_why"]
+        V3["Add Notes<br/>note_nte"]
+    end
+    
+    subgraph FollowUp["Follow-up Tracking"]
+        F1["Assign Property<br/>record2property_r2p"]
+        F2["Create Tasks"]
+        F3["Send Communications"]
+    end
+    
+    subgraph Classification["Classification"]
+        C1["Update Classification<br/>per_cls_ID"]
+        C2["Member Status"]
+    end
+    
+    subgraph Integration["Family Integration"]
+        I1["Create/Join Family<br/>family_fam"]
+        I2["Link to Family<br/>per_fam_ID"]
+    end
+    
+    V1 --> V2 --> V3 --> F1 --> F2 --> F3 --> C1 --> C2
+    C2 --> I1 --> I2
+```
+
+---
+
+## 4. Event Management Flow
+
+```mermaid
+flowchart TD
+    subgraph Setup["Event Setup"]
+        E1["Define Event Type<br/>event_types"]
+        E2["Create Event<br/>events_event"]
+        E3["Define Audiences<br/>event_audience"]
+        E4["Set Event Counts<br/>eventcountnames_evctnm"]
+    end
+    
+    subgraph Planning["Planning"]
+        P1["Assign Contacts<br/>primary_contact_person_id<br/>secondary_contact_person_id"]
+        P2["Set Location<br/>location_id -> locations"]
+        P3["Create Calendar<br/>calendars"]
+    end
+    
+    subgraph Execution["Execution"]
+        X1["Kiosk Registration<br/>kioskdevice_kdev<br/>kioskassginment_kasm"]
+        X2["Check-in<br/>event_attend"]
+        X3["Track Attendance<br/>eventcounts_evtcnt"]
+    end
+    
+    E1 --> E2 --> E3 --> E4 --> P1 --> P2 --> P3 --> X1 --> X2 --> X3
+```
+

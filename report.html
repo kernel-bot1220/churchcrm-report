@@ -58,12 +58,12 @@
 erDiagram
 
     CalendarEvent {
-        SMALLINT calendar_id PK
-        SMALLINT event_id PK
+        INT calendar_id PK
+        INT event_id PK
     }
 
     Calendar {
-        SMALLINT calendar_id PK
+        INT calendar_id PK
         VARCHAR name
         VARCHAR accesstoken
         VARCHAR backgroundColor
@@ -73,38 +73,38 @@ erDiagram
     Config {
         INTEGER cfg_id PK
         VARCHAR cfg_name
-        LONGVARCHAR cfg_value
+        TEXT cfg_value
     }
 
     Deposit {
-        SMALLINT dep_ID PK
+        INT dep_ID PK
         DATE dep_Date
-        LONGVARCHAR dep_Comment
-        SMALLINT dep_EnteredBy
+        TEXT dep_Comment
+        INT dep_EnteredBy
         BOOLEAN dep_Closed
         CHAR dep_Type
     }
 
     DonatedItem {
-        SMALLINT di_ID PK
+        INT di_ID PK
         VARCHAR di_item
-        SMALLINT di_FR_ID
-        SMALLINT di_donor_ID
-        SMALLINT di_buyer_ID
-        SMALLINT di_multibuy
+        INT di_FR_ID
+        INT di_donor_ID
+        INT di_buyer_ID
+        INT di_multibuy
         VARCHAR di_title
-        LONGVARCHAR di_description
-        DECIMAL di_sellprice
-        DECIMAL di_estprice
-        DECIMAL di_minimum
-        DECIMAL di_materialvalue
-        SMALLINT di_EnteredBy
+        TEXT di_description
+        FLOAT di_sellprice
+        FLOAT di_estprice
+        FLOAT di_minimum
+        FLOAT di_materialvalue
+        INT di_EnteredBy
         DATE di_EnteredDate
-        LONGVARCHAR di_picture
+        TEXT di_picture
     }
 
     DonationFund {
-        TINYINT fun_ID PK
+        INT fun_ID PK
         CHAR fun_Active
         VARCHAR fun_Name
         VARCHAR fun_Description
@@ -115,21 +115,21 @@ erDiagram
         INTEGER attend_id PK
         INTEGER event_id
         INTEGER person_id
-        TIMESTAMP checkin_date
+        DATETIME checkin_date
         INTEGER checkin_id
-        TIMESTAMP checkout_date
+        DATETIME checkout_date
         INTEGER checkout_id
     }
 
     EventAudience {
-        SMALLINT event_id PK
-        SMALLINT group_id PK
+        INT event_id PK
+        INT group_id PK
     }
 
     EventType {
         INTEGER type_id PK
         VARCHAR type_name
-        TIME type_defstarttime
+        TEXT type_defstarttime
         CHAR type_defrecurtype
         CHAR type_defrecurDOW
         CHAR type_defrecurDOM
@@ -140,7 +140,7 @@ erDiagram
 
     EventCountName {
         INTEGER evctnm_countid PK
-        SMALLINT evctnm_eventtypeid
+        INT evctnm_eventtypeid
         VARCHAR evctnm_countname
     }
 
@@ -157,31 +157,31 @@ erDiagram
         INTEGER event_type
         VARCHAR event_title
         VARCHAR event_desc
-        LONGVARCHAR event_text
-        TIMESTAMP event_start
-        TIMESTAMP event_end
+        TEXT event_text
+        DATETIME event_start
+        DATETIME event_end
         INTEGER inactive
         INTEGER location_id
         INTEGER primary_contact_person_id
         INTEGER secondary_contact_person_id
-        LONGVARCHAR event_url
+        TEXT event_url
     }
 
     FamilyCustom {
-        SMALLINT fam_ID PK
+        INT fam_ID PK
     }
 
     FamilyCustomMaster {
         VARCHAR fam_custom_Field PK
-        SMALLINT fam_custom_Order
+        INT fam_custom_Order
         VARCHAR fam_custom_Name
-        SMALLINT fam_custom_Special
-        TINYINT fam_custom_FieldSec
-        TINYINT type_ID
+        INT fam_custom_Special
+        INT fam_custom_FieldSec
+        INT type_ID
     }
 
     Family {
-        SMALLINT fam_ID PK
+        INT fam_ID PK
         VARCHAR fam_Name
         VARCHAR fam_Address1
         VARCHAR fam_Address2
@@ -192,48 +192,48 @@ erDiagram
         VARCHAR fam_HomePhone
         VARCHAR fam_Email
         DATE fam_WeddingDate
-        TIMESTAMP fam_DateEntered
-        TIMESTAMP fam_DateLastEdited
-        SMALLINT fam_EnteredBy
-        SMALLINT fam_EditedBy
-        LONGVARCHAR fam_scanCheck
-        LONGVARCHAR fam_scanCredit
+        DATETIME fam_DateEntered
+        DATETIME fam_DateLastEdited
+        INT fam_EnteredBy
+        INT fam_EditedBy
+        TEXT fam_scanCheck
+        TEXT fam_scanCredit
         CHAR fam_SendNewsLetter
         DATE fam_DateDeactivated
-        DOUBLE fam_Latitude
-        DOUBLE fam_Longitude
-        SMALLINT fam_Envelope
+        FLOAT fam_Latitude
+        FLOAT fam_Longitude
+        INT fam_Envelope
     }
 
     FundRaiser {
-        SMALLINT fr_ID PK
+        INT fr_ID PK
         DATE fr_date
         VARCHAR fr_title
-        LONGVARCHAR fr_description
-        SMALLINT fr_EnteredBy
+        TEXT fr_description
+        INT fr_EnteredBy
         DATE fr_EnteredDate
     }
 
     Group {
-        SMALLINT grp_ID PK
-        TINYINT grp_Type
-        SMALLINT grp_RoleListID
-        SMALLINT grp_DefaultRole
+        INT grp_ID PK
+        INT grp_Type
+        INT grp_RoleListID
+        INT grp_DefaultRole
         VARCHAR grp_Name
-        LONGVARCHAR grp_Description
+        TEXT grp_Description
         BOOLEAN grp_hasSpecialProps
         BOOLEAN grp_active
         BOOLEAN grp_include_email_export
     }
 
     GroupPropMaster {
-        SMALLINT grp_ID
-        TINYINT prop_ID
+        INT grp_ID
+        INT prop_ID
         VARCHAR prop_Field
         VARCHAR prop_Name
         VARCHAR prop_Description
-        SMALLINT type_ID
-        SMALLINT prop_Special
+        INT type_ID
+        INT prop_Special
         CHAR prop_PersonDisplay
     }
 
@@ -248,22 +248,22 @@ erDiagram
         INTEGER kdev_ID PK
         VARCHAR kdev_GUIDHash
         VARCHAR kdev_Name
-        LONGVARCHAR kdev_deviceType
-        LONGVARCHAR kdev_lastHeartbeat
+        TEXT kdev_deviceType
+        TEXT kdev_lastHeartbeat
         BOOLEAN kdev_Accepted
-        LONGVARCHAR kdev_PendingCommands
+        TEXT kdev_PendingCommands
     }
 
     ListOption {
-        SMALLINT lst_ID PK
-        SMALLINT lst_OptionID PK
-        TINYINT lst_OptionSequence
+        INT lst_ID PK
+        INT lst_OptionID PK
+        INT lst_OptionSequence
         VARCHAR lst_OptionName
     }
 
     Location {
-        SMALLINT location_id PK
-        SMALLINT location_typeID
+        INT location_id PK
+        INT location_typeID
         VARCHAR location_name
         VARCHAR location_address
         VARCHAR location_city
@@ -276,52 +276,52 @@ erDiagram
     }
 
     MenuLink {
-        SMALLINT linkId PK
+        INT linkId PK
         VARCHAR linkName
         VARCHAR linkUri
-        SMALLINT linkOrder
+        INT linkOrder
     }
 
     Note {
-        SMALLINT nte_ID PK
-        SMALLINT nte_per_ID
-        SMALLINT nte_fam_ID
-        SMALLINT nte_Private
-        LONGVARCHAR nte_Text
-        TIMESTAMP nte_DateEntered
-        TIMESTAMP nte_DateLastEdited
-        SMALLINT nte_EnteredBy
-        SMALLINT nte_EditedBy
+        INT nte_ID PK
+        INT nte_per_ID
+        INT nte_fam_ID
+        INT nte_Private
+        TEXT nte_Text
+        DATETIME nte_DateEntered
+        DATETIME nte_DateLastEdited
+        INT nte_EnteredBy
+        INT nte_EditedBy
         VARCHAR nte_Type
     }
 
     PersonGroupRole {
-        SMALLINT p2g2r_per_ID PK
-        SMALLINT p2g2r_grp_ID PK
-        SMALLINT p2g2r_rle_ID
+        INT p2g2r_per_ID PK
+        INT p2g2r_grp_ID PK
+        INT p2g2r_rle_ID
     }
 
     PersonVolunteerOpportunity {
-        SMALLINT p2vo_ID PK
-        SMALLINT p2vo_per_ID
-        SMALLINT p2vo_vol_ID
+        INT p2vo_ID PK
+        INT p2vo_per_ID
+        INT p2vo_vol_ID
     }
 
     PersonCustom {
-        SMALLINT per_ID PK
+        INT per_ID PK
     }
 
     PersonCustomMaster {
         VARCHAR custom_Field PK
-        SMALLINT custom_Order
+        INT custom_Order
         VARCHAR custom_Name
-        SMALLINT custom_Special
-        TINYINT custom_FieldSec
-        TINYINT type_ID
+        INT custom_Special
+        INT custom_FieldSec
+        INT type_ID
     }
 
     Person {
-        SMALLINT per_ID PK
+        INT per_ID PK
         VARCHAR per_Title
         VARCHAR per_FirstName
         VARCHAR per_MiddleName
@@ -338,92 +338,92 @@ erDiagram
         VARCHAR per_CellPhone
         VARCHAR per_Email
         VARCHAR per_WorkEmail
-        TINYINT per_BirthMonth
-        TINYINT per_BirthDay
-        SMALLINT per_BirthYear
+        INT per_BirthMonth
+        INT per_BirthDay
+        INT per_BirthYear
         DATE per_MembershipDate
-        TINYINT per_Gender
-        TINYINT per_fmr_ID
-        TINYINT per_cls_ID
-        SMALLINT per_fam_ID
-        SMALLINT per_Envelope
-        TIMESTAMP per_DateLastEdited
-        TIMESTAMP per_DateEntered
-        SMALLINT per_EnteredBy
-        SMALLINT per_EditedBy
+        INT per_Gender
+        INT per_fmr_ID
+        INT per_cls_ID
+        INT per_fam_ID
+        INT per_Envelope
+        DATETIME per_DateLastEdited
+        DATETIME per_DateEntered
+        INT per_EnteredBy
+        INT per_EditedBy
         DATE per_FriendDate
-        SMALLINT per_Flags
+        INT per_Flags
         VARCHAR per_Facebook
         VARCHAR per_Twitter
         VARCHAR per_LinkedIn
     }
 
     Pledge {
-        SMALLINT plg_plgID PK
-        SMALLINT plg_FamID
-        SMALLINT plg_FYID
+        INT plg_plgID PK
+        INT plg_FamID
+        INT plg_FYID
         DATE plg_date
-        DECIMAL plg_amount
+        FLOAT plg_amount
         CHAR plg_schedule
         CHAR plg_method
-        LONGVARCHAR plg_comment
+        TEXT plg_comment
         DATE plg_DateLastEdited
-        SMALLINT plg_EditedBy
+        INT plg_EditedBy
         CHAR plg_PledgeOrPayment
-        TINYINT plg_fundID
-        SMALLINT plg_depID
-        BIGINT plg_CheckNo
+        INT plg_fundID
+        INT plg_depID
+        INT plg_CheckNo
         BOOLEAN plg_Problem
-        LONGVARCHAR plg_scanString
-        SMALLINT plg_aut_ID
+        TEXT plg_scanString
+        INT plg_aut_ID
         BOOLEAN plg_aut_Cleared
-        SMALLINT plg_aut_ResultID
-        DECIMAL plg_NonDeductible
+        INT plg_aut_ResultID
+        FLOAT plg_NonDeductible
         VARCHAR plg_GroupKey
     }
 
     Property {
-        SMALLINT pro_ID PK
+        INT pro_ID PK
         VARCHAR pro_Class
-        SMALLINT pro_prt_ID
+        INT pro_prt_ID
         VARCHAR pro_Name
-        LONGVARCHAR pro_Description
+        TEXT pro_Description
         VARCHAR pro_Prompt
     }
 
     PropertyType {
-        SMALLINT prt_ID PK
+        INT prt_ID PK
         VARCHAR prt_Class
         VARCHAR prt_Name
-        LONGVARCHAR prt_Description
+        TEXT prt_Description
     }
 
     PredefinedReports {
-        SMALLINT qry_ID PK
-        LONGVARCHAR qry_SQL
+        INT qry_ID PK
+        TEXT qry_SQL
         VARCHAR qry_Name
-        LONGVARCHAR qry_Description
+        TEXT qry_Description
         BOOLEAN qry_Count
     }
 
     QueryParameterOptions {
-        SMALLINT qpo_ID PK
-        SMALLINT qpo_qrp_ID
+        INT qpo_ID PK
+        INT qpo_qrp_ID
         VARCHAR qpo_Display
         VARCHAR qpo_Value
     }
 
     QueryParameters {
-        SMALLINT qrp_ID PK
-        SMALLINT qrp_qry_ID
-        TINYINT qrp_Type
-        LONGVARCHAR qrp_OptionSQL
+        INT qrp_ID PK
+        INT qrp_qry_ID
+        INT qrp_Type
+        TEXT qrp_OptionSQL
         VARCHAR qrp_Name
-        LONGVARCHAR qrp_Description
+        TEXT qrp_Description
         VARCHAR qrp_Alias
         VARCHAR qrp_Default
-        TINYINT qrp_Required
-        TINYINT qrp_InputBoxSize
+        INT qrp_Required
+        INT qrp_InputBoxSize
         VARCHAR qrp_Validation
         INTEGER qrp_NumericMax
         INTEGER qrp_NumericMin
@@ -432,9 +432,9 @@ erDiagram
     }
 
     RecordProperty {
-        SMALLINT r2p_pro_ID PK
-        SMALLINT r2p_record_ID PK
-        LONGVARCHAR r2p_Value
+        INT r2p_pro_ID PK
+        INT r2p_record_ID PK
+        TEXT r2p_Value
     }
 
     Token {
@@ -446,18 +446,18 @@ erDiagram
     }
 
     UserSetting {
-        SMALLINT user_id PK
+        INT user_id PK
         VARCHAR setting_name PK
         VARCHAR setting_value
     }
 
     User {
-        SMALLINT usr_per_ID PK
+        INT usr_per_ID PK
         VARCHAR usr_Password
         BOOLEAN usr_NeedPasswordChange
-        TIMESTAMP usr_LastLogin
-        SMALLINT usr_LoginCount
-        TINYINT usr_FailedLogins
+        DATETIME usr_LastLogin
+        INT usr_LoginCount
+        INT usr_FailedLogins
         BOOLEAN usr_AddRecords
         BOOLEAN usr_EditRecords
         BOOLEAN usr_DeleteRecords
@@ -466,14 +466,14 @@ erDiagram
         BOOLEAN usr_Finance
         BOOLEAN usr_Notes
         BOOLEAN usr_Admin
-        SMALLINT usr_defaultFY
-        SMALLINT usr_currentDeposit
+        INT usr_defaultFY
+        INT usr_currentDeposit
         VARCHAR usr_UserName
         VARCHAR usr_Style
         VARCHAR usr_ApiKey
         VARCHAR usr_TwoFactorAuthSecret
-        SMALLINT usr_TwoFactorAuthLastKeyTimestamp
-        LONGVARCHAR usr_TwoFactorAuthRecoveryCodes
+        INT usr_TwoFactorAuthLastKeyTimestamp
+        TEXT usr_TwoFactorAuthRecoveryCodes
         BOOLEAN usr_EditSelf
         DATE usr_CalStart
         DATE usr_CalEnd
@@ -485,25 +485,25 @@ erDiagram
         DATE usr_CalNoSchool6
         DATE usr_CalNoSchool7
         DATE usr_CalNoSchool8
-        TINYINT usr_SearchFamily
+        INT usr_SearchFamily
     }
 
     UserConfig {
-        SMALLINT ucfg_per_id PK
+        INT ucfg_per_id PK
         INTEGER ucfg_id PK
         VARCHAR ucfg_name
-        LONGVARCHAR ucfg_value
+        TEXT ucfg_value
         CHAR ucfg_type
-        LONGVARCHAR ucfg_tooltip
+        TEXT ucfg_tooltip
         CHAR ucfg_permission
         VARCHAR ucfg_cat
     }
 
     Version {
-        SMALLINT ver_ID PK
+        INT ver_ID PK
         VARCHAR ver_version
-        TIMESTAMP ver_update_start
-        TIMESTAMP ver_update_end
+        DATETIME ver_update_start
+        DATETIME ver_update_end
     }
 
     VolunteerOpportunity {
@@ -515,12 +515,12 @@ erDiagram
     }
 
     WhyCame {
-        SMALLINT why_ID PK
-        SMALLINT why_per_ID
-        LONGVARCHAR why_join
-        LONGVARCHAR why_come
-        LONGVARCHAR why_suggest
-        LONGVARCHAR why_hearOfUs
+        INT why_ID PK
+        INT why_per_ID
+        TEXT why_join
+        TEXT why_come
+        TEXT why_suggest
+        TEXT why_hearOfUs
     }
 
 </div></div></div><div class="section" id="flow-diagram">

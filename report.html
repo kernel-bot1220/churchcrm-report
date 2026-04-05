@@ -17,18 +17,17 @@
 <a class="sidebar-item" href="#summary">&#128202; Summary</a>
 <a class="sidebar-item" href="#domains">&#128993; Domains</a>
 <a class="sidebar-item" href="#core-tables">&#128451; Core Tables</a>
-<a class="sidebar-item" href="#er-diagram">&#128279; Er Diagram</a>
+<a class="sidebar-item" href="#er-diagram">&#128279; ER Diagram</a>
 <a class="sidebar-item" href="#flow-diagram">&#128260; Flow Diagram</a>
-<a class="sidebar-item" href="#api">&#128246; Api</a>
+<a class="sidebar-item" href="#api">&#128246; API</a>
 <a class="sidebar-item" href="#services">&#9881; Services</a>
 <a class="sidebar-item" href="#code">&#128187; Code</a>
-<a class="sidebar-item" href="#dict">&#128203; Dict</a>
+<a class="sidebar-item" href="#dict">&#128203; Dictionary</a>
 
 </div></div>
 <div class="main">
 <div class="search-bar"><input type="text" id="searchInput" placeholder="&#128269; 搜索表名、字段..." oninput="handleSearch(this.value)"></div>
 <div class="content">
-
 <div class="section" id="summary">
 <div class="section-header"><h2>&#128202; 执行摘要</h2><p>ChurchCRM 是基于 PHP/MySQL 的教堂管理信息系统（HIS）</p></div>
 <div class="stats-grid">
@@ -37,9 +36,7 @@
 <div class="stat-card"><div class="stat-number">195</div><div class="stat-label">API端点</div></div>
 <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">核心Service</div></div>
 <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">核心业务链路</div></div>
-</div></div>
-
-<div class="section" id="domains">
+</div></div><div class="section" id="domains">
 <div class="section-header"><h2>&#128993; 业务域分布</h2><p>43张表分为9个业务域</p></div>
 <div class="card">
 <table class="data-table"><thead><tr><th>业务域</th><th>表数</th><th>核心表</th><th>说明</th></tr></thead><tbody>
@@ -52,15 +49,11 @@
 <tr><td><span class="domain-tag system">&#128187;</span> Kiosk</td><td>2</td><td>kioskdevice_kdev</td><td>活动签到终端</td></tr>
 <tr><td><span class="domain-tag system">&#128203;</span> Properties</td><td>3</td><td>property_pro</td><td>实体属性</td></tr>
 <tr><td><span class="domain-tag system">&#128209;</span> Queries</td><td>3</td><td>query_qry</td><td>预定义报表</td></tr>
-</tbody></table></div></div>
-
-<div class="section" id="core-tables">
+</tbody></table></div></div><div class="section" id="core-tables">
 <div class="section-header"><h2>&#128451; 核心数据表（点击展开查看字段）</h2><p>7张核心业务表，附完整字段定义</p></div>
-<div class="card table-card domain-person" id="table-person_per"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag person">人员主表</span> <code style="font-size:14px">person_per</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">人员主数据，per_fam_ID关联家庭，per_FriendDate标记访客</div><div style="font-size:12px;color:var(--text-muted)">共 35 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">per_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">per_FirstName</td><td class="field-type">FirstName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_MiddleName</td><td class="field-type">MiddleName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_LastName</td><td class="field-type">LastName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Suffix</td><td class="field-type">Suffix</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Address1</td><td class="field-type">Address1</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Address2</td><td class="field-type">Address2</td><td class="field-desc"></td></tr><tr><td class="field-name">per_City</td><td class="field-type">City</td><td class="field-desc"></td></tr><tr><td class="field-name">per_State</td><td class="field-type">State</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Zip</td><td class="field-type">Zip</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Country</td><td class="field-type">Country</td><td class="field-desc"></td></tr><tr><td class="field-name">per_HomePhone</td><td class="field-type">HomePhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_WorkPhone</td><td class="field-type">WorkPhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_CellPhone</td><td class="field-type">CellPhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Email</td><td class="field-type">Email</td><td class="field-desc"></td></tr><tr><td class="field-name">per_WorkEmail</td><td class="field-type">WorkEmail</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthMonth</td><td class="field-type">BirthMonth</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthDay</td><td class="field-type">BirthDay</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthYear</td><td class="field-type">BirthYear</td><td class="field-desc"></td></tr><tr><td class="field-name">per_MembershipDate</td><td class="field-type">MembershipDate</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Gender</td><td class="field-type">Gender</td><td class="field-desc"></td></tr><tr><td class="field-name">per_fmr_ID</td><td class="field-type">FmrId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_cls_ID</td><td class="field-type">ClsId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_fam_ID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Envelope</td><td class="field-type">Envelope</td><td class="field-desc"></td></tr><tr><td class="field-name">per_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">per_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">per_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">per_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">per_FriendDate</td><td class="field-type">FriendDate</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Flags</td><td class="field-type">Flags</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Facebook</td><td class="field-type">Facebook</td><td class="field-desc">Facebook username</td></tr><tr><td class="field-name">per_Twitter</td><td class="field-type">Twitter</td><td class="field-desc">Twitter username</td></tr><tr><td class="field-name">per_LinkedIn</td><td class="field-type">LinkedIn</td><td class="field-desc">LinkedIn name</td></tr></tbody></table></div></div><div class="card table-card domain-person" id="table-family_fam"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag person">家庭主表</span> <code style="font-size:14px">family_fam</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">家庭主数据，Latitude/Lng支持地图</div><div style="font-size:12px;color:var(--text-muted)">共 22 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fam_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Address1</td><td class="field-type">Address1</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Address2</td><td class="field-type">Address2</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_City</td><td class="field-type">City</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_State</td><td class="field-type">State</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Zip</td><td class="field-type">Zip</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Country</td><td class="field-type">Country</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_HomePhone</td><td class="field-type">HomePhone</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Email</td><td class="field-type">Email</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_WeddingDate</td><td class="field-type">Weddingdate</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_scanCheck</td><td class="field-type">ScanCheck</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_scanCredit</td><td class="field-type">ScanCredit</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_SendNewsLetter</td><td class="field-type">SendNewsletter</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateDeactivated</td><td class="field-type">DateDeactivated</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Latitude</td><td class="field-type">Latitude</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Longitude</td><td class="field-type">Longitude</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Envelope</td><td class="field-type">Envelope</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-group" id="table-group_grp"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag group">小组主表</span> <code style="font-size:14px">group_grp</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">小组定义，通过person2group2role_p2g2r建立多对多关系</div><div style="font-size:12px;color:var(--text-muted)">共 9 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">grp_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_Type</td><td class="field-type">Type</td><td class="field-desc">The group type.  This is defined in list_lst.OptionId where lst_ID=3</td></tr><tr><td class="field-name">grp_RoleListID</td><td class="field-type">RoleListId</td><td class="field-desc">The lst_ID containing the names of the roles for this group</td></tr><tr><td class="field-name">grp_DefaultRole</td><td class="field-type">DefaultRole</td><td class="field-desc">The ID of the default role in this group's RoleList</td></tr><tr><td class="field-name">grp_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_hasSpecialProps</td><td class="field-type">HasSpecialProps</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_active</td><td class="field-type">Active</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_include_email_export</td><td class="field-type">IncludeInEmailExport</td><td class="field-desc">Should members of this group be included in MailChimp Export</td></tr></tbody></table></div></div><div class="card table-card domain-event" id="table-events_event"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag event">活动主表</span> <code style="font-size:14px">events_event</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">活动定义，event_attend记录参与人</div><div style="font-size:12px;color:var(--text-muted)">共 12 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">event_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">event_type</td><td class="field-type">Type</td><td class="field-desc"></td></tr><tr><td class="field-name">event_title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">event_desc</td><td class="field-type">Desc</td><td class="field-desc"></td></tr><tr><td class="field-name">event_text</td><td class="field-type">Text</td><td class="field-desc"></td></tr><tr><td class="field-name">event_start</td><td class="field-type">Start</td><td class="field-desc"></td></tr><tr><td class="field-name">event_end</td><td class="field-type">End</td><td class="field-desc"></td></tr><tr><td class="field-name">inactive</td><td class="field-type">InActive</td><td class="field-desc"></td></tr><tr><td class="field-name">location_id</td><td class="field-type">LocationId</td><td class="field-desc"></td></tr><tr><td class="field-name">primary_contact_person_id</td><td class="field-type">PrimaryContactPersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">secondary_contact_person_id</td><td class="field-type">SecondaryContactPersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">event_url</td><td class="field-type">URL</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-financial" id="table-pledge_plg"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag financial">奉献记录表</span> <code style="font-size:14px">pledge_plg</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">奉献承诺与支付，plg_PledgeOrPayment区分承诺和支付</div><div style="font-size:12px;color:var(--text-muted)">共 21 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">plg_plgID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_FamID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_FYID</td><td class="field-type">FyId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_amount</td><td class="field-type">Amount</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_schedule</td><td class="field-type">Schedule</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_method</td><td class="field-type">Method</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_comment</td><td class="field-type">Comment</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_PledgeOrPayment</td><td class="field-type">PledgeOrPayment</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_fundID</td><td class="field-type">FundId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_depID</td><td class="field-type">DepId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_CheckNo</td><td class="field-type">CheckNo</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_Problem</td><td class="field-type">Problem</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_scanString</td><td class="field-type">ScanString</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_ID</td><td class="field-type">AutId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_Cleared</td><td class="field-type">AutCleared</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_ResultID</td><td class="field-type">AutResultId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_NonDeductible</td><td class="field-type">Nondeductible</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_GroupKey</td><td class="field-type">GroupKey</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-financial" id="table-deposit_dep"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag financial">存款批次表</span> <code style="font-size:14px">deposit_dep</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">银行对账批次，dep_Closed标记关闭状态</div><div style="font-size:12px;color:var(--text-muted)">共 6 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">dep_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Comment</td><td class="field-type">Comment</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_EnteredBy</td><td class="field-type">Enteredby</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Closed</td><td class="field-type">Closed</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Type</td><td class="field-type">Type</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="table-user_usr"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag system">用户账号表</span> <code style="font-size:14px">user_usr</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">系统用户，支持API Key和2FA</div><div style="font-size:12px;color:var(--text-muted)">共 34 个字段</div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">usr_per_ID</td><td class="field-type">PersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Password</td><td class="field-type">Password</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_NeedPasswordChange</td><td class="field-type">NeedPasswordChange</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_LastLogin</td><td class="field-type">LastLogin</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_LoginCount</td><td class="field-type">LoginCount</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_FailedLogins</td><td class="field-type">FailedLogins</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_AddRecords</td><td class="field-type">AddRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_EditRecords</td><td class="field-type">EditRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_DeleteRecords</td><td class="field-type">DeleteRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_MenuOptions</td><td class="field-type">MenuOptions</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_ManageGroups</td><td class="field-type">ManageGroups</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Finance</td><td class="field-type">Finance</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Notes</td><td class="field-type">Notes</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Admin</td><td class="field-type">Admin</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_defaultFY</td><td class="field-type">DefaultFY</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_currentDeposit</td><td class="field-type">CurrentDeposit</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_UserName</td><td class="field-type">UserName</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Style</td><td class="field-type">UserStyle</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_ApiKey</td><td class="field-type">ApiKey</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthSecret</td><td class="field-type">TwoFactorAuthSecret</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthLastKeyTimestamp</td><td class="field-type">TwoFactorAuthLastKeyTimestamp</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthRecoveryCodes</td><td class="field-type">TwoFactorAuthRecoveryCodes</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_EditSelf</td><td class="field-type">EditSelf</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalStart</td><td class="field-type">CalStart</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalEnd</td><td class="field-type">CalEnd</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool1</td><td class="field-type">CalNoSchool1</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool2</td><td class="field-type">CalNoSchool2</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool3</td><td class="field-type">CalNoSchool3</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool4</td><td class="field-type">CalNoSchool4</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool5</td><td class="field-type">CalNoSchool5</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool6</td><td class="field-type">CalNoSchool6</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool7</td><td class="field-type">CalNoSchool7</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool8</td><td class="field-type">CalNoSchool8</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_SearchFamily</td><td class="field-type">Searchfamily</td><td class="field-desc"></td></tr></tbody></table></div></div>
-</div>
-
-<div class="section" id="er-diagram">
-<div class="section-header"><h2>&#128279; 实体关系图 (ER)</h2><p>Mermaid 实时渲染，43张表完整外键关系（修复版）</p></div>
+<div class="card table-card domain-person" id="table-person_per"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag person">人员主表</span> <code style="font-size:14px">person_per</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">人员主数据，per_fam_ID关联家庭，per_FriendDate标记访客</div><div style="font-size:12px;color:var(--text-muted)">35 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">per_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">per_FirstName</td><td class="field-type">FirstName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_MiddleName</td><td class="field-type">MiddleName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_LastName</td><td class="field-type">LastName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Suffix</td><td class="field-type">Suffix</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Address1</td><td class="field-type">Address1</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Address2</td><td class="field-type">Address2</td><td class="field-desc"></td></tr><tr><td class="field-name">per_City</td><td class="field-type">City</td><td class="field-desc"></td></tr><tr><td class="field-name">per_State</td><td class="field-type">State</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Zip</td><td class="field-type">Zip</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Country</td><td class="field-type">Country</td><td class="field-desc"></td></tr><tr><td class="field-name">per_HomePhone</td><td class="field-type">HomePhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_WorkPhone</td><td class="field-type">WorkPhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_CellPhone</td><td class="field-type">CellPhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Email</td><td class="field-type">Email</td><td class="field-desc"></td></tr><tr><td class="field-name">per_WorkEmail</td><td class="field-type">WorkEmail</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthMonth</td><td class="field-type">BirthMonth</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthDay</td><td class="field-type">BirthDay</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthYear</td><td class="field-type">BirthYear</td><td class="field-desc"></td></tr><tr><td class="field-name">per_MembershipDate</td><td class="field-type">MembershipDate</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Gender</td><td class="field-type">Gender</td><td class="field-desc"></td></tr><tr><td class="field-name">per_fmr_ID</td><td class="field-type">FmrId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_cls_ID</td><td class="field-type">ClsId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_fam_ID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Envelope</td><td class="field-type">Envelope</td><td class="field-desc"></td></tr><tr><td class="field-name">per_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">per_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">per_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">per_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">per_FriendDate</td><td class="field-type">FriendDate</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Flags</td><td class="field-type">Flags</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Facebook</td><td class="field-type">Facebook</td><td class="field-desc">Facebook username</td></tr><tr><td class="field-name">per_Twitter</td><td class="field-type">Twitter</td><td class="field-desc">Twitter username</td></tr><tr><td class="field-name">per_LinkedIn</td><td class="field-type">LinkedIn</td><td class="field-desc">LinkedIn name</td></tr></tbody></table></div></div><div class="card table-card domain-person" id="table-family_fam"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag person">家庭主表</span> <code style="font-size:14px">family_fam</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">家庭主数据，Latitude/Lng支持地图</div><div style="font-size:12px;color:var(--text-muted)">22 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fam_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Address1</td><td class="field-type">Address1</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Address2</td><td class="field-type">Address2</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_City</td><td class="field-type">City</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_State</td><td class="field-type">State</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Zip</td><td class="field-type">Zip</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Country</td><td class="field-type">Country</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_HomePhone</td><td class="field-type">HomePhone</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Email</td><td class="field-type">Email</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_WeddingDate</td><td class="field-type">Weddingdate</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_scanCheck</td><td class="field-type">ScanCheck</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_scanCredit</td><td class="field-type">ScanCredit</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_SendNewsLetter</td><td class="field-type">SendNewsletter</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateDeactivated</td><td class="field-type">DateDeactivated</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Latitude</td><td class="field-type">Latitude</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Longitude</td><td class="field-type">Longitude</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Envelope</td><td class="field-type">Envelope</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-group" id="table-group_grp"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag group">小组主表</span> <code style="font-size:14px">group_grp</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">小组定义，通过person2group2role_p2g2r建立多对多关系</div><div style="font-size:12px;color:var(--text-muted)">9 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">grp_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_Type</td><td class="field-type">Type</td><td class="field-desc">The group type.  This is defined in list_lst.OptionId where lst_ID=3</td></tr><tr><td class="field-name">grp_RoleListID</td><td class="field-type">RoleListId</td><td class="field-desc">The lst_ID containing the names of the roles for this group</td></tr><tr><td class="field-name">grp_DefaultRole</td><td class="field-type">DefaultRole</td><td class="field-desc">The ID of the default role in this group's RoleList</td></tr><tr><td class="field-name">grp_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_hasSpecialProps</td><td class="field-type">HasSpecialProps</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_active</td><td class="field-type">Active</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_include_email_export</td><td class="field-type">IncludeInEmailExport</td><td class="field-desc">Should members of this group be included in MailChimp Export</td></tr></tbody></table></div></div><div class="card table-card domain-event" id="table-events_event"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag event">活动主表</span> <code style="font-size:14px">events_event</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">活动定义，event_attend记录参与人</div><div style="font-size:12px;color:var(--text-muted)">12 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">event_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">event_type</td><td class="field-type">Type</td><td class="field-desc"></td></tr><tr><td class="field-name">event_title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">event_desc</td><td class="field-type">Desc</td><td class="field-desc"></td></tr><tr><td class="field-name">event_text</td><td class="field-type">Text</td><td class="field-desc"></td></tr><tr><td class="field-name">event_start</td><td class="field-type">Start</td><td class="field-desc"></td></tr><tr><td class="field-name">event_end</td><td class="field-type">End</td><td class="field-desc"></td></tr><tr><td class="field-name">inactive</td><td class="field-type">InActive</td><td class="field-desc"></td></tr><tr><td class="field-name">location_id</td><td class="field-type">LocationId</td><td class="field-desc"></td></tr><tr><td class="field-name">primary_contact_person_id</td><td class="field-type">PrimaryContactPersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">secondary_contact_person_id</td><td class="field-type">SecondaryContactPersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">event_url</td><td class="field-type">URL</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-financial" id="table-pledge_plg"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag financial">奉献记录表</span> <code style="font-size:14px">pledge_plg</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">奉献承诺与支付，plg_PledgeOrPayment区分承诺和支付</div><div style="font-size:12px;color:var(--text-muted)">21 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">plg_plgID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_FamID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_FYID</td><td class="field-type">FyId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_amount</td><td class="field-type">Amount</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_schedule</td><td class="field-type">Schedule</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_method</td><td class="field-type">Method</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_comment</td><td class="field-type">Comment</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_PledgeOrPayment</td><td class="field-type">PledgeOrPayment</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_fundID</td><td class="field-type">FundId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_depID</td><td class="field-type">DepId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_CheckNo</td><td class="field-type">CheckNo</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_Problem</td><td class="field-type">Problem</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_scanString</td><td class="field-type">ScanString</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_ID</td><td class="field-type">AutId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_Cleared</td><td class="field-type">AutCleared</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_ResultID</td><td class="field-type">AutResultId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_NonDeductible</td><td class="field-type">Nondeductible</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_GroupKey</td><td class="field-type">GroupKey</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-financial" id="table-deposit_dep"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag financial">存款批次表</span> <code style="font-size:14px">deposit_dep</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">银行对账批次，dep_Closed标记关闭状态</div><div style="font-size:12px;color:var(--text-muted)">6 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">dep_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Comment</td><td class="field-type">Comment</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_EnteredBy</td><td class="field-type">Enteredby</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Closed</td><td class="field-type">Closed</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Type</td><td class="field-type">Type</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="table-user_usr"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-header"><div><div class="card-title"><span class="domain-tag system">用户账号表</span> <code style="font-size:14px">user_usr</code></div><div style="font-size:13px;color:var(--text-muted);margin-top:4px">系统用户，支持API Key和2FA</div><div style="font-size:12px;color:var(--text-muted)">34 </div></div></div></div><div class="fields-container"><table class="data-table"><thead><tr><th style="width:180px">字段名</th><th style="width:160px">PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">usr_per_ID</td><td class="field-type">PersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Password</td><td class="field-type">Password</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_NeedPasswordChange</td><td class="field-type">NeedPasswordChange</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_LastLogin</td><td class="field-type">LastLogin</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_LoginCount</td><td class="field-type">LoginCount</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_FailedLogins</td><td class="field-type">FailedLogins</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_AddRecords</td><td class="field-type">AddRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_EditRecords</td><td class="field-type">EditRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_DeleteRecords</td><td class="field-type">DeleteRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_MenuOptions</td><td class="field-type">MenuOptions</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_ManageGroups</td><td class="field-type">ManageGroups</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Finance</td><td class="field-type">Finance</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Notes</td><td class="field-type">Notes</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Admin</td><td class="field-type">Admin</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_defaultFY</td><td class="field-type">DefaultFY</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_currentDeposit</td><td class="field-type">CurrentDeposit</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_UserName</td><td class="field-type">UserName</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Style</td><td class="field-type">UserStyle</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_ApiKey</td><td class="field-type">ApiKey</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthSecret</td><td class="field-type">TwoFactorAuthSecret</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthLastKeyTimestamp</td><td class="field-type">TwoFactorAuthLastKeyTimestamp</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthRecoveryCodes</td><td class="field-type">TwoFactorAuthRecoveryCodes</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_EditSelf</td><td class="field-type">EditSelf</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalStart</td><td class="field-type">CalStart</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalEnd</td><td class="field-type">CalEnd</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool1</td><td class="field-type">CalNoSchool1</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool2</td><td class="field-type">CalNoSchool2</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool3</td><td class="field-type">CalNoSchool3</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool4</td><td class="field-type">CalNoSchool4</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool5</td><td class="field-type">CalNoSchool5</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool6</td><td class="field-type">CalNoSchool6</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool7</td><td class="field-type">CalNoSchool7</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool8</td><td class="field-type">CalNoSchool8</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_SearchFamily</td><td class="field-type">Searchfamily</td><td class="field-desc"></td></tr></tbody></table></div></div>
+</div><div class="section" id="er-diagram">
+<div class="section-header"><h2>&#128279; 实体关系图 (ER)</h2><p>Mermaid 实时渲染，43张表完整外键关系（修复版：移除无效?标记）</p></div>
 <div class="card"><div class="mermaid">
 erDiagram
 
@@ -72,22 +65,22 @@ erDiagram
     Calendar {
         SMALLINT calendar_id PK
         VARCHAR name
-        VARCHAR accesstoken?
-        VARCHAR backgroundColor?
-        VARCHAR foregroundColor?
+        VARCHAR accesstoken
+        VARCHAR backgroundColor
+        VARCHAR foregroundColor
     }
 
     Config {
         INTEGER cfg_id PK
         VARCHAR cfg_name
-        LONGVARCHAR cfg_value?
+        LONGVARCHAR cfg_value
     }
 
     Deposit {
         SMALLINT dep_ID PK
-        DATE dep_Date?
-        LONGVARCHAR dep_Comment?
-        SMALLINT dep_EnteredBy?
+        DATE dep_Date
+        LONGVARCHAR dep_Comment
+        SMALLINT dep_EnteredBy
         BOOLEAN dep_Closed
         CHAR dep_Type
     }
@@ -100,21 +93,21 @@ erDiagram
         SMALLINT di_buyer_ID
         SMALLINT di_multibuy
         VARCHAR di_title
-        LONGVARCHAR di_description?
-        DECIMAL di_sellprice?
-        DECIMAL di_estprice?
-        DECIMAL di_minimum?
-        DECIMAL di_materialvalue?
+        LONGVARCHAR di_description
+        DECIMAL di_sellprice
+        DECIMAL di_estprice
+        DECIMAL di_minimum
+        DECIMAL di_materialvalue
         SMALLINT di_EnteredBy
         DATE di_EnteredDate
-        LONGVARCHAR di_picture?
+        LONGVARCHAR di_picture
     }
 
     DonationFund {
         TINYINT fun_ID PK
         CHAR fun_Active
-        VARCHAR fun_Name?
-        VARCHAR fun_Description?
+        VARCHAR fun_Name
+        VARCHAR fun_Description
         INTEGER fun_Order
     }
 
@@ -122,10 +115,10 @@ erDiagram
         INTEGER attend_id PK
         INTEGER event_id
         INTEGER person_id
-        TIMESTAMP checkin_date?
-        INTEGER checkin_id?
-        TIMESTAMP checkout_date?
-        INTEGER checkout_id?
+        TIMESTAMP checkin_date
+        INTEGER checkin_id
+        TIMESTAMP checkout_date
+        INTEGER checkout_id
     }
 
     EventAudience {
@@ -142,7 +135,7 @@ erDiagram
         CHAR type_defrecurDOM
         DATE type_defrecurDOY
         INTEGER type_active
-        INTEGER type_grpid?
+        INTEGER type_grpid
     }
 
     EventCountName {
@@ -154,24 +147,24 @@ erDiagram
     EventCounts {
         INTEGER evtcnt_eventid PK
         INTEGER evtcnt_countid PK
-        VARCHAR evtcnt_countname?
-        INTEGER evtcnt_countcount?
-        VARCHAR evtcnt_notes?
+        VARCHAR evtcnt_countname
+        INTEGER evtcnt_countcount
+        VARCHAR evtcnt_notes
     }
 
     Event {
         INTEGER event_id PK
         INTEGER event_type
         VARCHAR event_title
-        VARCHAR event_desc?
-        LONGVARCHAR event_text?
+        VARCHAR event_desc
+        LONGVARCHAR event_text
         TIMESTAMP event_start
         TIMESTAMP event_end
         INTEGER inactive
         INTEGER location_id
         INTEGER primary_contact_person_id
         INTEGER secondary_contact_person_id
-        LONGVARCHAR event_url?
+        LONGVARCHAR event_url
     }
 
     FamilyCustom {
@@ -182,41 +175,41 @@ erDiagram
         VARCHAR fam_custom_Field PK
         SMALLINT fam_custom_Order
         VARCHAR fam_custom_Name
-        SMALLINT fam_custom_Special?
+        SMALLINT fam_custom_Special
         TINYINT fam_custom_FieldSec
         TINYINT type_ID
     }
 
     Family {
         SMALLINT fam_ID PK
-        VARCHAR fam_Name?
-        VARCHAR fam_Address1?
-        VARCHAR fam_Address2?
-        VARCHAR fam_City?
-        VARCHAR fam_State?
-        VARCHAR fam_Zip?
-        VARCHAR fam_Country?
-        VARCHAR fam_HomePhone?
-        VARCHAR fam_Email?
-        DATE fam_WeddingDate?
+        VARCHAR fam_Name
+        VARCHAR fam_Address1
+        VARCHAR fam_Address2
+        VARCHAR fam_City
+        VARCHAR fam_State
+        VARCHAR fam_Zip
+        VARCHAR fam_Country
+        VARCHAR fam_HomePhone
+        VARCHAR fam_Email
+        DATE fam_WeddingDate
         TIMESTAMP fam_DateEntered
-        TIMESTAMP fam_DateLastEdited?
+        TIMESTAMP fam_DateLastEdited
         SMALLINT fam_EnteredBy
-        SMALLINT fam_EditedBy?
-        LONGVARCHAR fam_scanCheck?
-        LONGVARCHAR fam_scanCredit?
+        SMALLINT fam_EditedBy
+        LONGVARCHAR fam_scanCheck
+        LONGVARCHAR fam_scanCredit
         CHAR fam_SendNewsLetter
-        DATE fam_DateDeactivated?
-        DOUBLE fam_Latitude?
-        DOUBLE fam_Longitude?
+        DATE fam_DateDeactivated
+        DOUBLE fam_Latitude
+        DOUBLE fam_Longitude
         SMALLINT fam_Envelope
     }
 
     FundRaiser {
         SMALLINT fr_ID PK
-        DATE fr_date?
+        DATE fr_date
         VARCHAR fr_title
-        LONGVARCHAR fr_description?
+        LONGVARCHAR fr_description
         SMALLINT fr_EnteredBy
         DATE fr_EnteredDate
     }
@@ -227,8 +220,8 @@ erDiagram
         SMALLINT grp_RoleListID
         SMALLINT grp_DefaultRole
         VARCHAR grp_Name
-        LONGVARCHAR grp_Description?
-        BOOLEAN grp_hasSpecialProps?
+        LONGVARCHAR grp_Description
+        BOOLEAN grp_hasSpecialProps
         BOOLEAN grp_active
         BOOLEAN grp_include_email_export
     }
@@ -237,28 +230,28 @@ erDiagram
         SMALLINT grp_ID
         TINYINT prop_ID
         VARCHAR prop_Field
-        VARCHAR prop_Name?
-        VARCHAR prop_Description?
+        VARCHAR prop_Name
+        VARCHAR prop_Description
         SMALLINT type_ID
-        SMALLINT prop_Special?
+        SMALLINT prop_Special
         CHAR prop_PersonDisplay
     }
 
     KioskAssignment {
         INTEGER kasm_ID PK
-        INTEGER kasm_kdevId?
-        INTEGER kasm_AssignmentType?
-        INTEGER kasm_EventId?
+        INTEGER kasm_kdevId
+        INTEGER kasm_AssignmentType
+        INTEGER kasm_EventId
     }
 
     KioskDevice {
         INTEGER kdev_ID PK
-        VARCHAR kdev_GUIDHash?
-        VARCHAR kdev_Name?
-        LONGVARCHAR kdev_deviceType?
-        LONGVARCHAR kdev_lastHeartbeat?
-        BOOLEAN kdev_Accepted?
-        LONGVARCHAR kdev_PendingCommands?
+        VARCHAR kdev_GUIDHash
+        VARCHAR kdev_Name
+        LONGVARCHAR kdev_deviceType
+        LONGVARCHAR kdev_lastHeartbeat
+        BOOLEAN kdev_Accepted
+        LONGVARCHAR kdev_PendingCommands
     }
 
     ListOption {
@@ -284,9 +277,9 @@ erDiagram
 
     MenuLink {
         SMALLINT linkId PK
-        VARCHAR linkName?
-        VARCHAR linkUri?
-        SMALLINT linkOrder?
+        VARCHAR linkName
+        VARCHAR linkUri
+        SMALLINT linkOrder
     }
 
     Note {
@@ -294,12 +287,12 @@ erDiagram
         SMALLINT nte_per_ID
         SMALLINT nte_fam_ID
         SMALLINT nte_Private
-        LONGVARCHAR nte_Text?
+        LONGVARCHAR nte_Text
         TIMESTAMP nte_DateEntered
-        TIMESTAMP nte_DateLastEdited?
+        TIMESTAMP nte_DateLastEdited
         SMALLINT nte_EnteredBy
         SMALLINT nte_EditedBy
-        VARCHAR nte_Type?
+        VARCHAR nte_Type
     }
 
     PersonGroupRole {
@@ -310,8 +303,8 @@ erDiagram
 
     PersonVolunteerOpportunity {
         SMALLINT p2vo_ID PK
-        SMALLINT p2vo_per_ID?
-        SMALLINT p2vo_vol_ID?
+        SMALLINT p2vo_per_ID
+        SMALLINT p2vo_vol_ID
     }
 
     PersonCustom {
@@ -322,66 +315,66 @@ erDiagram
         VARCHAR custom_Field PK
         SMALLINT custom_Order
         VARCHAR custom_Name
-        SMALLINT custom_Special?
+        SMALLINT custom_Special
         TINYINT custom_FieldSec
         TINYINT type_ID
     }
 
     Person {
         SMALLINT per_ID PK
-        VARCHAR per_Title?
-        VARCHAR per_FirstName?
-        VARCHAR per_MiddleName?
-        VARCHAR per_LastName?
-        VARCHAR per_Suffix?
-        VARCHAR per_Address1?
-        VARCHAR per_Address2?
-        VARCHAR per_City?
-        VARCHAR per_State?
-        VARCHAR per_Zip?
-        VARCHAR per_Country?
-        VARCHAR per_HomePhone?
-        VARCHAR per_WorkPhone?
-        VARCHAR per_CellPhone?
-        VARCHAR per_Email?
-        VARCHAR per_WorkEmail?
+        VARCHAR per_Title
+        VARCHAR per_FirstName
+        VARCHAR per_MiddleName
+        VARCHAR per_LastName
+        VARCHAR per_Suffix
+        VARCHAR per_Address1
+        VARCHAR per_Address2
+        VARCHAR per_City
+        VARCHAR per_State
+        VARCHAR per_Zip
+        VARCHAR per_Country
+        VARCHAR per_HomePhone
+        VARCHAR per_WorkPhone
+        VARCHAR per_CellPhone
+        VARCHAR per_Email
+        VARCHAR per_WorkEmail
         TINYINT per_BirthMonth
         TINYINT per_BirthDay
-        SMALLINT per_BirthYear?
-        DATE per_MembershipDate?
+        SMALLINT per_BirthYear
+        DATE per_MembershipDate
         TINYINT per_Gender
         TINYINT per_fmr_ID
         TINYINT per_cls_ID
         SMALLINT per_fam_ID
-        SMALLINT per_Envelope?
-        TIMESTAMP per_DateLastEdited?
+        SMALLINT per_Envelope
+        TIMESTAMP per_DateLastEdited
         TIMESTAMP per_DateEntered
         SMALLINT per_EnteredBy
-        SMALLINT per_EditedBy?
-        DATE per_FriendDate?
+        SMALLINT per_EditedBy
+        DATE per_FriendDate
         SMALLINT per_Flags
-        VARCHAR per_Facebook?
-        VARCHAR per_Twitter?
-        VARCHAR per_LinkedIn?
+        VARCHAR per_Facebook
+        VARCHAR per_Twitter
+        VARCHAR per_LinkedIn
     }
 
     Pledge {
         SMALLINT plg_plgID PK
-        SMALLINT plg_FamID?
-        SMALLINT plg_FYID?
-        DATE plg_date?
-        DECIMAL plg_amount?
-        CHAR plg_schedule?
-        CHAR plg_method?
-        LONGVARCHAR plg_comment?
+        SMALLINT plg_FamID
+        SMALLINT plg_FYID
+        DATE plg_date
+        DECIMAL plg_amount
+        CHAR plg_schedule
+        CHAR plg_method
+        LONGVARCHAR plg_comment
         DATE plg_DateLastEdited
         SMALLINT plg_EditedBy
         CHAR plg_PledgeOrPayment
-        TINYINT plg_fundID?
-        SMALLINT plg_depID?
-        BIGINT plg_CheckNo?
-        BOOLEAN plg_Problem?
-        LONGVARCHAR plg_scanString?
+        TINYINT plg_fundID
+        SMALLINT plg_depID
+        BIGINT plg_CheckNo
+        BOOLEAN plg_Problem
+        LONGVARCHAR plg_scanString
         SMALLINT plg_aut_ID
         BOOLEAN plg_aut_Cleared
         SMALLINT plg_aut_ResultID
@@ -395,7 +388,7 @@ erDiagram
         SMALLINT pro_prt_ID
         VARCHAR pro_Name
         LONGVARCHAR pro_Description
-        VARCHAR pro_Prompt?
+        VARCHAR pro_Prompt
     }
 
     PropertyType {
@@ -424,18 +417,18 @@ erDiagram
         SMALLINT qrp_ID PK
         SMALLINT qrp_qry_ID
         TINYINT qrp_Type
-        LONGVARCHAR qrp_OptionSQL?
-        VARCHAR qrp_Name?
-        LONGVARCHAR qrp_Description?
-        VARCHAR qrp_Alias?
-        VARCHAR qrp_Default?
+        LONGVARCHAR qrp_OptionSQL
+        VARCHAR qrp_Name
+        LONGVARCHAR qrp_Description
+        VARCHAR qrp_Alias
+        VARCHAR qrp_Default
         TINYINT qrp_Required
         TINYINT qrp_InputBoxSize
         VARCHAR qrp_Validation
-        INTEGER qrp_NumericMax?
-        INTEGER qrp_NumericMin?
-        INTEGER qrp_AlphaMinLength?
-        INTEGER qrp_AlphaMaxLength?
+        INTEGER qrp_NumericMax
+        INTEGER qrp_NumericMin
+        INTEGER qrp_AlphaMinLength
+        INTEGER qrp_AlphaMaxLength
     }
 
     RecordProperty {
@@ -447,15 +440,15 @@ erDiagram
     Token {
         VARCHAR token PK
         VARCHAR type
-        DATE valid_until_date?
-        INTEGER reference_id?
-        INTEGER remainingUses?
+        DATE valid_until_date
+        INTEGER reference_id
+        INTEGER remainingUses
     }
 
     UserSetting {
         SMALLINT user_id PK
         VARCHAR setting_name PK
-        VARCHAR setting_value?
+        VARCHAR setting_value
     }
 
     User {
@@ -476,30 +469,30 @@ erDiagram
         SMALLINT usr_defaultFY
         SMALLINT usr_currentDeposit
         VARCHAR usr_UserName
-        VARCHAR usr_Style?
-        VARCHAR usr_ApiKey?
-        VARCHAR usr_TwoFactorAuthSecret?
-        SMALLINT usr_TwoFactorAuthLastKeyTimestamp?
-        LONGVARCHAR usr_TwoFactorAuthRecoveryCodes?
+        VARCHAR usr_Style
+        VARCHAR usr_ApiKey
+        VARCHAR usr_TwoFactorAuthSecret
+        SMALLINT usr_TwoFactorAuthLastKeyTimestamp
+        LONGVARCHAR usr_TwoFactorAuthRecoveryCodes
         BOOLEAN usr_EditSelf
-        DATE usr_CalStart?
-        DATE usr_CalEnd?
-        DATE usr_CalNoSchool1?
-        DATE usr_CalNoSchool2?
-        DATE usr_CalNoSchool3?
-        DATE usr_CalNoSchool4?
-        DATE usr_CalNoSchool5?
-        DATE usr_CalNoSchool6?
-        DATE usr_CalNoSchool7?
-        DATE usr_CalNoSchool8?
-        TINYINT usr_SearchFamily?
+        DATE usr_CalStart
+        DATE usr_CalEnd
+        DATE usr_CalNoSchool1
+        DATE usr_CalNoSchool2
+        DATE usr_CalNoSchool3
+        DATE usr_CalNoSchool4
+        DATE usr_CalNoSchool5
+        DATE usr_CalNoSchool6
+        DATE usr_CalNoSchool7
+        DATE usr_CalNoSchool8
+        TINYINT usr_SearchFamily
     }
 
     UserConfig {
         SMALLINT ucfg_per_id PK
         INTEGER ucfg_id PK
         VARCHAR ucfg_name
-        LONGVARCHAR ucfg_value?
+        LONGVARCHAR ucfg_value
         CHAR ucfg_type
         LONGVARCHAR ucfg_tooltip
         CHAR ucfg_permission
@@ -509,16 +502,16 @@ erDiagram
     Version {
         SMALLINT ver_ID PK
         VARCHAR ver_version
-        TIMESTAMP ver_update_start?
-        TIMESTAMP ver_update_end?
+        TIMESTAMP ver_update_start
+        TIMESTAMP ver_update_end
     }
 
     VolunteerOpportunity {
         INTEGER vol_ID PK
         INTEGER vol_Order
         CHAR vol_Active
-        VARCHAR vol_Name?
-        VARCHAR vol_Description?
+        VARCHAR vol_Name
+        VARCHAR vol_Description
     }
 
     WhyCame {
@@ -530,20 +523,16 @@ erDiagram
         LONGVARCHAR why_hearOfUs
     }
 
-</div></div></div>
-
-<div class="section" id="flow-diagram">
+</div></div></div><div class="section" id="flow-diagram">
 <div class="section-header"><h2>&#128260; 数据流图</h2><p>4条核心业务链路的数据流转</p></div>
-<div class="card"><h3 style="margin-bottom:16px">&#128203; 场景1：人员注册 - 小组成加入 - 活动签到</h3><div class="mermaid">
-flowchart TD
+<div class="card"><h3 style="margin-bottom:16px">&#128203; 场景1：人员注册 - 小组成加入 - 活动签到</h3><div class="mermaid">flowchart TD
     A[New Person<br/>person_per] --> B[Assign Family<br/>per_fam_ID -> family_fam]
     B --> C[Assign Classification<br/>per_cls_ID -> list_lst]
     C --> D[Join Group<br/>person2group2role_p2g2r]
     D --> E[Event Registration<br/>event_attend]
     E --> F[Check-in checkin_date]
 </div></div>
-<div class="card"><h3 style="margin-bottom:16px">&#128176; 场景2：奉献资金 - 承诺 - 存款</h3><div class="mermaid">
-flowchart LR
+<div class="card"><h3 style="margin-bottom:16px">&#128176; 场景2：奉献资金 - 承诺 - 存款</h3><div class="mermaid">flowchart LR
     A[Family pledge_plg] --> B[Select Fund<br/>plg_fundID -> donationfund_fun]
     B --> C[Select Payment Method]
     C --> D{PledgeOrPayment}
@@ -552,8 +541,7 @@ flowchart LR
     E --> G[deposit_dep]
     F --> G --> H[Bank Reconciliation]
 </div></div>
-<div class="card"><h3 style="margin-bottom:16px">&#127760; 场景3：访客到访 - 信息登记 - 后续跟进</h3><div class="mermaid">
-flowchart LR
+<div class="card"><h3 style="margin-bottom:16px">&#127760; 场景3：访客到访 - 信息登记 - 后续跟进</h3><div class="mermaid">flowchart LR
     A[First Visit<br/>whtcame_why] --> B[New Person person_per]
     B --> C[Mark Visitor Flag<br/>per_FriendDate]
     C --> D[Record Reason why_come]
@@ -562,8 +550,7 @@ flowchart LR
     F -->||Yes| G[Official Member]
     F -->||No| H[Keep as Contact]
 </div></div>
-<div class="card"><h3 style="margin-bottom:16px">&#128274; 场景4：用户登录 - API认证 - 权限验证</h3><div class="mermaid">
-flowchart LR
+<div class="card"><h3 style="margin-bottom:16px">&#128274; 场景4：用户登录 - API认证 - 权限验证</h3><div class="mermaid">flowchart LR
     A[Login user_usr] --> B[Verify Password]
     B --> C[Generate Token tokens]
     C --> D[API Request Header]
@@ -572,9 +559,7 @@ flowchart LR
     E -->||Finance| G[Finance Perm]
     E -->||Admin| H[Admin Perm]
 </div></div>
-</div>
-
-<div class="section" id="api">
+</div><div class="section" id="api">
 <div class="section-header"><h2>&#128246; API 数据流</h2><p>195个端点（184 Private + 11 Public）</p></div>
 <div class="card">
 <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px">
@@ -591,18 +576,14 @@ flowchart LR
 <div class="api-item"><span class="method-badge post">POST</span><span class="api-path">/api/pledge</span></div>
 <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/deposit/{id}</span></div>
 <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/event/{id}/attendees</span></div>
-</div></div>
-
-<div class="section" id="services">
+</div></div><div class="section" id="services">
 <div class="section-header"><h2>&#9881; Service 层分析</h2><p>5大核心Service类</p></div>
 <div class="card domain-person"><div class="card-header"><div class="card-title"><span class="domain-tag person">&#128100;</span> <code>PersonService</code></div><span class="card-badge">8+</span></div><p style="font-size:13px;color:var(--text-muted)">负责人员 CRUD、小组分配、志愿者管理</p><p style="font-size:12px;margin-top:8px">涉及表：person_per, family_fam, group_grp, list_lst</p></div>
 <div class="card domain-group"><div class="card-header"><div class="card-title"><span class="domain-tag group">&#128100;</span> <code>GroupService</code></div><span class="card-badge">11+</span></div><p style="font-size:13px;color:var(--text-muted)">小组人员增删、角色管理</p></div>
 <div class="card domain-financial"><div class="card-header"><div class="card-title"><span class="domain-tag financial">&#128176;</span> <code>FinancialService</code></div><span class="card-badge">30+</span></div><p style="font-size:13px;color:var(--text-muted)">最复杂——奉献全生命周期：承诺-支付-存款-对账-报税</p></div>
 <div class="card domain-financial"><div class="card-header"><div class="card-title"><span class="domain-tag financial">&#128176;</span> <code>DepositService</code></div><span class="card-badge">8+</span></div><p style="font-size:13px;color:var(--text-muted)">存款批次管理和对账输出</p></div>
 <div class="card domain-person"><div class="card-header"><div class="card-title"><span class="domain-tag person">&#128100;</span> <code>FamilyService</code></div><span class="card-badge">3+</span></div><p style="font-size:13px;color:var(--text-muted)">家庭地址地理编码（地图展示）</p></div>
-</div>
-
-<div class="section" id="code">
+</div><div class="section" id="code">
 <div class="section-header"><h2>&#128187; 源码解读</h2></div>
 <div class="card"><h3>&#128203; 人员注册流程</h3><pre class="code-block">// 1. Create person
 $person = new Person();
@@ -633,15 +614,10 @@ $pledge->save();
 $deposit->addPledge($pledge);
 $pledge->setDepId($depositId);   // FK -> deposit_dep
 $pledge->save();</pre></div>
-</div>
-
-<div class="section" id="dict">
+</div><div class="section" id="dict">
 <div class="section-header"><h2>&#128203; 完整数据字典</h2><p>43张表的完整字段定义</p></div>
 <div class="card table-card domain-system" id="dict-calendar_events"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>calendar_events</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(2字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This is a join-table to link an event with a calendar</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">calendar_id</td><td class="field-type">CalendarId</td><td class="field-desc"></td></tr><tr><td class="field-name">event_id</td><td class="field-type">EventId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-calendars"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>calendars</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">calendar_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">accesstoken</td><td class="field-type">AccessToken</td><td class="field-desc"></td></tr><tr><td class="field-name">backgroundColor</td><td class="field-type">BackgroundColor</td><td class="field-desc"></td></tr><tr><td class="field-name">foregroundColor</td><td class="field-type">ForegroundColor</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-config_cfg"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>config_cfg</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This table contains all non-default configuration parameter names and values</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">cfg_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">cfg_name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">cfg_value</td><td class="field-type">Value</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-deposit_dep"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>deposit_dep</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This records deposits / payments</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">dep_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Comment</td><td class="field-type">Comment</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_EnteredBy</td><td class="field-type">Enteredby</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Closed</td><td class="field-type">Closed</td><td class="field-desc"></td></tr><tr><td class="field-name">dep_Type</td><td class="field-type">Type</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-donateditem_di"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>donateditem_di</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(15字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">di_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">di_item</td><td class="field-type">Item</td><td class="field-desc"></td></tr><tr><td class="field-name">di_FR_ID</td><td class="field-type">FrId</td><td class="field-desc"></td></tr><tr><td class="field-name">di_donor_ID</td><td class="field-type">DonorId</td><td class="field-desc"></td></tr><tr><td class="field-name">di_buyer_ID</td><td class="field-type">BuyerId</td><td class="field-desc"></td></tr><tr><td class="field-name">di_multibuy</td><td class="field-type">Multibuy</td><td class="field-desc"></td></tr><tr><td class="field-name">di_title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">di_description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">di_sellprice</td><td class="field-type">Sellprice</td><td class="field-desc"></td></tr><tr><td class="field-name">di_estprice</td><td class="field-type">Estprice</td><td class="field-desc"></td></tr><tr><td class="field-name">di_minimum</td><td class="field-type">Minimum</td><td class="field-desc"></td></tr><tr><td class="field-name">di_materialvalue</td><td class="field-type">MaterialValue</td><td class="field-desc"></td></tr><tr><td class="field-name">di_EnteredBy</td><td class="field-type">Enteredby</td><td class="field-desc"></td></tr><tr><td class="field-name">di_EnteredDate</td><td class="field-type">Entereddate</td><td class="field-desc"></td></tr><tr><td class="field-name">di_picture</td><td class="field-type">Picture</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-donationfund_fun"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>donationfund_fun</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the defined donation funds</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fun_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">fun_Active</td><td class="field-type">Active</td><td class="field-desc"></td></tr><tr><td class="field-name">fun_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">fun_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">fun_Order</td><td class="field-type">Order</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-event_attend"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>event_attend</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(7字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">this indicates which people attended which events</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">attend_id</td><td class="field-type">AttendId</td><td class="field-desc"></td></tr><tr><td class="field-name">event_id</td><td class="field-type">EventId</td><td class="field-desc"></td></tr><tr><td class="field-name">person_id</td><td class="field-type">PersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">checkin_date</td><td class="field-type">CheckinDate</td><td class="field-desc"></td></tr><tr><td class="field-name">checkin_id</td><td class="field-type">CheckinId</td><td class="field-desc"></td></tr><tr><td class="field-name">checkout_date</td><td class="field-type">CheckoutDate</td><td class="field-desc"></td></tr><tr><td class="field-name">checkout_id</td><td class="field-type">CheckoutId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-event_audience"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>event_audience</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(2字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This is a join-table to link an event with a prospective audience for the purpose of advertising / outreach</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">event_id</td><td class="field-type">EventId</td><td class="field-desc"></td></tr><tr><td class="field-name">group_id</td><td class="field-type">GroupId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-event_types"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>event_types</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(9字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">type_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">type_name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">type_defstarttime</td><td class="field-type">DefStartTime</td><td class="field-desc"></td></tr><tr><td class="field-name">type_defrecurtype</td><td class="field-type">DefRecurType</td><td class="field-desc"></td></tr><tr><td class="field-name">type_defrecurDOW</td><td class="field-type">DefRecurDOW</td><td class="field-desc"></td></tr><tr><td class="field-name">type_defrecurDOM</td><td class="field-type">DefRecurDOM</td><td class="field-desc"></td></tr><tr><td class="field-name">type_defrecurDOY</td><td class="field-type">DefRecurDOY</td><td class="field-desc"></td></tr><tr><td class="field-name">type_active</td><td class="field-type">Active</td><td class="field-desc"></td></tr><tr><td class="field-name">type_grpid</td><td class="field-type">GroupId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-eventcountnames_evctnm"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>eventcountnames_evctnm</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">evctnm_countid</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">evctnm_eventtypeid</td><td class="field-type">TypeId</td><td class="field-desc"></td></tr><tr><td class="field-name">evctnm_countname</td><td class="field-type">Name</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-eventcounts_evtcnt"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>eventcounts_evtcnt</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">evtcnt_eventid</td><td class="field-type">EvtcntEventid</td><td class="field-desc"></td></tr><tr><td class="field-name">evtcnt_countid</td><td class="field-type">EvtcntCountid</td><td class="field-desc"></td></tr><tr><td class="field-name">evtcnt_countname</td><td class="field-type">EvtcntCountname</td><td class="field-desc"></td></tr><tr><td class="field-name">evtcnt_countcount</td><td class="field-type">EvtcntCountcount</td><td class="field-desc"></td></tr><tr><td class="field-name">evtcnt_notes</td><td class="field-type">EvtcntNotes</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-events_event"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>events_event</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(12字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains events</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">event_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">event_type</td><td class="field-type">Type</td><td class="field-desc"></td></tr><tr><td class="field-name">event_title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">event_desc</td><td class="field-type">Desc</td><td class="field-desc"></td></tr><tr><td class="field-name">event_text</td><td class="field-type">Text</td><td class="field-desc"></td></tr><tr><td class="field-name">event_start</td><td class="field-type">Start</td><td class="field-desc"></td></tr><tr><td class="field-name">event_end</td><td class="field-type">End</td><td class="field-desc"></td></tr><tr><td class="field-name">inactive</td><td class="field-type">InActive</td><td class="field-desc"></td></tr><tr><td class="field-name">location_id</td><td class="field-type">LocationId</td><td class="field-desc"></td></tr><tr><td class="field-name">primary_contact_person_id</td><td class="field-type">PrimaryContactPersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">secondary_contact_person_id</td><td class="field-type">SecondaryContactPersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">event_url</td><td class="field-type">URL</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-family_custom"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>family_custom</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(1字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fam_ID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-family_custom_master"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>family_custom_master</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fam_custom_Order</td><td class="field-type">Order</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_custom_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_custom_Special</td><td class="field-type">CustomSpecial</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_custom_FieldSec</td><td class="field-type">FieldSecurity</td><td class="field-desc"></td></tr><tr><td class="field-name">type_ID</td><td class="field-type">TypeId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-family_fam"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>family_fam</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(22字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the main family data, including family name, family addresses, and family phone numbers</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fam_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Address1</td><td class="field-type">Address1</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Address2</td><td class="field-type">Address2</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_City</td><td class="field-type">City</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_State</td><td class="field-type">State</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Zip</td><td class="field-type">Zip</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Country</td><td class="field-type">Country</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_HomePhone</td><td class="field-type">HomePhone</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Email</td><td class="field-type">Email</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_WeddingDate</td><td class="field-type">Weddingdate</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_scanCheck</td><td class="field-type">ScanCheck</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_scanCredit</td><td class="field-type">ScanCredit</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_SendNewsLetter</td><td class="field-type">SendNewsletter</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_DateDeactivated</td><td class="field-type">DateDeactivated</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Latitude</td><td class="field-type">Latitude</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Longitude</td><td class="field-type">Longitude</td><td class="field-desc"></td></tr><tr><td class="field-name">fam_Envelope</td><td class="field-type">Envelope</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-fundraiser_fr"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>fundraiser_fr</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">fr_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">fr_date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">fr_title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">fr_description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">fr_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">fr_EnteredDate</td><td class="field-type">EnteredDate</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-group_grp"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>group_grp</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(9字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the name and description for each group, as well as foreign keys to the list of group roles</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">grp_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_Type</td><td class="field-type">Type</td><td class="field-desc">The group type.  This is defined in list_lst.OptionId where lst_ID=3</td></tr><tr><td class="field-name">grp_RoleListID</td><td class="field-type">RoleListId</td><td class="field-desc">The lst_ID containing the names of the roles for this group</td></tr><tr><td class="field-name">grp_DefaultRole</td><td class="field-type">DefaultRole</td><td class="field-desc">The ID of the default role in this group's RoleList</td></tr><tr><td class="field-name">grp_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_hasSpecialProps</td><td class="field-type">HasSpecialProps</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_active</td><td class="field-type">Active</td><td class="field-desc"></td></tr><tr><td class="field-name">grp_include_email_export</td><td class="field-type">IncludeInEmailExport</td><td class="field-desc">Should members of this group be included in MailChimp Export</td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-groupprop_master"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>groupprop_master</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(7字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains definitions for the group-specific fields</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">grp_ID</td><td class="field-type">GrpId</td><td class="field-desc"></td></tr><tr><td class="field-name">prop_ID</td><td class="field-type">PropId</td><td class="field-desc"></td></tr><tr><td class="field-name">prop_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">prop_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">type_ID</td><td class="field-type">TypeId</td><td class="field-desc"></td></tr><tr><td class="field-name">prop_Special</td><td class="field-type">Special</td><td class="field-desc"></td></tr><tr><td class="field-name">prop_PersonDisplay</td><td class="field-type">PersonDisplay</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-kioskassginment_kasm"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>kioskassginment_kasm</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">kasm_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">kasm_kdevId</td><td class="field-type">KioskId</td><td class="field-desc"></td></tr><tr><td class="field-name">kasm_AssignmentType</td><td class="field-type">AssignmentType</td><td class="field-desc">The kiosk's current role.</td></tr><tr><td class="field-name">kasm_EventId</td><td class="field-type">EventId</td><td class="field-desc">Optional.  If the current role is for event check-in, populate this value</td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-kioskdevice_kdev"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>kioskdevice_kdev</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(7字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains a list of all (un)registered kiosk devices</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">kdev_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">kdev_GUIDHash</td><td class="field-type">GUIDHash</td><td class="field-desc">SHA256 Hash of the GUID stored in the kiosk's cookie</td></tr><tr><td class="field-name">kdev_Name</td><td class="field-type">Name</td><td class="field-desc">Name of the kiosk</td></tr><tr><td class="field-name">kdev_deviceType</td><td class="field-type">DeviceType</td><td class="field-desc">Kiosk device type</td></tr><tr><td class="field-name">kdev_lastHeartbeat</td><td class="field-type">LastHeartbeat</td><td class="field-desc">Last time the kiosk sent a heartbeat</td></tr><tr><td class="field-name">kdev_Accepted</td><td class="field-type">Accepted</td><td class="field-desc">Has the admin accepted the kiosk after initial registration?</td></tr><tr><td class="field-name">kdev_PendingCommands</td><td class="field-type">PendingCommands</td><td class="field-desc">Commands waiting to be sent to the kiosk</td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-list_lst"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>list_lst</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This table stores the options for most of the drop down lists in churchCRM, including person classifications, family roles, group types, group roles, group-specific property types, and custom field value lists.</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">lst_ID</td><td class="field-type">Id</td><td class="field-desc">The ID of the list.  Since this is a composite primary key, there may be multiple List IDs</td></tr><tr><td class="field-name">lst_OptionID</td><td class="field-type">OptionId</td><td class="field-desc">The ID of the option in this list.  ***List ID + List Option ID must be unique***</td></tr><tr><td class="field-name">lst_OptionSequence</td><td class="field-type">OptionSequence</td><td class="field-desc">The order in which to display items in this list</td></tr><tr><td class="field-name">lst_OptionName</td><td class="field-type">OptionName</td><td class="field-desc">The actual value for this list option</td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-locations"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>locations</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(11字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This is a table for storing all physical locations (Church Offices, Events, etc)</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">location_id</td><td class="field-type">LocationId</td><td class="field-desc"></td></tr><tr><td class="field-name">location_typeID</td><td class="field-type">LocationType</td><td class="field-desc"></td></tr><tr><td class="field-name">location_name</td><td class="field-type">None</td><td class="field-desc">Location Name (e.g 'Main Campus')</td></tr><tr><td class="field-name">location_address</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_city</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_state</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_zip</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_country</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_phone</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_email</td><td class="field-type">None</td><td class="field-desc"></td></tr><tr><td class="field-name">location_timzezone</td><td class="field-type">None</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-menu_links"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>menu_links</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">linkId</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">linkName</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">linkUri</td><td class="field-type">Uri</td><td class="field-desc"></td></tr><tr><td class="field-name">linkOrder</td><td class="field-type">Order</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-note_nte"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>note_nte</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(10字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Contains all person and family notes, including the date, time, and person who entered the note</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">nte_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_per_ID</td><td class="field-type">PerId</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_fam_ID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_Private</td><td class="field-type">Private</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_Text</td><td class="field-type">Text</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">nte_Type</td><td class="field-type">Type</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-person2group2role_p2g2r"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>person2group2role_p2g2r</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This table stores the information of which people are in which groups, and what group role each person holds in that group</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">p2g2r_per_ID</td><td class="field-type">PersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">p2g2r_grp_ID</td><td class="field-type">GroupId</td><td class="field-desc"></td></tr><tr><td class="field-name">p2g2r_rle_ID</td><td class="field-type">RoleId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-person2volunteeropp_p2vo"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>person2volunteeropp_p2vo</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This table indicates which people are tied to which volunteer opportunities</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">p2vo_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">p2vo_per_ID</td><td class="field-type">PersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">p2vo_vol_ID</td><td class="field-type">VolunteerOpportunityId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-person_custom"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>person_custom</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(1字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Person custom fields</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">per_ID</td><td class="field-type">PerId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-person_custom_master"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>person_custom_master</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains definitions for the custom person fields</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">custom_Order</td><td class="field-type">Order</td><td class="field-desc"></td></tr><tr><td class="field-name">custom_Field</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">custom_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">custom_Special</td><td class="field-type">Special</td><td class="field-desc"></td></tr><tr><td class="field-name">custom_FieldSec</td><td class="field-type">FieldSecurity</td><td class="field-desc"></td></tr><tr><td class="field-name">type_ID</td><td class="field-type">TypeId</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-person_per"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>person_per</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(35字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the main person data, including person names, person addresses, person phone numbers, and foreign keys to the family table</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">per_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Title</td><td class="field-type">Title</td><td class="field-desc"></td></tr><tr><td class="field-name">per_FirstName</td><td class="field-type">FirstName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_MiddleName</td><td class="field-type">MiddleName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_LastName</td><td class="field-type">LastName</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Suffix</td><td class="field-type">Suffix</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Address1</td><td class="field-type">Address1</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Address2</td><td class="field-type">Address2</td><td class="field-desc"></td></tr><tr><td class="field-name">per_City</td><td class="field-type">City</td><td class="field-desc"></td></tr><tr><td class="field-name">per_State</td><td class="field-type">State</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Zip</td><td class="field-type">Zip</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Country</td><td class="field-type">Country</td><td class="field-desc"></td></tr><tr><td class="field-name">per_HomePhone</td><td class="field-type">HomePhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_WorkPhone</td><td class="field-type">WorkPhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_CellPhone</td><td class="field-type">CellPhone</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Email</td><td class="field-type">Email</td><td class="field-desc"></td></tr><tr><td class="field-name">per_WorkEmail</td><td class="field-type">WorkEmail</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthMonth</td><td class="field-type">BirthMonth</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthDay</td><td class="field-type">BirthDay</td><td class="field-desc"></td></tr><tr><td class="field-name">per_BirthYear</td><td class="field-type">BirthYear</td><td class="field-desc"></td></tr><tr><td class="field-name">per_MembershipDate</td><td class="field-type">MembershipDate</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Gender</td><td class="field-type">Gender</td><td class="field-desc"></td></tr><tr><td class="field-name">per_fmr_ID</td><td class="field-type">FmrId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_cls_ID</td><td class="field-type">ClsId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_fam_ID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Envelope</td><td class="field-type">Envelope</td><td class="field-desc"></td></tr><tr><td class="field-name">per_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">per_DateEntered</td><td class="field-type">DateEntered</td><td class="field-desc"></td></tr><tr><td class="field-name">per_EnteredBy</td><td class="field-type">EnteredBy</td><td class="field-desc"></td></tr><tr><td class="field-name">per_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">per_FriendDate</td><td class="field-type">FriendDate</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Flags</td><td class="field-type">Flags</td><td class="field-desc"></td></tr><tr><td class="field-name">per_Facebook</td><td class="field-type">Facebook</td><td class="field-desc">Facebook username</td></tr><tr><td class="field-name">per_Twitter</td><td class="field-type">Twitter</td><td class="field-desc">Twitter username</td></tr><tr><td class="field-name">per_LinkedIn</td><td class="field-type">LinkedIn</td><td class="field-desc">LinkedIn name</td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-pledge_plg"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>pledge_plg</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(21字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains all payment/pledge information</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">plg_plgID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_FamID</td><td class="field-type">FamId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_FYID</td><td class="field-type">FyId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_date</td><td class="field-type">Date</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_amount</td><td class="field-type">Amount</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_schedule</td><td class="field-type">Schedule</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_method</td><td class="field-type">Method</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_comment</td><td class="field-type">Comment</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_DateLastEdited</td><td class="field-type">DateLastEdited</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_EditedBy</td><td class="field-type">EditedBy</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_PledgeOrPayment</td><td class="field-type">PledgeOrPayment</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_fundID</td><td class="field-type">FundId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_depID</td><td class="field-type">DepId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_CheckNo</td><td class="field-type">CheckNo</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_Problem</td><td class="field-type">Problem</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_scanString</td><td class="field-type">ScanString</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_ID</td><td class="field-type">AutId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_Cleared</td><td class="field-type">AutCleared</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_aut_ResultID</td><td class="field-type">AutResultId</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_NonDeductible</td><td class="field-type">Nondeductible</td><td class="field-desc"></td></tr><tr><td class="field-name">plg_GroupKey</td><td class="field-type">GroupKey</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-property_pro"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>property_pro</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">pro_ID</td><td class="field-type">ProId</td><td class="field-desc"></td></tr><tr><td class="field-name">pro_Class</td><td class="field-type">ProClass</td><td class="field-desc"></td></tr><tr><td class="field-name">pro_prt_ID</td><td class="field-type">ProPrtId</td><td class="field-desc"></td></tr><tr><td class="field-name">pro_Name</td><td class="field-type">ProName</td><td class="field-desc"></td></tr><tr><td class="field-name">pro_Description</td><td class="field-type">ProDescription</td><td class="field-desc"></td></tr><tr><td class="field-name">pro_Prompt</td><td class="field-type">ProPrompt</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-propertytype_prt"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>propertytype_prt</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains all the defined property types</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">prt_ID</td><td class="field-type">PrtId</td><td class="field-desc"></td></tr><tr><td class="field-name">prt_Class</td><td class="field-type">PrtClass</td><td class="field-desc"></td></tr><tr><td class="field-name">prt_Name</td><td class="field-type">PrtName</td><td class="field-desc"></td></tr><tr><td class="field-name">prt_Description</td><td class="field-type">PrtDescription</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-query_qry"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>query_qry</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains all the predefined queries that appear in the queries page</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">qry_ID</td><td class="field-type">QryId</td><td class="field-desc"></td></tr><tr><td class="field-name">qry_SQL</td><td class="field-type">QrySql</td><td class="field-desc"></td></tr><tr><td class="field-name">qry_Name</td><td class="field-type">QryName</td><td class="field-desc"></td></tr><tr><td class="field-name">qry_Description</td><td class="field-type">QryDescription</td><td class="field-desc"></td></tr><tr><td class="field-name">qry_Count</td><td class="field-type">QryCount</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-queryparameteroptions_qpo"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>queryparameteroptions_qpo</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Defines the values for the parameters for each query</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">qpo_ID</td><td class="field-type">QpoId</td><td class="field-desc"></td></tr><tr><td class="field-name">qpo_qrp_ID</td><td class="field-type">QpoQrpId</td><td class="field-desc"></td></tr><tr><td class="field-name">qpo_Display</td><td class="field-type">QpoDisplay</td><td class="field-desc"></td></tr><tr><td class="field-name">qpo_Value</td><td class="field-type">QpoValue</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-queryparameters_qrp"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>queryparameters_qrp</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(15字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">defines the parameters for each query</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">qrp_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_qry_ID</td><td class="field-type">QryId</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Type</td><td class="field-type">Type</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_OptionSQL</td><td class="field-type">OptionSQL</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Alias</td><td class="field-type">Alias</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Default</td><td class="field-type">Default</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Required</td><td class="field-type">Required</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_InputBoxSize</td><td class="field-type">InputBoxSize</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_Validation</td><td class="field-type">Validation</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_NumericMax</td><td class="field-type">NumericMax</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_NumericMin</td><td class="field-type">NumericMin</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_AlphaMinLength</td><td class="field-type">AlphaMinLength</td><td class="field-desc"></td></tr><tr><td class="field-name">qrp_AlphaMaxLength</td><td class="field-type">AlphaMaxLength</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-record2property_r2p"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>record2property_r2p</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">r2p_pro_ID</td><td class="field-type">PropertyId</td><td class="field-desc"></td></tr><tr><td class="field-name">r2p_record_ID</td><td class="field-type">RecordId</td><td class="field-desc"></td></tr><tr><td class="field-name">r2p_Value</td><td class="field-type">PropertyValue</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-tokens"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>tokens</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">token</td><td class="field-type">Token</td><td class="field-desc"></td></tr><tr><td class="field-name">type</td><td class="field-type">Type</td><td class="field-desc"></td></tr><tr><td class="field-name">valid_until_date</td><td class="field-type">ValidUntilDate</td><td class="field-desc"></td></tr><tr><td class="field-name">reference_id</td><td class="field-type">ReferenceId</td><td class="field-desc"></td></tr><tr><td class="field-name">remainingUses</td><td class="field-type">RemainingUses</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-user_settings"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>user_settings</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">user_id</td><td class="field-type">UserId</td><td class="field-desc"></td></tr><tr><td class="field-name">setting_name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">setting_value</td><td class="field-type">Value</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-user_usr"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>user_usr</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(34字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the login information and specific settings for each ChurchCRM user</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">usr_per_ID</td><td class="field-type">PersonId</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Password</td><td class="field-type">Password</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_NeedPasswordChange</td><td class="field-type">NeedPasswordChange</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_LastLogin</td><td class="field-type">LastLogin</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_LoginCount</td><td class="field-type">LoginCount</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_FailedLogins</td><td class="field-type">FailedLogins</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_AddRecords</td><td class="field-type">AddRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_EditRecords</td><td class="field-type">EditRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_DeleteRecords</td><td class="field-type">DeleteRecords</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_MenuOptions</td><td class="field-type">MenuOptions</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_ManageGroups</td><td class="field-type">ManageGroups</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Finance</td><td class="field-type">Finance</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Notes</td><td class="field-type">Notes</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Admin</td><td class="field-type">Admin</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_defaultFY</td><td class="field-type">DefaultFY</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_currentDeposit</td><td class="field-type">CurrentDeposit</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_UserName</td><td class="field-type">UserName</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_Style</td><td class="field-type">UserStyle</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_ApiKey</td><td class="field-type">ApiKey</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthSecret</td><td class="field-type">TwoFactorAuthSecret</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthLastKeyTimestamp</td><td class="field-type">TwoFactorAuthLastKeyTimestamp</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_TwoFactorAuthRecoveryCodes</td><td class="field-type">TwoFactorAuthRecoveryCodes</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_EditSelf</td><td class="field-type">EditSelf</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalStart</td><td class="field-type">CalStart</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalEnd</td><td class="field-type">CalEnd</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool1</td><td class="field-type">CalNoSchool1</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool2</td><td class="field-type">CalNoSchool2</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool3</td><td class="field-type">CalNoSchool3</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool4</td><td class="field-type">CalNoSchool4</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool5</td><td class="field-type">CalNoSchool5</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool6</td><td class="field-type">CalNoSchool6</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool7</td><td class="field-type">CalNoSchool7</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_CalNoSchool8</td><td class="field-type">CalNoSchool8</td><td class="field-desc"></td></tr><tr><td class="field-name">usr_SearchFamily</td><td class="field-type">Searchfamily</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-userconfig_ucfg"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>userconfig_ucfg</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(8字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px"></p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">ucfg_per_id</td><td class="field-type">PeronId</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_id</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_value</td><td class="field-type">Value</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_type</td><td class="field-type">Type</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_tooltip</td><td class="field-type">Tooltip</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_permission</td><td class="field-type">Permission</td><td class="field-desc"></td></tr><tr><td class="field-name">ucfg_cat</td><td class="field-type">Cat</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-version_ver"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>version_ver</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">History of all version upgrades applied to this database</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">ver_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">ver_version</td><td class="field-type">Version</td><td class="field-desc"></td></tr><tr><td class="field-name">ver_update_start</td><td class="field-type">UpdateStart</td><td class="field-desc"></td></tr><tr><td class="field-name">ver_update_end</td><td class="field-type">UpdateEnd</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-volunteeropportunity_vol"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>volunteeropportunity_vol</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the names and descriptions of volunteer opportunities</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">vol_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">vol_Order</td><td class="field-type">Order</td><td class="field-desc"></td></tr><tr><td class="field-name">vol_Active</td><td class="field-type">Active</td><td class="field-desc"></td></tr><tr><td class="field-name">vol_Name</td><td class="field-type">Name</td><td class="field-desc"></td></tr><tr><td class="field-name">vol_Description</td><td class="field-type">Description</td><td class="field-desc"></td></tr></tbody></table></div></div><div class="card table-card domain-system" id="dict-whycame_why"><div class="table-toggle" onclick="this.parentElement.classList.toggle('open')"><div class="card-title"><code>whycame_why</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div></div><div class="fields-container"><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">This contains the comments related to why people came</p><table class="data-table"><thead><tr><th>字段名</th><th>PHP类型</th><th>说明</th></tr></thead><tbody><tr><td class="field-name">why_ID</td><td class="field-type">Id</td><td class="field-desc"></td></tr><tr><td class="field-name">why_per_ID</td><td class="field-type">PerId</td><td class="field-desc"></td></tr><tr><td class="field-name">why_join</td><td class="field-type">Join</td><td class="field-desc"></td></tr><tr><td class="field-name">why_come</td><td class="field-type">Come</td><td class="field-desc"></td></tr><tr><td class="field-name">why_suggest</td><td class="field-type">Suggest</td><td class="field-desc"></td></tr><tr><td class="field-name">why_hearOfUs</td><td class="field-type">HearOfUs</td><td class="field-desc"></td></tr></tbody></table></div></div>
-</div>
-
-</div></div>
-<script>
+</div><script>
 mermaid.initialize({startOnLoad:true,theme:"base",themeVariables:{primaryColor:"#2563eb",lineColor:"#94a3b8",secondaryColor:"#f1f5f9"}});
 function handleSearch(q){
 var r=document.getElementById("sr");

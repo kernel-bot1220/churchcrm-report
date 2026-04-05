@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChurchCRM 数据架构深度分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<style>
+:root{--primary:#2563eb;--sidebar-bg:#1e293b;--sidebar-text:#e2e8f0;--accent:#3b82f6;--bg:#f8fafc;--card-bg:#fff;--text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;--financial:#8b5cf6;--event:#06b6d4;--person:#f97316}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--sidebar-bg);color:var(--sidebar-text);overflow-y:auto;z-index:100;transition:transform .3s}
+.sidebar-header{padding:24px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.sidebar-header h1{font-size:16px;font-weight:700;color:#fff;line-height:1.4}
+.sidebar-header .subtitle{font-size:12px;color:var(--text-muted);margin-top:4px}
+.sidebar-section{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.sidebar-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:0 20px;margin-bottom:8px}
+.sidebar-item{display:block;padding:8px 20px;font-size:13px;color:var(--sidebar-text);text-decoration:none;cursor:pointer;transition:background .15s}
+.sidebar-item:hover,.sidebar-item.active{background:rgba(255,255,255,.08);color:#fff}
+.sidebar-item .badge{float:right;font-size:10px;background:rgba(255,255,255,.15);padding:2px 6px;border-radius:10px}
+.main{margin-left:280px;min-height:100vh}
+.content{max-width:1100px;margin:0 auto;padding:40px 48px}
+.search-bar{position:sticky;top:0;background:rgba(248,250,252,.95);backdrop-filter:blur(10px);padding:16px 48px;z-index:50;border-bottom:1px solid var(--border)}
+.search-bar input{width:100%;max-width:600px;padding:10px 16px;border:1px solid var(--border);border-radius:8px;font-size:14px;outline:none;transition:border-color .15s}
+.search-bar input:focus{border-color:var(--accent)}
+.section{margin-bottom:64px}
+.section-header{margin-bottom:32px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.section-header h2{font-size:28px;font-weight:700;color:var(--text);margin-bottom:8px}
+.section-header p{color:var(--text-muted);font-size:15px}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.card-title{font-size:18px;font-weight:700;color:var(--text)}
+.card-badge{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--accent);color:#fff}
+.card-badge.person{background:var(--person)}.card-badge.event{background:var(--event)}.card-badge.financial{background:var(--financial)}.card-badge.group{background:#10b981}.card-badge.system{background:var(--text-muted)}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.data-table th{text-align:left;padding:10px 12px;background:#f1f5f9;border-bottom:2px solid var(--border);font-weight:600;color:var(--text);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.data-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.data-table tr:hover td{background:#f8fafc}
+.field-name{font-family:'Fira Code','Consolas',monospace;font-size:12px;color:var(--primary);font-weight:600}
+.field-type{font-family:'Fira Code','Consolas',monospace;font-size:11px;color:var(--text-muted)}
+.field-desc{color:var(--text-muted);font-size:12px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.stat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.stat-number{font-size:36px;font-weight:800;color:var(--primary);line-height:1}
+.stat-label{font-size:13px;color:var(--text-muted);margin-top:4px}
+.mermaid{background:#fff;border-radius:8px;padding:24px;overflow-x:auto}
+.code-block{background:#1e293b;border-radius:8px;padding:20px;overflow-x:auto;font-family:'Fira Code','Consolas',monospace;font-size:12px;color:#e2e8f0;line-height:1.5;margin-top:12px;white-space:pre-wrap}
+.domain-person{border-left:4px solid var(--person)}.domain-event{border-left:4px solid var(--event)}.domain-financial{border-left:4px solid var(--financial)}.domain-group{border-left:4px solid #10b981}.domain-system{border-left:4px solid var(--text-muted)}
+.domain-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.domain-tag.person{background:#fff7ed;color:var(--person)}.domain-tag.event{background:#ecfeff;color:var(--event)}.domain-tag.financial{background:#f5f3ff;color:var(--financial)}.domain-tag.group{background:#ecfdf5;color:#059669}.domain-tag.system{background:#f1f5f9;color:var(--text-muted)}
+.table-card{margin-bottom:24px}
+.table-toggle{cursor:pointer;display:flex;align-items:center;gap:8px}
+.table-toggle::before{content:'▶';font-size:10px;transition:transform .2s}
+.table-card.open .table-toggle::before{transform:rotate(90deg)}
+.table-card .fields-container{display:none}
+.table-card.open .fields-container{display:block}
+@media(max-width:768px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.content{padding:24px 20px}}
+.nav-toggle{display:none;position:fixed;top:16px;left:16px;z-index:200;background:var(--primary);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+@media(max-width:768px){.nav-toggle{display:block}}
+.api-item{padding:12px 16px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.method-badge{font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px;min-width:50px;text-align:center}
+.method-badge.get{background:#dbeafe;color:#1d4ed8}.method-badge.post{background:#d1fae5;color:#065f46}.method-badge.put{background:#fef3c7;color:#92400e}.method-badge.delete{background:#fee2e2;color:#991b1b}
+.api-path{font-family:'Fira Code','Consolas',monospace;font-size:13px;color:var(--text)}
+.search-results{display:none;margin-bottom:32px}
+.search-results.show{display:block}
+.search-result-item{padding:12px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:background .15s}
+.search-result-item:hover{background:#f0f9ff}
+.search-result-item .result-title{font-weight:600;color:var(--primary);margin-bottom:4px}
+.search-result-item .result-context{font-size:12px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<button class="nav-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ 导航</button>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h1>ChurchCRM 数据架构分析报告</h1>
+        <div class="subtitle">📅 2026-04-05 | 43张表 | 195个API</div>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">概览</div>
+        <a class="sidebar-item" href="#summary">📊 执行摘要</a>
+        <a class="sidebar-item" href="#domains">🏷️ 业务域分布</a>
+        <a class="sidebar-item" href="#core-tables">🗄️ 核心数据表</a>
+        <a class="sidebar-item" href="#er-diagram">🔗 实体关系图</a>
+        <a class="sidebar-item" href="#flow-diagram">🔄 数据流图</a>
+        <a class="sidebar-item" href="#api">📡 API 数据流</a>
+        <a class="sidebar-item" href="#services">⚙️ Service 层</a>
+        <a class="sidebar-item" href="#code">💻 源码解读</a>
+    </div>
+</div>
+<div class="main">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="🔍 搜索表名、字段、API路径..." oninput="handleSearch(this.value)">
+    </div>
+    <div class="content">
+        <div class="section" id="summary">
+            <div class="section-header">
+                <h2>📊 执行摘要</h2>
+                <p>ChurchCRM 是一个基于 PHP/MySQL 的教堂管理信息系统（HIS)，本报告基于代码库深度分析</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">43</div><div class="stat-label">数据表总数</div></div>
+                <div class="stat-card"><div class="stat-number">11</div><div class="stat-label">业务域</div></div>
+                <div class="stat-card"><div class="stat-number">195</div><div class="stat-label">API 端点</div></div>
+                <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">核心 Service</div></div>
+                <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">核心业务链路</div></div>
+                <div class="stat-card"><div class="stat-number">43</div><div class="stat-label">实体关系</div></div>
+            </div>
+        </div>
+        <div class="section" id="domains">
+            <div class="section-header">
+                <h2>🏷️ 业务域分布</h2>
+                <p>43张表按业务域分类统计</p>
+            </div>
+            <div class="card">
+                <table class="data-table">
+                    <thead><tr><th>业务域</th><th>表数量</th><th>核心表</th><th>说明</th></tr></thead>
+                    <tbody>
+                        <tr><td><span class="domain-tag person">👥</span> Person &amp; Family</td><td>8</td><td>person_per, family_fam</td><td>人员与家庭主数据</td></tr>
+                        <tr><td><span class="domain-tag event">📅</span> Events</td><td>6</td><td>events_event, event_types</td><td>活动管理与类型定义</td></tr>
+                        <tr><td><span class="domain-tag group">👥</span> Groups &amp; Volunteers</td><td>5</td><td>group_grp, person2group2role_p2g2r</td><td>小组与志愿者管理</td></tr>
+                        <tr><td><span class="domain-tag financial">💰</span> Financial</td><td>5</td><td>pledge_plg, deposit_dep, donationfund_fun</td><td>奉献金与存款管理</td></tr>
+                        <tr><td><span class="domain-tag system">⚙️</span> System</td><td>6</td><td>config_cfg, list_lst, version_ver</td><td>系统配置与版本</td></tr>
+                        <tr><td><span class="domain-tag system">📋</span> Properties</td><td>3</td><td>property_pro, propertytype_prt</td><td>实体属性管理</td></tr>
+                        <tr><td><span class="domain-tag system">📍</span> Location &amp; Calendar</td><td>3</td><td>locations, calendars</td><td>地点与日历同步</td></tr>
+                        <tr><td><span class="domain-tag system">🖥️</span> Kiosk</td><td>2</td><td>kioskdevice_kdev, kioskassginment_kasm</td><td>活动签到终端</td></tr>
+                        <tr><td><span class="domain-tag system">📝</span> Queries</td><td>3</td><td>query_qry, queryparameters_qrp</td><td>预定义报表</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="section" id="core-tables">
+            <div class="section-header">
+                <h2>🗄️ 核心数据表</h2>
+                <p>最核心的7张业务表及其关键字段，点击展开查看完整字段</p>
+            </div>
+<div class="card table-card domain-person" id="table-person_per">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag person">人员主表</span> <code style="font-size:14px">person_per</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">人员主数据，包含姓名、地址、电话、邮箱等核心信息。所有人员的唯一标识，per_fam_ID 关联家庭，per_cls_ID 关联分类，per_fmr_ID 关联家庭角色。per_FriendDate 标记首次到访访客。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+<div class="card table-card domain-person" id="table-family_fam">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag person">家庭主表</span> <code style="font-size:14px">family_fam</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">家庭主数据，包含家庭名、地址、电话、邮箱。教会以家庭为单元进行奉献统计和通讯管理。fam_Latitude/fam_Longitude 支持地图展示。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+<div class="card table-card domain-group" id="table-group_grp">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag group">小组主表</span> <code style="font-size:14px">group_grp</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">小组定义，包含小组名、类型（grp_Type）、角色列表（grp_RoleListID）。小组是教会人员组织的基本单元，通过 person2group2role_p2g2r 建立人员与小组的多对多关系。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+<div class="card table-card domain-event" id="table-events_event">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag event">活动主表</span> <code style="font-size:14px">events_event</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">活动定义，包含活动名、类型、时间、地点、联系人。通过 event_attend 记录参与人，通过 event_audience 定义目标受众小组，通过 kioskassginment_kasm 关联签到终端。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+<div class="card table-card domain-financial" id="table-pledge_plg">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag financial">奉献记录表</span> <code style="font-size:14px">pledge_plg</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">奉献承诺与支付记录，plg_PledgeOrPayment 区分承诺(Pledge)和支付(Payment)。关联家庭（plg_FamID）、资金科目（plg_fundID）、存款批次（plg_depID）。支持多种支付方式和定期计划。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+<div class="card table-card domain-financial" id="table-deposit_dep">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag financial">存款批次表</span> <code style="font-size:14px">deposit_dep</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">银行对账批次，包含存款日期、备注、关闭状态(dep_Closed)。一个批次可包含多笔 pledge_plg，通过 dep_Type 区分支票/现金等类型。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="table-user_usr">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-header">
+                <div>
+                    <div class="card-title"><span class="domain-tag system">用户账号表</span> <code style="font-size:14px">user_usr</code></div>
+                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">系统用户，绑定到 person_per（usr_per_ID）。包含用户名、密码哈希、API Key、2FA密钥。权限字段包括 AddRecords、EditRecords、DeleteRecords、Finance、Admin 等。</div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
+                <tbody>
+</tbody></table></div></div>
+
+        </div>
+        <div class="section" id="er-diagram">
+            <div class="section-header">
+                <h2>🔗 实体关系图 (ER)</h2>
+                <p>43张表的完整外键关系，Mermaid 实时渲染</p>
+            </div>
+            <div class="card">
+                <div class="mermaid">
+erDiagram
+
+    CalendarEvent {
+        SMALLINT calendar_id PK
+        SMALLINT event_id PK
+    }
+
+    Calendar {
+        SMALLINT calendar_id PK
+        VARCHAR name
+        VARCHAR accesstoken?
+        VARCHAR backgroundColor?
+        VARCHAR foregroundColor?
+    }
+
+    Config {
+        INTEGER cfg_id PK
+        VARCHAR cfg_name
+        LONGVARCHAR cfg_value?
+    }
+
+    Deposit {
+        SMALLINT dep_ID PK
+        DATE dep_Date?
+        LONGVARCHAR dep_Comment?
+        SMALLINT dep_EnteredBy?
+        BOOLEAN dep_Closed
+        CHAR dep_Type
+    }
+
+    DonatedItem {
+        SMALLINT di_ID PK
+        VARCHAR di_item
+        SMALLINT di_FR_ID
+        SMALLINT di_donor_ID
+        SMALLINT di_buyer_ID
+        SMALLINT di_multibuy
+        VARCHAR di_title
+        LONGVARCHAR di_description?
+        DECIMAL di_sellprice?
+        DECIMAL di_estprice?
+        DECIMAL di_minimum?
+        DECIMAL di_materialvalue?
+        SMALLINT di_EnteredBy
+        DATE di_EnteredDate
+        LONGVARCHAR di_picture?
+    }
+
+    DonationFund {
+        TINYINT fun_ID PK
+        CHAR fun_Active
+        VARCHAR fun_Name?
+        VARCHAR fun_Description?
+        INTEGER fun_Order
+    }
+
+    EventAttend {
+        INTEGER attend_id PK
+        INTEGER event_id
+        INTEGER person_id
+        TIMESTAMP checkin_date?
+        INTEGER checkin_id?
+        TIMESTAMP checkout_date?
+        INTEGER checkout_id?
+    }
+
+    EventAudience {
+        SMALLINT event_id PK
+        SMALLINT group_id PK
+    }
+
+    EventType {
+        INTEGER type_id PK
+        VARCHAR type_name
+        TIME type_defstarttime
+        CHAR type_defrecurtype
+        CHAR type_defrecurDOW
+        CHAR type_defrecurDOM
+        DATE type_defrecurDOY
+        INTEGER type_active
+        INTEGER type_grpid?
+    }
+
+    EventCountName {
+        INTEGER evctnm_countid PK
+        SMALLINT evctnm_eventtypeid
+        VARCHAR evctnm_countname
+    }
+
+    EventCounts {
+        INTEGER evtcnt_eventid PK
+        INTEGER evtcnt_countid PK
+        VARCHAR evtcnt_countname?
+        INTEGER evtcnt_countcount?
+        VARCHAR evtcnt_notes?
+    }
+
+    Event {
+        INTEGER event_id PK
+        INTEGER event_type
+        VARCHAR event_title
+        VARCHAR event_desc?
+        LONGVARCHAR event_text?
+        TIMESTAMP event_start
+        TIMESTAMP event_end
+        INTEGER inactive
+        INTEGER location_id
+        INTEGER primary_contact_person_id
+        INTEGER secondary_contact_person_id
+        LONGVARCHAR event_url?
+    }
+
+    FamilyCustom {
+        SMALLINT fam_ID PK
+    }
+
+    FamilyCustomMaster {
+        VARCHAR fam_custom_Field PK
+        SMALLINT fam_custom_Order
+        VARCHAR fam_custom_Name
+        SMALLINT fam_custom_Special?
+        TINYINT fam_custom_FieldSec
+        TINYINT type_ID
+    }
+
+    Family {
+        SMALLINT fam_ID PK
+        VARCHAR fam_Name?
+        VARCHAR fam_Address1?
+        VARCHAR fam_Address2?
+        VARCHAR fam_City?
+        VARCHAR fam_State?
+        VARCHAR fam_Zip?
+        VARCHAR fam_Country?
+        VARCHAR fam_HomePhone?
+        VARCHAR fam_Email?
+        DATE fam_WeddingDate?
+        TIMESTAMP fam_DateEntered
+        TIMESTAMP fam_DateLastEdited?
+        SMALLINT fam_EnteredBy
+        SMALLINT fam_EditedBy?
+        LONGVARCHAR fam_scanCheck?
+        LONGVARCHAR fam_scanCredit?
+        CHAR fam_SendNewsLetter
+        DATE fam_DateDeactivated?
+        DOUBLE fam_Latitude?
+        DOUBLE fam_Longitude?
+        SMALLINT fam_Envelope
+    }
+
+    FundRaiser {
+        SMALLINT fr_ID PK
+        DATE fr_date?
+        VARCHAR fr_title
+        LONGVARCHAR fr_description?
+        SMALLINT fr_EnteredBy
+        DATE fr_EnteredDate
+    }
+
+    Group {
+        SMALLINT grp_ID PK
+        TINYINT grp_Type
+        SMALLINT grp_RoleListID
+        SMALLINT grp_DefaultRole
+        VARCHAR grp_Name
+        LONGVARCHAR grp_Description?
+        BOOLEAN grp_hasSpecialProps?
+        BOOLEAN grp_active
+        BOOLEAN grp_include_email_export
+    }
+
+    GroupPropMaster {
+        SMALLINT grp_ID
+        TINYINT prop_ID
+        VARCHAR prop_Field
+        VARCHAR prop_Name?
+        VARCHAR prop_Description?
+        SMALLINT type_ID
+        SMALLINT prop_Special?
+        CHAR prop_PersonDisplay
+    }
+
+    KioskAssignment {
+        INTEGER kasm_ID PK
+        INTEGER kasm_kdevId?
+        INTEGER kasm_AssignmentType?
+        INTEGER kasm_EventId?
+    }
+
+    KioskDevice {
+        INTEGER kdev_ID PK
+        VARCHAR kdev_GUIDHash?
+        VARCHAR kdev_Name?
+        LONGVARCHAR kdev_deviceType?
+        LONGVARCHAR kdev_lastHeartbeat?
+        BOOLEAN kdev_Accepted?
+        LONGVARCHAR kdev_PendingCommands?
+    }
+
+    ListOption {
+        SMALLINT lst_ID PK
+        SMALLINT lst_OptionID PK
+        TINYINT lst_OptionSequence
+        VARCHAR lst_OptionName
+    }
+
+    Location {
+        SMALLINT location_id PK
+        SMALLINT location_typeID
+        VARCHAR location_name
+        VARCHAR location_address
+        VARCHAR location_city
+        VARCHAR location_state
+        VARCHAR location_zip
+        VARCHAR location_country
+        VARCHAR location_phone
+        VARCHAR location_email
+        VARCHAR location_timzezone
+    }
+
+    MenuLink {
+        SMALLINT linkId PK
+        VARCHAR linkName?
+        VARCHAR linkUri?
+        SMALLINT linkOrder?
+    }
+
+    Note {
+        SMALLINT nte_ID PK
+        SMALLINT nte_per_ID
+        SMALLINT nte_fam_ID
+        SMALLINT nte_Private
+        LONGVARCHAR nte_Text?
+        TIMESTAMP nte_DateEntered
+        TIMESTAMP nte_DateLastEdited?
+        SMALLINT nte_EnteredBy
+        SMALLINT nte_EditedBy
+        VARCHAR nte_Type?
+    }
+
+    None {
+        SMALLINT p2g2r_per_ID PK
+        SMALLINT p2g2r_grp_ID PK
+        SMALLINT p2g2r_rle_ID
+    }
+
+    PersonVolunteerOpportunity {
+        SMALLINT p2vo_ID PK
+        SMALLINT p2vo_per_ID?
+        SMALLINT p2vo_vol_ID?
+    }
+
+    PersonCustom {
+        SMALLINT per_ID PK
+    }
+
+    PersonCustomMaster {
+        VARCHAR custom_Field PK
+        SMALLINT custom_Order
+        VARCHAR custom_Name
+        SMALLINT custom_Special?
+        TINYINT custom_FieldSec
+        TINYINT type_ID
+    }
+
+    Person {
+        SMALLINT per_ID PK
+        VARCHAR per_Title?
+        VARCHAR per_FirstName?
+        VARCHAR per_MiddleName?
+        VARCHAR per_LastName?
+        VARCHAR per_Suffix?
+        VARCHAR per_Address1?
+        VARCHAR per_Address2?
+        VARCHAR per_City?
+        VARCHAR per_State?
+        VARCHAR per_Zip?
+        VARCHAR per_Country?
+        VARCHAR per_HomePhone?
+        VARCHAR per_WorkPhone?
+        VARCHAR per_CellPhone?
+        VARCHAR per_Email?
+        VARCHAR per_WorkEmail?
+        TINYINT per_BirthMonth
+        TINYINT per_BirthDay
+        SMALLINT per_BirthYear?
+        DATE per_MembershipDate?
+        TINYINT per_Gender
+        TINYINT per_fmr_ID
+        TINYINT per_cls_ID
+        SMALLINT per_fam_ID
+        SMALLINT per_Envelope?
+        TIMESTAMP per_DateLastEdited?
+        TIMESTAMP per_DateEntered
+        SMALLINT per_EnteredBy
+        SMALLINT per_EditedBy?
+        DATE per_FriendDate?
+        SMALLINT per_Flags
+        VARCHAR per_Facebook?
+        VARCHAR per_Twitter?
+        VARCHAR per_LinkedIn?
+    }
+
+    Pledge {
+        SMALLINT plg_plgID PK
+        SMALLINT plg_FamID?
+        SMALLINT plg_FYID?
+        DATE plg_date?
+        DECIMAL plg_amount?
+        CHAR plg_schedule?
+        CHAR plg_method?
+        LONGVARCHAR plg_comment?
+        DATE plg_DateLastEdited
+        SMALLINT plg_EditedBy
+        CHAR plg_PledgeOrPayment
+        TINYINT plg_fundID?
+        SMALLINT plg_depID?
+        BIGINT plg_CheckNo?
+        BOOLEAN plg_Problem?
+        LONGVARCHAR plg_scanString?
+        SMALLINT plg_aut_ID
+        BOOLEAN plg_aut_Cleared
+        SMALLINT plg_aut_ResultID
+        DECIMAL plg_NonDeductible
+        VARCHAR plg_GroupKey
+    }
+
+    Property {
+        SMALLINT pro_ID PK
+        VARCHAR pro_Class
+        SMALLINT pro_prt_ID
+        VARCHAR pro_Name
+        LONGVARCHAR pro_Description
+        VARCHAR pro_Prompt?
+    }
+
+    PropertyType {
+        SMALLINT prt_ID PK
+        VARCHAR prt_Class
+        VARCHAR prt_Name
+        LONGVARCHAR prt_Description
+    }
+
+    PredefinedReports {
+        SMALLINT qry_ID PK
+        LONGVARCHAR qry_SQL
+        VARCHAR qry_Name
+        LONGVARCHAR qry_Description
+        BOOLEAN qry_Count
+    }
+
+    QueryParameterOptions {
+        SMALLINT qpo_ID PK
+        SMALLINT qpo_qrp_ID
+        VARCHAR qpo_Display
+        VARCHAR qpo_Value
+    }
+
+    QueryParameters {
+        SMALLINT qrp_ID PK
+        SMALLINT qrp_qry_ID
+        TINYINT qrp_Type
+        LONGVARCHAR qrp_OptionSQL?
+        VARCHAR qrp_Name?
+        LONGVARCHAR qrp_Description?
+        VARCHAR qrp_Alias?
+        VARCHAR qrp_Default?
+        TINYINT qrp_Required
+        TINYINT qrp_InputBoxSize
+        VARCHAR qrp_Validation
+        INTEGER qrp_NumericMax?
+        INTEGER qrp_NumericMin?
+        INTEGER qrp_AlphaMinLength?
+        INTEGER qrp_AlphaMaxLength?
+    }
+
+    RecordProperty {
+        SMALLINT r2p_pro_ID PK
+        SMALLINT r2p_record_ID PK
+        LONGVARCHAR r2p_Value
+    }
+
+    Token {
+        VARCHAR token PK
+        VARCHAR type
+        DATE valid_until_date?
+        INTEGER reference_id?
+        INTEGER remainingUses?
+    }
+
+    UserSetting {
+        SMALLINT user_id PK
+        VARCHAR setting_name PK
+        VARCHAR setting_value?
+    }
+
+    User {
+        SMALLINT usr_per_ID PK
+        VARCHAR usr_Password
+        BOOLEAN usr_NeedPasswordChange
+        TIMESTAMP usr_LastLogin
+        SMALLINT usr_LoginCount
+        TINYINT usr_FailedLogins
+        BOOLEAN usr_AddRecords
+        BOOLEAN usr_EditRecords
+        BOOLEAN usr_DeleteRecords
+        BOOLEAN usr_MenuOptions
+        BOOLEAN usr_ManageGroups
+        BOOLEAN usr_Finance
+        BOOLEAN usr_Notes
+        BOOLEAN usr_Admin
+        SMALLINT usr_defaultFY
+        SMALLINT usr_currentDeposit
+        VARCHAR usr_UserName
+        VARCHAR usr_Style?
+        VARCHAR usr_ApiKey?
+        VARCHAR usr_TwoFactorAuthSecret?
+        SMALLINT usr_TwoFactorAuthLastKeyTimestamp?
+        LONGVARCHAR usr_TwoFactorAuthRecoveryCodes?
+        BOOLEAN usr_EditSelf
+        DATE usr_CalStart?
+        DATE usr_CalEnd?
+        DATE usr_CalNoSchool1?
+        DATE usr_CalNoSchool2?
+        DATE usr_CalNoSchool3?
+        DATE usr_CalNoSchool4?
+        DATE usr_CalNoSchool5?
+        DATE usr_CalNoSchool6?
+        DATE usr_CalNoSchool7?
+        DATE usr_CalNoSchool8?
+        TINYINT usr_SearchFamily?
+    }
+
+    UserConfig {
+        SMALLINT ucfg_per_id PK
+        INTEGER ucfg_id PK
+        VARCHAR ucfg_name
+        LONGVARCHAR ucfg_value?
+        CHAR ucfg_type
+        LONGVARCHAR ucfg_tooltip
+        CHAR ucfg_permission
+        VARCHAR ucfg_cat
+    }
+
+    Version {
+        SMALLINT ver_ID PK
+        VARCHAR ver_version
+        TIMESTAMP ver_update_start?
+        TIMESTAMP ver_update_end?
+    }
+
+    VolunteerOpportunity {
+        INTEGER vol_ID PK
+        INTEGER vol_Order
+        CHAR vol_Active
+        VARCHAR vol_Name?
+        VARCHAR vol_Description?
+    }
+
+    WhyCame {
+        SMALLINT why_ID PK
+        SMALLINT why_per_ID
+        LONGVARCHAR why_join
+        LONGVARCHAR why_come
+        LONGVARCHAR why_suggest
+        LONGVARCHAR why_hearOfUs
+    }
+                </div>
+            </div>
+        </div>
+        <div class="section" id="flow-diagram">
+            <div class="section-header">
+                <h2>🔄 数据流图</h2>
+                <p>4条核心业务链路的数据流转</p>
+            </div>
+            <div class="card">
+                <div class="mermaid">
+# ChurchCRM Complete Data Flow Diagrams
+## Business Process Flows
+
+---
+
+## 1. Person Lifecycle
+
+
+flowchart TD
+    subgraph Registration["Person Registration"]
+        P1["New Person<br/>Entered in person_per"]
+        P2["Assign Classification<br/>per_cls_ID -> list_lst"]
+        P3["Assign Family<br/>per_fam_ID -> family_fam"]
+    end
+    
+    subgraph GroupInvolvement["Group Involvement"]
+        P4["Join Groups<br/>person2group2role_p2g2r"]
+        P5["Assign Group Role"]
+        P6["Group Properties<br/>groupprop_master"]
+    end
+    
+    subgraph Volunteer["Volunteer Service"]
+        V1["Assign Volunteer Opportunity<br/>person2volunteeropp_p2vo"]
+        V2["Track Volunteer Hours"]
+    end
+    
+    subgraph Activities["Activities & Events"]
+        A1["Event Registration<br/>event_attend"]
+        A2["Check-in/Check-out"]
+        A3["Event Counts<br/>eventcounts_evtcnt"]
+    end
+    
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
+    P4 --> V1 --> V2
+    P4 --> A1 --> A2 --> A3
+
+
+---
+
+## 2. Financial Full Chain
+
+
+flowchart TD
+    subgraph Pledge["Pledge Commitment"]
+        F1["Define Donation Fund<br/>donationfund_fun"]
+        F2["Create Pledge<br/>pledge_plg<br/>plg_PledgeOrPayment=Pledge"]
+        F3["Set Schedule<br/>plg_schedule"]
+    end
+    
+    subgraph Collection["Collection"]
+        C1["Record Payment<br/>pledge_plg<br/>plg_PledgeOrPayment=Payment"]
+        C2["Scan Check<br/>fam_scanCheck"]
+        C3["Assign Fund<br/>plg_fundID"]
+    end
+    
+    subgraph Deposit["Deposit Process"]
+        D1["Create Deposit<br/>deposit_dep"]
+        D2["Link Payments<br/>plg_depID"]
+        D3["Close Deposit<br/>dep_Closed"]
+    end
+    
+    subgraph Reconciliation["Reconciliation"]
+        R1["Bank Reconciliation"]
+        R2["Tax Report<br/>plg_NonDeductible"]
+        R3["Fund Summary"]
+    end
+    
+    F1 --> F2 --> F3 --> C1 --> C2 --> C3 --> D1 --> D2 --> D3 --> R1 --> R2 --> R3
+
+
+---
+
+## 3. Visitor Conversion
+
+
+flowchart TD
+    subgraph Visit["Church Visit"]
+        V1["First Visit<br/>per_FriendDate"]
+        V2["Record Why Came<br/>whycame_why"]
+        V3["Add Notes<br/>note_nte"]
+    end
+    
+    subgraph FollowUp["Follow-up Tracking"]
+        F1["Assign Property<br/>record2property_r2p"]
+        F2["Create Tasks"]
+        F3["Send Communications"]
+    end
+    
+    subgraph Classification["Classification"]
+        C1["Update Classification<br/>per_cls_ID"]
+        C2["Member Status"]
+    end
+    
+    subgraph Integration["Family Integration"]
+        I1["Create/Join Family<br/>family_fam"]
+        I2["Link to Family<br/>per_fam_ID"]
+    end
+    
+    V1 --> V2 --> V3 --> F1 --> F2 --> F3 --> C1 --> C2
+    C2 --> I1 --> I2
+
+
+---
+
+## 4. Event Management Flow
+
+
+flowchart TD
+    subgraph Setup["Event Setup"]
+        E1["Define Event Type<br/>event_types"]
+        E2["Create Event<br/>events_event"]
+        E3["Define Audiences<br/>event_audience"]
+        E4["Set Event Counts<br/>eventcountnames_evctnm"]
+    end
+    
+    subgraph Planning["Planning"]
+        P1["Assign Contacts<br/>primary_contact_person_id<br/>secondary_contact_person_id"]
+        P2["Set Location<br/>location_id -> locations"]
+        P3["Create Calendar<br/>calendars"]
+    end
+    
+    subgraph Execution["Execution"]
+        X1["Kiosk Registration<br/>kioskdevice_kdev<br/>kioskassginment_kasm"]
+        X2["Check-in<br/>event_attend"]
+        X3["Track Attendance<br/>eventcounts_evtcnt"]
+    end
+    
+    E1 --> E2 --> E3 --> E4 --> P1 --> P2 --> P3 --> X1 --> X2 --> X3
+                </div>
+            </div>
+        </div>
+        <div class="section" id="api">
+            <div class="section-header">
+                <h2>📡 API 数据流</h2>
+                <p>基于 OpenAPI YAML 提取的 195 个端点分析</p>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">路由架构</h3>
+                <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px">
+                    <div style="flex:1;min-width:200px;padding:16px;background:#f0f9ff;border-radius:8px"><div style="font-weight:700;color:var(--primary);margin-bottom:4px">Slim Framework</div><div style="font-size:13px;color:var(--text-muted)">PHP 微框架，处理 HTTP 路由</div></div>
+                    <div style="flex:1;min-width:200px;padding:16px;background:#f0fdf4;border-radius:8px"><div style="font-weight:700;color:#059669;margin-bottom:4px">Service Layer</div><div style="font-size:13px;color:var(--text-muted)">业务逻辑处理，调用 Model 层</div></div>
+                    <div style="flex:1;min-width:200px;padding:16px;background:#fef3c7;border-radius:8px"><div style="font-weight:700;color:#92400e;margin-bottom:4px">DAO / Propel ORM</div><div style="font-size:13px;color:var(--text-muted)">数据库访问，Query Builder</div></div>
+                </div>
+                <h3 style="margin-bottom:16px">API 端点分布</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px">
+                    <div style="padding:16px;background:#f1f5f9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--primary)">184</div><div style="font-size:13px;color:var(--text-muted)">Private API</div></div>
+                    <div style="padding:16px;background:#f1f5f9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:800;color:#059669">11</div><div style="font-size:13px;color:var(--text-muted)">Public API</div></div>
+                </div>
+                <h3 style="margin-bottom:16px">Private API 路由示例</h3>
+                <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/person/{id}</span></div>
+                <div class="api-item"><span class="method-badge post">POST</span><span class="api-path">/api/person</span></div>
+                <div class="api-item"><span class="method-badge put">PUT</span><span class="api-path">/api/person/{id}</span></div>
+                <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/family/{id}</span></div>
+                <div class="api-item"><span class="method-badge post">POST</span><span class="api-path">/api/group/{id}/member</span></div>
+                <div class="api-item"><span class="method-badge post">POST</span><span class="api-path">/api/pledge</span></div>
+                <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/deposit/{id}</span></div>
+                <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/event/{id}/attendees</span></div>
+            </div>
+        </div>
+        <div class="section" id="services">
+            <div class="section-header">
+                <h2>⚙️ Service 层分析</h2>
+                <p>5大核心 Service 类及其公开方法</p>
+            </div>
+<div class="card domain-person">
+        <div class="card-header">
+            <div class="card-title"><span class="domain-tag person">人员服务</span> <code>PersonService</code></div>
+            <span class="card-badge">8 个方法</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">负责人员的 CRUD 操作、小组分配、志愿者管理。</p>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>person_per, family_fam, group_grp, list_lst</code></div>
+        <div style="margin-top:12px">
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>search() - 搜索人员</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getPeopleEmailsAndGroups() - 获取人员邮箱和小组</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>addVolunteerOpportunity() - 添加志愿者机会</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getFamilyList() - 获取家庭列表</code></div>
+</div></div>
+<div class="card domain-group">
+        <div class="card-header">
+            <div class="card-title"><span class="domain-tag group">小组服务</span> <code>GroupService</code></div>
+            <span class="card-badge">11 个方法</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">核心方法最多，支持小组内人员的增删和角色管理。</p>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>group_grp, person2group2role_p2g2r, groupprop_master, list_lst</code></div>
+        <div style="margin-top:12px">
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>addUserToGroup() - 添加成员到小组</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>removeUserFromGroup() - 从小组移除成员</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getGroupMembers() - 获取小组成员</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>setGroupRoleOrder() - 设置成员角色</code></div>
+</div></div>
+<div class="card domain-financial">
+        <div class="card-header">
+            <div class="card-title"><span class="domain-tag financial">财务服务</span> <code>FinancialService</code></div>
+            <span class="card-badge">30 个方法</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">最复杂的服务类（30个方法），覆盖奉献全生命周期：承诺录入→支付→存款→对账→报税。</p>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>pledge_plg, family_fam, deposit_dep, donationfund_fun, currency_denominations</code></div>
+        <div style="margin-top:12px">
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>insertPledgeorPayment() - 插入承诺或支付</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>submitPledgeOrPayment() - 提交奉献</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getTaxReportData() - 获取报税数据</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositPDF() - 生成存款 PDF</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>validateChecks() - 验证支票</code></div>
+</div></div>
+<div class="card domain-financial">
+        <div class="card-header">
+            <div class="card-title"><span class="domain-tag financial">存款服务</span> <code>DepositService</code></div>
+            <span class="card-badge">8 个方法</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">专注于存款批次管理和对账输出。</p>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>pledge_plg, deposit_dep</code></div>
+        <div style="margin-top:12px">
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>createDeposit() - 创建存款批次</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>setDeposit() - 设置存款</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositPDF() - 存款凭证 PDF</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositCSV() - 存款明细 CSV</code></div>
+</div></div>
+<div class="card domain-person">
+        <div class="card-header">
+            <div class="card-title"><span class="domain-tag person">家庭服务</span> <code>FamilyService</code></div>
+            <span class="card-badge">3 个方法</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">家庭地址地理编码服务，用于地图展示。</p>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>family_fam</code></div>
+        <div style="margin-top:12px">
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getMissingCoordinatesCount() - 统计缺失坐标数</code></div>
+<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>autoGeocodeFamily() - 自动获取家庭地址坐标</code></div>
+</div></div>
+
+        </div>
+        <div class="section" id="code">
+            <div class="section-header">
+                <h2>💻 源码解读</h2>
+                <p>关键代码片段与数据操作解析</p>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">📝 人员注册流程</h3>
+                <pre class="code-block">// 1. 创建人员记录
+$person = new Person();
+$person->setFirstName($firstName);
+$person->setLastName($lastName);
+$person->setFamId($familyId);  // FK → family_fam
+$person->setClsId($classification);  // 成员分类
+$person->save();
+
+// 2. 分配小组角色
+$groupService->addUserToGroup($personId, $groupId, $roleId);
+// → person2group2role_p2g2r 表插入记录
+
+// 3. 活动签到
+$eventAttend = new EventAttend();
+$eventAttend->setEventId($eventId);
+$eventAttend->setPersonId($personId);
+$eventAttend->setCheckinDate(new DateTime());
+// → event_attend 表记录</pre>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">💰 奉献支付流程</h3>
+                <pre class="code-block">// 1. 验证家庭
+$family = FamilyQuery::create()->findOneById($famId);
+
+// 2. 创建奉献记录 (Pledge or Payment)
+$pledge = new Pledge();
+$pledge->setFamId($famId);    // FK → family_fam
+$pledge->setFundId($fundId);   // FK → donationfund_fun
+$pledge->setAmount($amount);
+$pledge->setSchedule($schedule);  // Weekly/Monthly/OneTime
+$pledge->setPledgeOrPayment('Payment');  // 区分承诺和实际支付
+$pledge->save();
+
+// 3. 加入存款批次
+$deposit = DepositQuery::create()->findOneById($depositId);
+$deposit->addPledge($pledge);
+$pledge->setDepId($depositId);  // FK → deposit_dep
+$pledge->save();
+
+// 4. 生成报税数据
+$taxData = $financialService->getTaxReportData($fyId, $famId);</pre>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">🔐 用户认证流程</h3>
+                <pre class="code-block">// 1. 登录验证
+$user = UserQuery::create()->findOneByUserName($username);
+if (password_verify($password, $user->getPassword())) {
+    // 2. 生成 Token → tokens 表
+    $token = bin2hex(random_bytes(32));
+    $tokenRecord = new Token();
+    $tokenRecord->setToken($token);
+    $tokenRecord->setType('api');
+    $tokenRecord->setValidUntilDate($expiry);
+    $tokenRecord->setReferenceId($user->getPerId());
+    // 3. 返回 API Key 用于后续请求 Header
+    return $user->getApiKey();
+}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#2563eb',primaryTextColor:'#1e293b',primaryBorderColor:'#bfdbfe',lineColor:'#94a3b8',secondaryColor:'#f1f5f9',tertiaryColor:'#f8fafc'},er:{entityPadding:8,minimumEntityWidth:80,minimumEntityHeight:40},flowchart:{curve:'basis',padding:16}});
+
+function handleSearch(q) {
+    const results = document.getElementById('searchResults') || (() => {const d=document.createElement('div');d.id='searchResults';d.className='search-results show';document.querySelector('.content').prepend(d);return d;})();
+    q = q.toLowerCase().trim();
+    if(!q){results.classList.remove('show');document.querySelectorAll('.table-card').forEach(c=>c.style.display='');return;}
+    results.classList.add('show');
+    let count=0;
+    let html='<h3 style="margin:0 0 12px">搜索结果</h3>';
+    document.querySelectorAll('.table-card').forEach(card=>{
+        const t=card.querySelector('.card-title')?.textContent||'';
+        const m=card.textContent.toLowerCase().includes(q);
+        card.style.display=m?'':'none';
+        if(m){count++;html+=`<div class="search-result-item" onclick="document.getElementById('${card.id}').scrollIntoView({behavior:'smooth'});document.getElementById('${card.id}').classList.add('open')"><div class="result-title">${t}</div><div class="result-context">${card.textContent.substring(0,150)}...</div></div>`;}
+    });
+    results.innerHTML=(count?`<h3 style="margin:0 0 12px">找到 ${count} 个结果</h3>`:'<div style="color:var(--text-muted);padding:16px">未找到匹配结果</div>')+html;
+}
+
+document.querySelectorAll('.sidebar-item').forEach(item=>{
+    item.addEventListener('click',e=>{
+        const href=item.getAttribute('href');
+        if(href&&href.startsWith('#')){
+            e.preventDefault();
+            const t=document.querySelector(href);
+            if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}
+        }
+    });
+});
+
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            const id=entry.target.id;
+            document.querySelectorAll('.sidebar-item').forEach(item=>{
+                item.classList.toggle('active',item.getAttribute('href')==='#'+id);
+            });
+        }
+    });
+},{threshold:0.3,rootMargin:'-80px 0px 0px 0px'});
+document.querySelectorAll('.section[id]').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

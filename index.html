@@ -17,7 +17,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .sidebar-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:0 20px;margin-bottom:8px}
 .sidebar-item{display:block;padding:8px 20px;font-size:13px;color:var(--sidebar-text);text-decoration:none;cursor:pointer;transition:background .15s}
 .sidebar-item:hover,.sidebar-item.active{background:rgba(255,255,255,.08);color:#fff}
-.sidebar-item .badge{float:right;font-size:10px;background:rgba(255,255,255,.15);padding:2px 6px;border-radius:10px}
 .main{margin-left:280px;min-height:100vh}
 .content{max-width:1100px;margin:0 auto;padding:40px 48px}
 .search-bar{position:sticky;top:0;background:rgba(248,250,252,.95);backdrop-filter:blur(10px);padding:16px 48px;z-index:50;border-bottom:1px solid var(--border)}
@@ -51,9 +50,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .domain-tag.person{background:#fff7ed;color:var(--person)}.domain-tag.event{background:#ecfeff;color:var(--event)}.domain-tag.financial{background:#f5f3ff;color:var(--financial)}.domain-tag.group{background:#ecfdf5;color:#059669}.domain-tag.system{background:#f1f5f9;color:var(--text-muted)}
 .table-card{margin-bottom:24px}
 .table-toggle{cursor:pointer;display:flex;align-items:center;gap:8px}
-.table-toggle::before{content:'▶';font-size:10px;transition:transform .2s}
+.table-toggle::before{content:'▶';font-size:10px;transition:transform .2s;padding-right:8px}
 .table-card.open .table-toggle::before{transform:rotate(90deg)}
-.table-card .fields-container{display:none}
+.table-card .fields-container{display:none;padding-top:12px}
 .table-card.open .fields-container{display:block}
 @media(max-width:768px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.content{padding:24px 20px}}
 .nav-toggle{display:none;position:fixed;top:16px;left:16px;z-index:200;background:var(--primary);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
@@ -68,6 +67,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .search-result-item:hover{background:#f0f9ff}
 .search-result-item .result-title{font-weight:600;color:var(--primary);margin-bottom:4px}
 .search-result-item .result-context{font-size:12px;color:var(--text-muted)}
+.section-intro{margin-bottom:24px;padding:16px;background:#f8fafc;border-radius:8px;font-size:14px;color:var(--text-muted)}
+.section-intro strong{color:var(--text)}
 </style>
 </head>
 <body>
@@ -75,7 +76,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="sidebar">
     <div class="sidebar-header">
         <h1>ChurchCRM 数据架构分析报告</h1>
-        <div class="subtitle">📅 2026-04-05 | 43张表 | 195个API</div>
+        <div class="subtitle">📅 2026-04-05 | 43张表 | 195个API | 9个业务域</div>
     </div>
     <div class="sidebar-section">
         <div class="sidebar-section-title">概览</div>
@@ -88,6 +89,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <a class="sidebar-item" href="#services">⚙️ Service 层</a>
         <a class="sidebar-item" href="#code">💻 源码解读</a>
     </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">数据字典</div>
+        <a class="sidebar-item" href="#core-tables">📋 43张表完整字段</a>
+    </div>
 </div>
 <div class="main">
     <div class="search-bar">
@@ -97,11 +102,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="section" id="summary">
             <div class="section-header">
                 <h2>📊 执行摘要</h2>
-                <p>ChurchCRM 是一个基于 PHP/MySQL 的教堂管理信息系统（HIS)，本报告基于代码库深度分析</p>
+                <p>ChurchCRM 是基于 PHP/MySQL 的教堂管理信息系统（HIS)，本报告基于代码库深度分析生成</p>
             </div>
             <div class="stats-grid">
                 <div class="stat-card"><div class="stat-number">43</div><div class="stat-label">数据表总数</div></div>
-                <div class="stat-card"><div class="stat-number">11</div><div class="stat-label">业务域</div></div>
+                <div class="stat-card"><div class="stat-number">9</div><div class="stat-label">业务域</div></div>
                 <div class="stat-card"><div class="stat-number">195</div><div class="stat-label">API 端点</div></div>
                 <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">核心 Service</div></div>
                 <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">核心业务链路</div></div>
@@ -111,7 +116,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="section" id="domains">
             <div class="section-header">
                 <h2>🏷️ 业务域分布</h2>
-                <p>43张表按业务域分类统计</p>
+                <p>43张表按业务域分类统计，共9个业务域</p>
             </div>
             <div class="card">
                 <table class="data-table">
@@ -126,119 +131,267 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
                         <tr><td><span class="domain-tag system">📍</span> Location &amp; Calendar</td><td>3</td><td>locations, calendars</td><td>地点与日历同步</td></tr>
                         <tr><td><span class="domain-tag system">🖥️</span> Kiosk</td><td>2</td><td>kioskdevice_kdev, kioskassginment_kasm</td><td>活动签到终端</td></tr>
                         <tr><td><span class="domain-tag system">📝</span> Queries</td><td>3</td><td>query_qry, queryparameters_qrp</td><td>预定义报表</td></tr>
+                        <tr><td style="background:#f1f5f9;font-weight:700" colspan="3>合计（9域）</td><td style="background:#f1f5f9;font-weight:700">43</td></tr>
                     </tbody>
                 </table>
+                <p style="margin-top:12px;font-size:13px;color:var(--text-muted)">注：部分表跨多个业务域，合计为实际表数量</p>
             </div>
         </div>
         <div class="section" id="core-tables">
             <div class="section-header">
-                <h2>🗄️ 核心数据表</h2>
-                <p>最核心的7张业务表及其关键字段，点击展开查看完整字段</p>
+                <h2>🗄️ 核心数据表（可展开查看字段）</h2>
+                <p>点击表名称展开查看完整字段定义</p>
             </div>
 <div class="card table-card domain-person" id="table-person_per">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag person">人员主表</span> <code style="font-size:14px">person_per</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">人员主数据，包含姓名、地址、电话、邮箱等核心信息。所有人员的唯一标识，per_fam_ID 关联家庭，per_cls_ID 关联分类，per_fmr_ID 关联家庭角色。per_FriendDate 标记首次到访访客。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag person">人员主表</span> <code style="font-size:14px">person_per</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This contains the main person data, including person names, person addresses, person phone numbers, and foreign keys to the family table</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 35 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">per_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Title</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_FirstName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_MiddleName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_LastName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Suffix</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Address1</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Address2</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_City</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_State</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Zip</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Country</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_HomePhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_WorkPhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_CellPhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Email</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_WorkEmail</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_BirthMonth</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_BirthDay</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_BirthYear</td><td class="field-type">smallint(4)(4)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_MembershipDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Gender</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_fmr_ID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_cls_ID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_fam_ID</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Envelope</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_DateLastEdited</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_DateEntered</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_EnteredBy</td><td class="field-type">smallint(5)(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_EditedBy</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_FriendDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Flags</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Facebook</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">Facebook username</td></tr>
+<tr><td class="field-name">per_Twitter</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">Twitter username</td></tr>
+<tr><td class="field-name">per_LinkedIn</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">LinkedIn name</td></tr>
 </tbody></table></div></div>
 <div class="card table-card domain-person" id="table-family_fam">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag person">家庭主表</span> <code style="font-size:14px">family_fam</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">家庭主数据，包含家庭名、地址、电话、邮箱。教会以家庭为单元进行奉献统计和通讯管理。fam_Latitude/fam_Longitude 支持地图展示。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag person">家庭主表</span> <code style="font-size:14px">family_fam</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This contains the main family data, including family name, family addresses, and family phone numbers</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 22 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">fam_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Address1</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Address2</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_City</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_State</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Zip</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Country</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_HomePhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Email</td><td class="field-type">VARCHAR(100)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_WeddingDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_DateEntered</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_DateLastEdited</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_EnteredBy</td><td class="field-type">smallint(5)(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_EditedBy</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_scanCheck</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_scanCredit</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_SendNewsLetter</td><td class="field-type">enum('FALSE','TRUE')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_DateDeactivated</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Latitude</td><td class="field-type">DOUBLE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Longitude</td><td class="field-type">DOUBLE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Envelope</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
 </tbody></table></div></div>
 <div class="card table-card domain-group" id="table-group_grp">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag group">小组主表</span> <code style="font-size:14px">group_grp</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">小组定义，包含小组名、类型（grp_Type）、角色列表（grp_RoleListID）。小组是教会人员组织的基本单元，通过 person2group2role_p2g2r 建立人员与小组的多对多关系。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag group">小组主表</span> <code style="font-size:14px">group_grp</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This contains the name and description for each group, as well as foreign keys to the list of group roles</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 9 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">grp_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_Type</td><td class="field-type">TINYINT</td><td class="field-desc">The group type.  This is defined in list_lst.OptionId where lst_ID=3</td></tr>
+<tr><td class="field-name">grp_RoleListID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc">The lst_ID containing the names of the roles for this group</td></tr>
+<tr><td class="field-name">grp_DefaultRole</td><td class="field-type">SMALLINT(9)</td><td class="field-desc">The ID of the default role in this group's RoleList</td></tr>
+<tr><td class="field-name">grp_Name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_Description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_hasSpecialProps</td><td class="field-type">BOOLEAN</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_active</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_include_email_export</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc">Should members of this group be included in MailChimp Export</td></tr>
 </tbody></table></div></div>
 <div class="card table-card domain-event" id="table-events_event">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag event">活动主表</span> <code style="font-size:14px">events_event</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">活动定义，包含活动名、类型、时间、地点、联系人。通过 event_attend 记录参与人，通过 event_audience 定义目标受众小组，通过 kioskassginment_kasm 关联签到终端。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag event">活动主表</span> <code style="font-size:14px">events_event</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This contains events</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 12 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">event_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_type</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_title</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_desc</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_text</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_start</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_end</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">inactive</td><td class="field-type">INTEGER(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">primary_contact_person_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">secondary_contact_person_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_url</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
 </tbody></table></div></div>
 <div class="card table-card domain-financial" id="table-pledge_plg">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag financial">奉献记录表</span> <code style="font-size:14px">pledge_plg</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">奉献承诺与支付记录，plg_PledgeOrPayment 区分承诺(Pledge)和支付(Payment)。关联家庭（plg_FamID）、资金科目（plg_fundID）、存款批次（plg_depID）。支持多种支付方式和定期计划。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag financial">奉献记录表</span> <code style="font-size:14px">pledge_plg</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This contains all payment/pledge information</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 21 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">plg_plgID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_FamID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_FYID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_date</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_amount</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_schedule</td><td class="field-type">enum('Weekly','Monthly','Quarterly','Once','Other')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_method</td><td class="field-type">enum('CREDITCARD','CHECK','CASH','BANKDRAFT')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_comment</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_DateLastEdited</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_EditedBy</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_PledgeOrPayment</td><td class="field-type">enum('Pledge','Payment')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_fundID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_depID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_CheckNo</td><td class="field-type">bigint(16) unsigned(16)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_Problem</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_scanString</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_aut_ID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_aut_Cleared</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_aut_ResultID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_NonDeductible</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_GroupKey</td><td class="field-type">VARCHAR(64)</td><td class="field-desc"></td></tr>
 </tbody></table></div></div>
 <div class="card table-card domain-financial" id="table-deposit_dep">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag financial">存款批次表</span> <code style="font-size:14px">deposit_dep</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">银行对账批次，包含存款日期、备注、关闭状态(dep_Closed)。一个批次可包含多笔 pledge_plg，通过 dep_Type 区分支票/现金等类型。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag financial">存款批次表</span> <code style="font-size:14px">deposit_dep</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This records deposits / payments</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 6 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">dep_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Date</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Comment</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_EnteredBy</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Closed</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Type</td><td class="field-type">enum('Bank','CreditCard','BankDraft')</td><td class="field-desc"></td></tr>
 </tbody></table></div></div>
 <div class="card table-card domain-system" id="table-user_usr">
-        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
-            <div class="card-header">
-                <div>
-                    <div class="card-title"><span class="domain-tag system">用户账号表</span> <code style="font-size:14px">user_usr</code></div>
-                    <div style="font-size:13px;color:var(--text-muted);margin-top:4px">系统用户，绑定到 person_per（usr_per_ID）。包含用户名、密码哈希、API Key、2FA密钥。权限字段包括 AddRecords、EditRecords、DeleteRecords、Finance、Admin 等。</div>
+            <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="domain-tag system">用户账号表</span> <code style="font-size:14px">user_usr</code></div>
+                        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">This contains the login information and specific settings for each ChurchCRM user</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">共 34 个字段</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="fields-container">
-            <table class="data-table">
-                <thead><tr><th style="width:180px">字段名</th><th style="width:140px">类型</th><th>说明</th></tr></thead>
-                <tbody>
+            <div class="fields-container">
+                <table class="data-table">
+                    <thead><tr><th style="width:180px">字段名</th><th style="width:140px">SQL类型</th><th>说明</th></tr></thead>
+                    <tbody>
+<tr><td class="field-name">usr_per_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Password</td><td class="field-type">VARCHAR(500)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_NeedPasswordChange</td><td class="field-type">tinyint(3) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_LastLogin</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_LoginCount</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_FailedLogins</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_AddRecords</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_EditRecords</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_DeleteRecords</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_MenuOptions</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_ManageGroups</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Finance</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Notes</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Admin</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_defaultFY</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_currentDeposit</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_UserName</td><td class="field-type">VARCHAR(32)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Style</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_ApiKey</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_TwoFactorAuthSecret</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_TwoFactorAuthLastKeyTimestamp</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_TwoFactorAuthRecoveryCodes</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_EditSelf</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalStart</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalEnd</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool1</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool2</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool3</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool4</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool5</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool6</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool7</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool8</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_SearchFamily</td><td class="field-type">TINYINT(3)</td><td class="field-desc"></td></tr>
 </tbody></table></div></div>
 
         </div>
         <div class="section" id="er-diagram">
             <div class="section-header">
                 <h2>🔗 实体关系图 (ER)</h2>
-                <p>43张表的完整外键关系，Mermaid 实时渲染</p>
+                <p>Mermaid 实时渲染，43张表的完整外键关系</p>
             </div>
             <div class="card">
                 <div class="mermaid">
@@ -482,7 +635,7 @@ erDiagram
         VARCHAR nte_Type?
     }
 
-    None {
+    PersonGroupRole {
         SMALLINT p2g2r_per_ID PK
         SMALLINT p2g2r_grp_ID PK
         SMALLINT p2g2r_rle_ID
@@ -709,6 +862,7 @@ erDiagram
         LONGVARCHAR why_suggest
         LONGVARCHAR why_hearOfUs
     }
+
                 </div>
             </div>
         </div>
@@ -718,135 +872,55 @@ erDiagram
                 <p>4条核心业务链路的数据流转</p>
             </div>
             <div class="card">
+                <h3 style="margin-bottom:16px">📝 场景1：人员注册 → 小组加入 → 活动签到</h3>
                 <div class="mermaid">
-# ChurchCRM Complete Data Flow Diagrams
-## Business Process Flows
-
----
-
-## 1. Person Lifecycle
-
-
 flowchart TD
-    subgraph Registration["Person Registration"]
-        P1["New Person<br/>Entered in person_per"]
-        P2["Assign Classification<br/>per_cls_ID -> list_lst"]
-        P3["Assign Family<br/>per_fam_ID -> family_fam"]
-    end
-    
-    subgraph GroupInvolvement["Group Involvement"]
-        P4["Join Groups<br/>person2group2role_p2g2r"]
-        P5["Assign Group Role"]
-        P6["Group Properties<br/>groupprop_master"]
-    end
-    
-    subgraph Volunteer["Volunteer Service"]
-        V1["Assign Volunteer Opportunity<br/>person2volunteeropp_p2vo"]
-        V2["Track Volunteer Hours"]
-    end
-    
-    subgraph Activities["Activities & Events"]
-        A1["Event Registration<br/>event_attend"]
-        A2["Check-in/Check-out"]
-        A3["Event Counts<br/>eventcounts_evtcnt"]
-    end
-    
-    P1 --> P2 --> P3 --> P4 --> P5 --> P6
-    P4 --> V1 --> V2
-    P4 --> A1 --> A2 --> A3
-
-
----
-
-## 2. Financial Full Chain
-
-
-flowchart TD
-    subgraph Pledge["Pledge Commitment"]
-        F1["Define Donation Fund<br/>donationfund_fun"]
-        F2["Create Pledge<br/>pledge_plg<br/>plg_PledgeOrPayment=Pledge"]
-        F3["Set Schedule<br/>plg_schedule"]
-    end
-    
-    subgraph Collection["Collection"]
-        C1["Record Payment<br/>pledge_plg<br/>plg_PledgeOrPayment=Payment"]
-        C2["Scan Check<br/>fam_scanCheck"]
-        C3["Assign Fund<br/>plg_fundID"]
-    end
-    
-    subgraph Deposit["Deposit Process"]
-        D1["Create Deposit<br/>deposit_dep"]
-        D2["Link Payments<br/>plg_depID"]
-        D3["Close Deposit<br/>dep_Closed"]
-    end
-    
-    subgraph Reconciliation["Reconciliation"]
-        R1["Bank Reconciliation"]
-        R2["Tax Report<br/>plg_NonDeductible"]
-        R3["Fund Summary"]
-    end
-    
-    F1 --> F2 --> F3 --> C1 --> C2 --> C3 --> D1 --> D2 --> D3 --> R1 --> R2 --> R3
-
-
----
-
-## 3. Visitor Conversion
-
-
-flowchart TD
-    subgraph Visit["Church Visit"]
-        V1["First Visit<br/>per_FriendDate"]
-        V2["Record Why Came<br/>whycame_why"]
-        V3["Add Notes<br/>note_nte"]
-    end
-    
-    subgraph FollowUp["Follow-up Tracking"]
-        F1["Assign Property<br/>record2property_r2p"]
-        F2["Create Tasks"]
-        F3["Send Communications"]
-    end
-    
-    subgraph Classification["Classification"]
-        C1["Update Classification<br/>per_cls_ID"]
-        C2["Member Status"]
-    end
-    
-    subgraph Integration["Family Integration"]
-        I1["Create/Join Family<br/>family_fam"]
-        I2["Link to Family<br/>per_fam_ID"]
-    end
-    
-    V1 --> V2 --> V3 --> F1 --> F2 --> F3 --> C1 --> C2
-    C2 --> I1 --> I2
-
-
----
-
-## 4. Event Management Flow
-
-
-flowchart TD
-    subgraph Setup["Event Setup"]
-        E1["Define Event Type<br/>event_types"]
-        E2["Create Event<br/>events_event"]
-        E3["Define Audiences<br/>event_audience"]
-        E4["Set Event Counts<br/>eventcountnames_evctnm"]
-    end
-    
-    subgraph Planning["Planning"]
-        P1["Assign Contacts<br/>primary_contact_person_id<br/>secondary_contact_person_id"]
-        P2["Set Location<br/>location_id -> locations"]
-        P3["Create Calendar<br/>calendars"]
-    end
-    
-    subgraph Execution["Execution"]
-        X1["Kiosk Registration<br/>kioskdevice_kdev<br/>kioskassginment_kasm"]
-        X2["Check-in<br/>event_attend"]
-        X3["Track Attendance<br/>eventcounts_evtcnt"]
-    end
-    
-    E1 --> E2 --> E3 --> E4 --> P1 --> P2 --> P3 --> X1 --> X2 --> X3
+    A[新建人员<br/>person_per] --> B[分配家庭<br/>per_fam_ID → family_fam]
+    B --> C[分配分类<br/>per_cls_ID → list_lst]
+    C --> D[加入小组<br/>person2group2role_p2g2r]
+    D --> E[活动报名<br/>event_attend]
+    E --> F[签到<br/>checkin_date]
+    F --> G[签退<br/>checkout_date]
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">💰 场景2：奉献资金 → 承诺 → 存款</h3>
+                <div class="mermaid">
+flowchart LR
+    A[家庭 pledge_plg] --> B[选择资金科目<br/>plg_fundID → donationfund_fun]
+    B --> C[选择支付方式<br/>plg_method]
+    C --> D{PledgeOrPayment}
+    D -->|Pledge| E[未结算存款]
+    D -->|Payment| F[已结算存款]
+    E --> G[deposit_dep]
+    F --> G
+    G --> H[银行对账]
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">🌐 场景3：访客到访 → 信息登记 → 后续跟进</h3>
+                <div class="mermaid">
+flowchart LR
+    A[访客首次到访<br/>whycame_why] --> B[新建人员<br/>person_per]
+    B --> C[标记访客标志<br/>per_FriendDate]
+    C --> D[记录到访原因<br/>why_come/why_join]
+    D --> E[跟进笔记<br/>note_nte]
+    E --> F{转化?}
+    F -->|是| G[正式成员]
+    F -->|否| H[保持联系人]
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:16px">🔐 场景4：用户登录 → API认证 → 权限验证</h3>
+                <div class="mermaid">
+flowchart LR
+    A[登录 user_usr] --> B[验证密码]
+    B --> C[生成Token<br/>tokens]
+    C --> D[API请求<br/>Authorization header]
+    D --> E{权限检查}
+    E -->|AddRecords| F[可添加记录]
+    E -->|Finance| G[可访问财务]
+    E -->|Admin| H[管理员权限]
                 </div>
             </div>
         </div>
@@ -867,7 +941,7 @@ flowchart TD
                     <div style="padding:16px;background:#f1f5f9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--primary)">184</div><div style="font-size:13px;color:var(--text-muted)">Private API</div></div>
                     <div style="padding:16px;background:#f1f5f9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:800;color:#059669">11</div><div style="font-size:13px;color:var(--text-muted)">Public API</div></div>
                 </div>
-                <h3 style="margin-bottom:16px">Private API 路由示例</h3>
+                <h3 style="margin-bottom:16px">API 路由示例</h3>
                 <div class="api-item"><span class="method-badge get">GET</span><span class="api-path">/api/person/{id}</span></div>
                 <div class="api-item"><span class="method-badge post">POST</span><span class="api-path">/api/person</span></div>
                 <div class="api-item"><span class="method-badge put">PUT</span><span class="api-path">/api/person/{id}</span></div>
@@ -883,71 +957,78 @@ flowchart TD
                 <h2>⚙️ Service 层分析</h2>
                 <p>5大核心 Service 类及其公开方法</p>
             </div>
-<div class="card domain-person">
-        <div class="card-header">
-            <div class="card-title"><span class="domain-tag person">人员服务</span> <code>PersonService</code></div>
-            <span class="card-badge">8 个方法</span>
-        </div>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">负责人员的 CRUD 操作、小组分配、志愿者管理。</p>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>person_per, family_fam, group_grp, list_lst</code></div>
-        <div style="margin-top:12px">
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>search() - 搜索人员</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getPeopleEmailsAndGroups() - 获取人员邮箱和小组</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>addVolunteerOpportunity() - 添加志愿者机会</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getFamilyList() - 获取家庭列表</code></div>
-</div></div>
-<div class="card domain-group">
-        <div class="card-header">
-            <div class="card-title"><span class="domain-tag group">小组服务</span> <code>GroupService</code></div>
-            <span class="card-badge">11 个方法</span>
-        </div>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">核心方法最多，支持小组内人员的增删和角色管理。</p>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>group_grp, person2group2role_p2g2r, groupprop_master, list_lst</code></div>
-        <div style="margin-top:12px">
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>addUserToGroup() - 添加成员到小组</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>removeUserFromGroup() - 从小组移除成员</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getGroupMembers() - 获取小组成员</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>setGroupRoleOrder() - 设置成员角色</code></div>
-</div></div>
-<div class="card domain-financial">
-        <div class="card-header">
-            <div class="card-title"><span class="domain-tag financial">财务服务</span> <code>FinancialService</code></div>
-            <span class="card-badge">30 个方法</span>
-        </div>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">最复杂的服务类（30个方法），覆盖奉献全生命周期：承诺录入→支付→存款→对账→报税。</p>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>pledge_plg, family_fam, deposit_dep, donationfund_fun, currency_denominations</code></div>
-        <div style="margin-top:12px">
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>insertPledgeorPayment() - 插入承诺或支付</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>submitPledgeOrPayment() - 提交奉献</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getTaxReportData() - 获取报税数据</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositPDF() - 生成存款 PDF</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>validateChecks() - 验证支票</code></div>
-</div></div>
-<div class="card domain-financial">
-        <div class="card-header">
-            <div class="card-title"><span class="domain-tag financial">存款服务</span> <code>DepositService</code></div>
-            <span class="card-badge">8 个方法</span>
-        </div>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">专注于存款批次管理和对账输出。</p>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>pledge_plg, deposit_dep</code></div>
-        <div style="margin-top:12px">
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>createDeposit() - 创建存款批次</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>setDeposit() - 设置存款</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositPDF() - 存款凭证 PDF</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositCSV() - 存款明细 CSV</code></div>
-</div></div>
-<div class="card domain-person">
-        <div class="card-header">
-            <div class="card-title"><span class="domain-tag person">家庭服务</span> <code>FamilyService</code></div>
-            <span class="card-badge">3 个方法</span>
-        </div>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">家庭地址地理编码服务，用于地图展示。</p>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>family_fam</code></div>
-        <div style="margin-top:12px">
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getMissingCoordinatesCount() - 统计缺失坐标数</code></div>
-<div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>autoGeocodeFamily() - 自动获取家庭地址坐标</code></div>
-</div></div>
-
+            <div class="card domain-person">
+                <div class="card-header">
+                    <div class="card-title"><span class="domain-tag person">👥</span> <code>PersonService</code></div>
+                    <span class="card-badge">8+ 方法</span>
+                </div>
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">负责人员的 CRUD 操作、小组分配、志愿者管理。</p>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>person_per, family_fam, group_grp, list_lst</code></div>
+                <div style="margin-top:12px">
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>search() - 搜索人员</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getPeopleEmailsAndGroups() - 获取人员邮箱和小组</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>addVolunteerOpportunity() - 添加志愿者机会</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getFamilyList() - 获取家庭列表</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getOne() - 获取单个人员</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>delete() - 删除人员</code></div>
+                </div>
+            </div>
+            <div class="card domain-group">
+                <div class="card-header">
+                    <div class="card-title"><span class="domain-tag group">👥</span> <code>GroupService</code></div>
+                    <span class="card-badge">11+ 方法</span>
+                </div>
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">核心方法最多，支持小组内人员的增删和角色管理。</p>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>group_grp, person2group2role_p2g2r, groupprop_master, list_lst</code></div>
+                <div style="margin-top:12px">
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>addUserToGroup() - 添加成员到小组</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>removeUserFromGroup() - 从小组移除成员</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getGroupMembers() - 获取小组成员</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>setGroupRoleOrder() - 设置成员角色</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>createGroup() - 创建小组</code></div>
+                </div>
+            </div>
+            <div class="card domain-financial">
+                <div class="card-header">
+                    <div class="card-title"><span class="domain-tag financial">💰</span> <code>FinancialService</code></div>
+                    <span class="card-badge">30+ 方法</span>
+                </div>
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">最复杂的服务类（30+方法），覆盖奉献全生命周期：承诺录入→支付→存款→对账→报税。</p>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>pledge_plg, family_fam, deposit_dep, donationfund_fun, currency_denominations</code></div>
+                <div style="margin-top:12px">
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>insertPledgeorPayment() - 插入承诺或支付</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>submitPledgeOrPayment() - 提交奉献</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getTaxReportData() - 获取报税数据</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositPDF() - 生成存款 PDF</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>validateChecks() - 验证支票</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getPledgeOrPayment() - 获取奉献记录</code></div>
+                </div>
+            </div>
+            <div class="card domain-financial">
+                <div class="card-header">
+                    <div class="card-title"><span class="domain-tag financial">💰</span> <code>DepositService</code></div>
+                    <span class="card-badge">8+ 方法</span>
+                </div>
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">专注于存款批次管理和对账输出。</p>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">涉及表：<code>pledge_plg, deposit_dep</code></div>
+                <div style="margin-top:12px">
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>createDeposit() - 创建存款批次</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>setDeposit() - 设置存款</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositPDF() - 存款凭证 PDF</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getDepositCSV() - 存款明细 CSV</code></div>
+                </div>
+            </div>
+            <div class="card domain-person">
+                <div class="card-header">
+                    <div class="card-title"><span class="domain-tag person">👥</span> <code>FamilyService</code></div>
+                    <span class="card-badge">3+ 方法</span>
+                </div>
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">家庭地址地理编码服务，用于地图展示。</p>
+                <div style="margin-top:12px">
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>getMissingCoordinatesCount() - 统计缺失坐标数</code></div>
+                    <div style="padding:6px 10px;background:#f8fafc;border-radius:4px;margin-bottom:4px;font-size:13px"><code>autoGeocodeFamily() - 自动获取家庭地址坐标</code></div>
+                </div>
+            </div>
         </div>
         <div class="section" id="code">
             <div class="section-header">
@@ -1014,6 +1095,778 @@ if (password_verify($password, $user->getPassword())) {
     return $user->getApiKey();
 }</pre>
             </div>
+        </div>
+        <div class="section" id="data-dictionary">
+            <div class="section-header">
+                <h2>📋 完整数据字典</h2>
+                <p>43张表的完整字段定义（来源：ChurchCRM ORM Schema）</p>
+            </div>
+<div class="card table-card domain-system" id="dict-family_custom">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>family_custom</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(1字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">fam_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-family_custom_master">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>family_custom_master</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">fam_custom_Order</td><td class="field-type">SMALLINT</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_custom_Name</td><td class="field-type">VARCHAR(40)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_custom_Special</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_custom_FieldSec</td><td class="field-type">TINYINT</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_ID</td><td class="field-type">TINYINT</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-family_fam">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>family_fam</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(22字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the main family data, including family name, family addresses, and family phone numbers</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">fam_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Address1</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Address2</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_City</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_State</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Zip</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Country</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_HomePhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Email</td><td class="field-type">VARCHAR(100)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_WeddingDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_DateEntered</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_DateLastEdited</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_EnteredBy</td><td class="field-type">smallint(5)(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_EditedBy</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_scanCheck</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_scanCredit</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_SendNewsLetter</td><td class="field-type">enum('FALSE','TRUE')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_DateDeactivated</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Latitude</td><td class="field-type">DOUBLE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Longitude</td><td class="field-type">DOUBLE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fam_Envelope</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-note_nte">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>note_nte</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(10字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Contains all person and family notes, including the date, time, and person who entered the note</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">nte_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_per_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_fam_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_Private</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_Text</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_DateEntered</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_DateLastEdited</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_EnteredBy</td><td class="field-type">mediumint(8)(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_EditedBy</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">nte_Type</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-person_custom">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>person_custom</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(1字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Person custom fields</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">per_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-person_custom_master">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>person_custom_master</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains definitions for the custom person fields</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">custom_Order</td><td class="field-type">SMALLINT</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">custom_Field</td><td class="field-type">VARCHAR(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">custom_Name</td><td class="field-type">VARCHAR(40)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">custom_Special</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">custom_FieldSec</td><td class="field-type">TINYINT</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_ID</td><td class="field-type">TINYINT</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-person_per">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>person_per</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(35字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the main person data, including person names, person addresses, person phone numbers, and foreign keys to the family table</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">per_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Title</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_FirstName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_MiddleName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_LastName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Suffix</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Address1</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Address2</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_City</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_State</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Zip</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Country</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_HomePhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_WorkPhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_CellPhone</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Email</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_WorkEmail</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_BirthMonth</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_BirthDay</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_BirthYear</td><td class="field-type">smallint(4)(4)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_MembershipDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Gender</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_fmr_ID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_cls_ID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_fam_ID</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Envelope</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_DateLastEdited</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_DateEntered</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_EnteredBy</td><td class="field-type">smallint(5)(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_EditedBy</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_FriendDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Flags</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">per_Facebook</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">Facebook username</td></tr>
+<tr><td class="field-name">per_Twitter</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">Twitter username</td></tr>
+<tr><td class="field-name">per_LinkedIn</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">LinkedIn name</td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-whycame_why">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>whycame_why</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the comments related to why people came</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">why_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">why_per_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">why_join</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">why_come</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">why_suggest</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">why_hearOfUs</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-group_grp">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>group_grp</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(9字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the name and description for each group, as well as foreign keys to the list of group roles</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">grp_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_Type</td><td class="field-type">TINYINT</td><td class="field-desc">The group type.  This is defined in list_lst.OptionId where lst_ID=3</td></tr>
+<tr><td class="field-name">grp_RoleListID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc">The lst_ID containing the names of the roles for this group</td></tr>
+<tr><td class="field-name">grp_DefaultRole</td><td class="field-type">SMALLINT(9)</td><td class="field-desc">The ID of the default role in this group's RoleList</td></tr>
+<tr><td class="field-name">grp_Name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_Description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_hasSpecialProps</td><td class="field-type">BOOLEAN</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_active</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">grp_include_email_export</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc">Should members of this group be included in MailChimp Export</td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-groupprop_master">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>groupprop_master</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(7字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains definitions for the group-specific fields</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">grp_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prop_ID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prop_Name</td><td class="field-type">VARCHAR(40)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prop_Description</td><td class="field-type">VARCHAR(60)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_ID</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prop_Special</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prop_PersonDisplay</td><td class="field-type">enum('false','true')</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-person2group2role_p2g2r">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>person2group2role_p2g2r</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This table stores the information of which people are in which groups, and what group role each person holds in that group</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">p2g2r_per_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">p2g2r_grp_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">p2g2r_rle_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-person2volunteeropp_p2vo">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>person2volunteeropp_p2vo</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This table indicates which people are tied to which volunteer opportunities</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">p2vo_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">p2vo_per_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">p2vo_vol_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-volunteeropportunity_vol">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>volunteeropportunity_vol</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the names and descriptions of volunteer opportunities</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">vol_ID</td><td class="field-type">INTEGER(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">vol_Order</td><td class="field-type">INTEGER(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">vol_Active</td><td class="field-type">enum('true','false')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">vol_Name</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">vol_Description</td><td class="field-type">VARCHAR(100)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-deposit_dep">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>deposit_dep</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This records deposits / payments</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">dep_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Date</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Comment</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_EnteredBy</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Closed</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">dep_Type</td><td class="field-type">enum('Bank','CreditCard','BankDraft')</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-donateditem_di">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>donateditem_di</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(15字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">di_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_item</td><td class="field-type">VARCHAR(32)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_FR_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_donor_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_buyer_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_multibuy</td><td class="field-type">SMALLINT(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_title</td><td class="field-type">VARCHAR(128)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_sellprice</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_estprice</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_minimum</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_materialvalue</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_EnteredBy</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_EnteredDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">di_picture</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-donationfund_fun">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>donationfund_fun</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the defined donation funds</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">fun_ID</td><td class="field-type">TINYINT(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fun_Active</td><td class="field-type">enum('true','false')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fun_Name</td><td class="field-type">VARCHAR(30)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fun_Description</td><td class="field-type">VARCHAR(100)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fun_Order</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-fundraiser_fr">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>fundraiser_fr</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">fr_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fr_date</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fr_title</td><td class="field-type">VARCHAR(128)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fr_description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fr_EnteredBy</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">fr_EnteredDate</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-pledge_plg">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>pledge_plg</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(21字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains all payment/pledge information</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">plg_plgID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_FamID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_FYID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_date</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_amount</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_schedule</td><td class="field-type">enum('Weekly','Monthly','Quarterly','Once','Other')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_method</td><td class="field-type">enum('CREDITCARD','CHECK','CASH','BANKDRAFT')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_comment</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_DateLastEdited</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_EditedBy</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_PledgeOrPayment</td><td class="field-type">enum('Pledge','Payment')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_fundID</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_depID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_CheckNo</td><td class="field-type">bigint(16) unsigned(16)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_Problem</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_scanString</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_aut_ID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_aut_Cleared</td><td class="field-type">BOOLEAN(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_aut_ResultID</td><td class="field-type">mediumint(9)(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_NonDeductible</td><td class="field-type">DECIMAL(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">plg_GroupKey</td><td class="field-type">VARCHAR(64)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-event_attend">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>event_attend</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(7字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">this indicates which people attended which events</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">attend_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">person_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">checkin_date</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">checkin_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">checkout_date</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">checkout_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-event_audience">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>event_audience</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(2字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This is a join-table to link an event with a prospective audience for the purpose of advertising / outreach</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">event_id</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">group_id</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-event_types">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>event_types</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(9字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">type_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_name</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_defstarttime</td><td class="field-type">TIME</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_defrecurtype</td><td class="field-type">enum('none','weekly','monthly','yearly')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_defrecurDOW</td><td class="field-type">enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_defrecurDOM</td><td class="field-type">CHAR(2)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_defrecurDOY</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_active</td><td class="field-type">INTEGER(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type_grpid</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-eventcountnames_evctnm">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>eventcountnames_evctnm</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">evctnm_countid</td><td class="field-type">INTEGER(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">evctnm_eventtypeid</td><td class="field-type">SMALLINT(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">evctnm_countname</td><td class="field-type">VARCHAR(20)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-eventcounts_evtcnt">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>eventcounts_evtcnt</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">evtcnt_eventid</td><td class="field-type">INTEGER(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">evtcnt_countid</td><td class="field-type">INTEGER(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">evtcnt_countname</td><td class="field-type">VARCHAR(20)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">evtcnt_countcount</td><td class="field-type">INTEGER(6)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">evtcnt_notes</td><td class="field-type">VARCHAR(20)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-events_event">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>events_event</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(12字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains events</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">event_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_type</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_title</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_desc</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_text</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_start</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_end</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">inactive</td><td class="field-type">INTEGER(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">primary_contact_person_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">secondary_contact_person_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_url</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-config_cfg">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>config_cfg</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This table contains all non-default configuration parameter names and values</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">cfg_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">cfg_name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">cfg_value</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-list_lst">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>list_lst</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This table stores the options for most of the drop down lists in churchCRM, including person classifications, family roles, group types, group roles, group-specific property types, and custom field value lists.</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">lst_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc">The ID of the list.  Since this is a composite primary key, there may be multiple List IDs</td></tr>
+<tr><td class="field-name">lst_OptionID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc">The ID of the option in this list.  ***List ID + List Option ID must be unique***</td></tr>
+<tr><td class="field-name">lst_OptionSequence</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc">The order in which to display items in this list</td></tr>
+<tr><td class="field-name">lst_OptionName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">The actual value for this list option</td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-user_settings">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>user_settings</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">user_id</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">setting_name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">setting_value</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-user_usr">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>user_usr</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(34字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains the login information and specific settings for each ChurchCRM user</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">usr_per_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Password</td><td class="field-type">VARCHAR(500)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_NeedPasswordChange</td><td class="field-type">tinyint(3) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_LastLogin</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_LoginCount</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_FailedLogins</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_AddRecords</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_EditRecords</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_DeleteRecords</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_MenuOptions</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_ManageGroups</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Finance</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Notes</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Admin</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_defaultFY</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_currentDeposit</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_UserName</td><td class="field-type">VARCHAR(32)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_Style</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_ApiKey</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_TwoFactorAuthSecret</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_TwoFactorAuthLastKeyTimestamp</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_TwoFactorAuthRecoveryCodes</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_EditSelf</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalStart</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalEnd</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool1</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool2</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool3</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool4</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool5</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool6</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool7</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_CalNoSchool8</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">usr_SearchFamily</td><td class="field-type">TINYINT(3)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-userconfig_ucfg">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>userconfig_ucfg</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(8字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">ucfg_per_id</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_value</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_type</td><td class="field-type">enum('text','number','date','boolean','textarea')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_tooltip</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_permission</td><td class="field-type">enum('FALSE','TRUE')</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ucfg_cat</td><td class="field-type">VARCHAR(20)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-version_ver">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>version_ver</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">History of all version upgrades applied to this database</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">ver_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ver_version</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ver_update_start</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">ver_update_end</td><td class="field-type">TIMESTAMP</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-property_pro">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>property_pro</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(6字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">pro_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">pro_Class</td><td class="field-type">VARCHAR(10)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">pro_prt_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">pro_Name</td><td class="field-type">VARCHAR(200)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">pro_Description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">pro_Prompt</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-propertytype_prt">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>propertytype_prt</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains all the defined property types</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">prt_ID</td><td class="field-type">SMALLINT(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prt_Class</td><td class="field-type">VARCHAR(10)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prt_Name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">prt_Description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-record2property_r2p">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>record2property_r2p</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(3字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">r2p_pro_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">r2p_record_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">r2p_Value</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-kioskassginment_kasm">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>kioskassginment_kasm</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">kasm_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">kasm_kdevId</td><td class="field-type">INTEGER(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">kasm_AssignmentType</td><td class="field-type">INTEGER(9)</td><td class="field-desc">The kiosk's current role.</td></tr>
+<tr><td class="field-name">kasm_EventId</td><td class="field-type">INTEGER(9)</td><td class="field-desc">Optional.  If the current role is for event check-in, populate this value</td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-kioskdevice_kdev">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>kioskdevice_kdev</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(7字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains a list of all (un)registered kiosk devices</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">kdev_ID</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">kdev_GUIDHash</td><td class="field-type">VARCHAR(36)</td><td class="field-desc">SHA256 Hash of the GUID stored in the kiosk's cookie</td></tr>
+<tr><td class="field-name">kdev_Name</td><td class="field-type">VARCHAR(50)</td><td class="field-desc">Name of the kiosk</td></tr>
+<tr><td class="field-name">kdev_deviceType</td><td class="field-type">LONGVARCHAR</td><td class="field-desc">Kiosk device type</td></tr>
+<tr><td class="field-name">kdev_lastHeartbeat</td><td class="field-type">LONGVARCHAR</td><td class="field-desc">Last time the kiosk sent a heartbeat</td></tr>
+<tr><td class="field-name">kdev_Accepted</td><td class="field-type">BOOLEAN</td><td class="field-desc">Has the admin accepted the kiosk after initial registration?</td></tr>
+<tr><td class="field-name">kdev_PendingCommands</td><td class="field-type">LONGVARCHAR</td><td class="field-desc">Commands waiting to be sent to the kiosk</td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-calendar_events">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>calendar_events</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(2字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This is a join-table to link an event with a calendar</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">calendar_id</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">event_id</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-calendars">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>calendars</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">calendar_id</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">name</td><td class="field-type">VARCHAR(99)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">accesstoken</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">backgroundColor</td><td class="field-type">VARCHAR(6)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">foregroundColor</td><td class="field-type">VARCHAR(6)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-locations">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>locations</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(11字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This is a table for storing all physical locations (Church Offices, Events, etc)</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">location_id</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_typeID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_name</td><td class="field-type">VARCHAR(256)</td><td class="field-desc">Location Name (e.g 'Main Campus')</td></tr>
+<tr><td class="field-name">location_address</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_city</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_state</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_zip</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_country</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_phone</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_email</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">location_timzezone</td><td class="field-type">VARCHAR(45)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-query_qry">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>query_qry</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">This contains all the predefined queries that appear in the queries page</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">qry_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qry_SQL</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qry_Name</td><td class="field-type">VARCHAR(255)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qry_Description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qry_Count</td><td class="field-type">tinyint(1) unsigned(1)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-queryparameteroptions_qpo">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>queryparameteroptions_qpo</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Defines the values for the parameters for each query</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">qpo_ID</td><td class="field-type">smallint(5) unsigned(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qpo_qrp_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qpo_Display</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qpo_Value</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-queryparameters_qrp">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>queryparameters_qrp</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(15字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">defines the parameters for each query</p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">qrp_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_qry_ID</td><td class="field-type">mediumint(8) unsigned(8)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Type</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_OptionSQL</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Name</td><td class="field-type">VARCHAR(25)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Description</td><td class="field-type">LONGVARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Alias</td><td class="field-type">VARCHAR(25)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Default</td><td class="field-type">VARCHAR(25)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Required</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_InputBoxSize</td><td class="field-type">tinyint(3) unsigned(3)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_Validation</td><td class="field-type">VARCHAR(5)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_NumericMax</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_NumericMin</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_AlphaMinLength</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">qrp_AlphaMaxLength</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-tokens">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>tokens</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(5字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">token</td><td class="field-type">VARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">type</td><td class="field-type">VARCHAR</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">valid_until_date</td><td class="field-type">DATE</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">reference_id</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">remainingUses</td><td class="field-type">INTEGER</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+<div class="card table-card domain-system" id="dict-menu_links">
+        <div class="table-toggle" onclick="this.parentElement.classList.toggle('open')">
+            <div class="card-title"><code>menu_links</code> <span class="domain-tag system"></span> <span style="font-size:12px;color:var(--text-muted)">(4字段)</span></div>
+        </div>
+        <div class="fields-container">
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px"></p>
+            <table class="data-table">
+                <thead><tr><th style="width:180px">字段名</th><th style="width:160px">SQL类型</th><th>说明</th></tr></thead>
+                <tbody>
+<tr><td class="field-name">linkId</td><td class="field-type">mediumint(9) unsigned(9)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">linkName</td><td class="field-type">VARCHAR(50)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">linkUri</td><td class="field-type">VARCHAR(500)</td><td class="field-desc"></td></tr>
+<tr><td class="field-name">linkOrder</td><td class="field-type">SMALLINT</td><td class="field-desc"></td></tr>
+</tbody></table></div></div>
+
         </div>
     </div>
 </div>
